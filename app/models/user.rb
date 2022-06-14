@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :producers
+  has_many :products
 
   has_one_attached :photo
 
-  
+
 
 end

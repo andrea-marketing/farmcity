@@ -5,7 +5,11 @@
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
 -->
+
 <div class="container">
+
+  <!-- Producer info -->
+
   <% @producer.photos.each do |photo| %>
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
@@ -14,5 +18,28 @@
   <br>
   <p><%=@producer.description%></p>
   <br>
-  <p>For more informations, send me an email at <%=@producer.contact%></p>
+  <p>For more informations, contact me at <%=@producer.contact%></p>
+
+  <!-- Product list -->
+
+  <% @producer.products.each do |product| %>
+    <div class="card-product">
+      <div class="card-product-infos">
+        <p><%= product.product_type %></p>
+        <p><%= product.price %></p>
+        <%= link_to 'Edit',  edit_producer_product_path(@producer, product) %>
+        <%= link_to "Delete",
+            producer_product_path(@producer, product),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+       </div>
+    </div>
+  <% end %>
+
+  <!-- New product  -->
+
+  <% if policy(Product).create? %>
+    <%= link_to "New Product", new_producer_product_path(@producer, @product) %>
+  <% end %>
+
 </div>
