@@ -13,12 +13,37 @@
 
   <p>For more informations, contact me at <%=@producer.contact%></p>
 
+   <!-- Add/destroy producer  -->
+
+  <div class="buttons">
+    <% if policy(@producer).edit? %>
+      <%= link_to "Update", edit_producer_path(@producer) %>
+    <% end %>
+
+    <% if policy(@producer).destroy? %>
+      <%= link_to "Delete", producer_path(@producer),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } ,
+                    class:"btn-red"%>
+    <% end %>
+   <%= link_to 'Back', producers_path %>
+
+  </div>
+
+  <h2>Products</h2>
+  <!-- New product  -->
+
+  <% if policy(Product).create? %>
+    <%= link_to "New Product", new_producer_product_path(@producer, @product) %>
+  <% end %>
+
   <!-- Product list -->
 
   <% @producer.products.each do |product| %>
     <div class="card-product">
       <div class="card-product-infos">
         <p><%= product.product_type %></p>
+        <p><%= product.description %></p>
         <p><%= product.price %></p>
         <%= link_to 'Edit',  edit_producer_product_path(@producer, product) %>
         <%= link_to "Delete",
@@ -29,47 +54,42 @@
     </div>
   <% end %>
 
-  <!-- New product  -->
+  <h2>Reviews</h2>
 
-  <% if policy(Product).create? %>
-    <%= link_to "New Product", new_producer_product_path(@producer, @product) %>
-  <% end %>
+  <!-- New review  -->
+
+  <% if policy(Review).create? %>
+     <%= link_to 'Leave a review', new_producer_review_path(@producer) %>
+  <%end%>
+
 
   <!--  Reviews -->
 
-  <ul class="list-group">
-    <% @producer.reviews.each do |review| %>
-      <li class="list-group-item">
+  <% @producer.reviews.each do |review| %>
+    <div class="card-product">
+      <div class="card-product-infos">
         <%= review.content %>
         <%= review.rating %>/5
         <% if policy(review).destroy? %>
           <%= link_to "Remove",
-                      review_path(review),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
+                    review_path(review),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
         <%end%>
-      </li>
-    <% end %>
-  </ul>
 
-   <!-- Add/destroy producer  -->
-
-   <div class="buttons">
-      <% if policy(@producer).edit? %>
-        <%= link_to "Update", edit_producer_path(@producer) %>
-      <% end %>
-      <% if policy(@producer).destroy? %>
-        <%= link_to "Delete", producer_path(@producer),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } ,
-                      class:"btn-red"%>
-      <% end %>
-     <%= link_to 'Back', producers_path %>
-     <% if policy(Review).create? %>
-       <%= link_to 'Leave a review', new_producer_review_path(@producer) %>
-     <%end%>
     </div>
 
 
+     <%= link_to 'Add a market', new_producer_point_of_sale_path(@producer, @point_of_sale) %>
 
+    <% @producer.point_of_sales.each do |pointofsale| %>
+      <div class="col-6">
+        <h2 class=""><%= pointofsale.market.name.upcase %></h2>
+          <p class="mt-3"><%= pointofsale.market.address %></p>
+      </div>
+      <div>
+        <h2 class=""><%= pointofsale.market.description %></h2>
+      </div>
+    <% end %>
+  
 </div>
