@@ -66,3 +66,7 @@ eleveur_poulet.save!
 agriculteur = Producer.new(name: "Legume", address: "12 Chemin de la Bonnefont, savoie", producer_type: "agriculteur", description: "Les legumes de l’Estérel c’est avant tout une entreprise familiale et une histoire de partage : nos parents nous ont transmis leur passion pour les legumes il y a de nombreuses années.", contact: "legumes@gmail.com", user: user1)
 agriculteur.photos.attach(photos_legumes)
 agriculteur.save!
+
+# markets
+market1 = Market.new(name: "Marché alimentaire", address: "Marseille", description: "")
+market1.save!

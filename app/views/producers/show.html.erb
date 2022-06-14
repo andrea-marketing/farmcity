@@ -76,6 +76,18 @@
         <%end%>
       </div>
     </div>
-  <% end %>
 
+
+     <%= link_to 'Add a market', new_producer_point_of_sale_path(@producer, @point_of_sale) %>
+
+    <% @producer.point_of_sales.each do |pointofsale| %>
+      <div class="col-6">
+        <h2 class=""><%= pointofsale.market.name.upcase %></h2>
+          <p class="mt-3"><%= pointofsale.market.address %></p>
+      </div>
+      <div>
+        <h2 class=""><%= pointofsale.market.description %></h2>
+      </div>
+    <% end %>
+  
 </div>

@@ -1,6 +1,9 @@
 class Producer < ApplicationRecord
   belongs_to :user
   has_many_attached :photos
+
+  has_many :point_of_sales
+  has_many :markets, through: :point_of_sales
   has_many :products, dependent: :destroy
 
   validates :name, presence: true
