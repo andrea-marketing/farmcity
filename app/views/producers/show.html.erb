@@ -34,13 +34,14 @@
   <% if policy(Product).create? %>
     <%= link_to "New Product", new_producer_product_path(@producer, @product) %>
   <% end %>
-    
+
   <!--  Reviews -->
 
   <ul class="list-group">
     <% @producer.reviews.each do |review| %>
       <li class="list-group-item">
         <%= review.content %>
+        <%= review.rating %>/5
         <% if policy(review).destroy? %>
           <%= link_to "Remove",
                       review_path(review),
@@ -52,7 +53,7 @@
   </ul>
 
    <!-- Add/destroy producer  -->
-  
+
    <div class="buttons">
       <% if policy(@producer).edit? %>
         <%= link_to "Update", edit_producer_path(@producer) %>
