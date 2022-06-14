@@ -1,41 +1,50 @@
-<h1>Producers</h1>
-
-<!-- Search bar -->
-<%= form_tag producers_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Enter a product" %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-
-<!-- list of producers -->
 <div class="container">
-  <%= link_to "Producer", producers_path(@producer), class: "" %>
-  <div class="cards">
-    <% @producers.each do |producer| %>
-      <%= link_to producer_path(producer) , :action => 'go' do %>
-        <div class="">
-          <% if producer.photos.attached? %>
-            <% producer.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-            <% end %>
-          <% end %>
-          <div class="">
-            <div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+
+      <h1>Producers</h1>
+
+      <!-- Search bar -->
+      <%= form_tag producers_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Enter a product" %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+
+      <!-- list of producers -->
+
+      <div class="cards">
+
+        <% @producers.each do |producer| %>
+          <%= link_to producer_path(producer) , :action => 'go' do %>
+          <div class="card-producer">
+
+            <div class="image">
+              <% if producer.photos.attached? %>
+                  <%= cl_image_tag producer.photos.first.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </div>
+
+            <div class="card-producer-info">
               <p><strong><%= producer.name %></strong></p>
               <p><%= producer.producer_type  %></p>
               <p><%= producer.address %></p>
             </div>
           </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+          <% end %>
+        <% end %>
+      </div>
 
-<div>
-  <% if policy(Producer).create? %>
-    <%= link_to "New producer", new_producer_path %>
-  <% end %>
+      <!-- Add new producer profile -->
+
+      <div>
+        <% if policy(Producer).create? %>
+          <%= link_to "New producer", new_producer_path %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
 </div>
