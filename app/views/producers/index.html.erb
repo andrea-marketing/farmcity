@@ -19,7 +19,7 @@
 
 <!-- list of producers -->
 <div class="container">
-  <%# <%= link_to "Producer", producers_path(@producer), class: "" %>
+  <%= link_to "Producer", producers_path(@producer), class: "" %>
   <div class="cards">
     <% @producers.each do |producer| %>
       <%= link_to producer_path(producer) , :action => 'go' do %>
