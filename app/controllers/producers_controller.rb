@@ -44,6 +44,6 @@ class ProducersController < ApplicationController
   end
 
   def producer_params
-    params.require(:producer).permit(:producer_type, :name, :address, :description, :contact, :user_id, :photo)
+    params.require(:producer).permit(:producer_type, :name, :address, :description, :contact, :user_id, photos: [])
   end
 end
