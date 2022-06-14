@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+
+      <h1>Producers</h1>
+
+      <!-- Search bar -->
+      <%= form_tag producers_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Enter a product" %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+
+      <!-- list of producers -->
+
+      <div class="cards">
+
+        <% @producers.each do |producer| %>
+          <%= link_to producer_path(producer) , :action => 'go' do %>
+          <div class="card-producer">
+
+            <div class="image">
+              <% if producer.photos.attached? %>
+                  <%= cl_image_tag producer.photos.first.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+            </div>
+
+            <div class="card-producer-info">
+              <p><strong><%= producer.name %></strong></p>
+              <p><%= producer.producer_type  %></p>
+              <p><%= producer.address %></p>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <!-- Add new producer profile -->
+
+      <div>
+        <% if policy(Producer).create? %>
+          <%= link_to "New producer", new_producer_path %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
