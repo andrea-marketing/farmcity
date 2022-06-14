@@ -8,4 +8,5 @@ class Producer < ApplicationRecord
   validates :description, presence: true
   validates :contact, presence: true
 
+  has_many :reviews, dependent: :destroy
 end
