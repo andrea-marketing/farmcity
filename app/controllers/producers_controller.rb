@@ -1,5 +1,5 @@
 class ProducersController < ApplicationController
-  before_action :set_producer, only: %i[show edit update]
+  before_action :set_producer, only: %i[show edit update destroy]
 
   def index
     @producers = policy_scope(Producer).order(created_at: :desc)
@@ -32,6 +32,12 @@ class ProducersController < ApplicationController
   def update
     @producer.update(producer_params)
     redirect_to producer_path
+    authorize @producer
+  end
+
+  def destroy
+    @producer.destroy
+    redirect_to root_path
     authorize @producer
   end
 
