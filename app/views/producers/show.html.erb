@@ -62,19 +62,21 @@
      <%= link_to 'Leave a review', new_producer_review_path(@producer) %>
   <%end%>
 
+
   <!--  Reviews -->
 
   <% @producer.reviews.each do |review| %>
     <div class="card-product">
       <div class="card-product-infos">
         <%= review.content %>
+        <%= review.rating %>/5
         <% if policy(review).destroy? %>
           <%= link_to "Remove",
                     review_path(review),
                     method: :delete,
                     data: { confirm: "Are you sure?" } %>
         <%end%>
-      </div>
+
     </div>
 
 
