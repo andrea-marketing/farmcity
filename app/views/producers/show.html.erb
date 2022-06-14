@@ -9,5 +9,10 @@
   <% @producer.photos.each do |photo| %>
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
-
+  <h1><%=@producer.name.capitalize%>, <%=@producer.producer_type.capitalize%></h1>
+  <p><%=@producer.address%></p>
+  <br>
+  <p><%=@producer.description%></p>
+  <br>
+  <p>For more informations, send me an email at <%=@producer.contact%></p>
 </div>

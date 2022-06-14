@@ -1,5 +1,4 @@
 class ProducersController < ApplicationController
-
   before_action :set_producer, only: %i[show edit update]
 
   def index
@@ -7,7 +6,6 @@ class ProducersController < ApplicationController
   end
 
   def show
-    @producer = Producer.new
     authorize @producer
   end
 
