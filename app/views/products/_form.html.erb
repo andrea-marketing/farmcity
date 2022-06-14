@@ -1,0 +1,8 @@
+<div class="form">
+   <%= simple_form_for [@producer, @product] do |f| %>
+    <%= f.input :product_type, placeholder: 'Honey' %>
+    <%= f.input :description, placeholder: 'Define your product' %>
+    <%= f.input :price, placeholder: '20' %>
+    <%= f.submit %>
+  <% end %>
+</div
