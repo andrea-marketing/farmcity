@@ -1,4 +1,5 @@
 class ProducersController < ApplicationController
+
   before_action :set_producer, only: %i[show edit update]
 
   def index
