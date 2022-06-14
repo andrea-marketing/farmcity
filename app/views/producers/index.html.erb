@@ -16,13 +16,10 @@
     <% @producers.each do |producer| %>
       <%= link_to producer_path(producer) , :action => 'go' do %>
         <div class="">
-          <% if producer.photo.attached? %>
-            <%= cl_image_tag producer.photo.key, height: 300, width: 400, crop: :fill %>
-
+          <% if producer.photos.attached? %>
             <% producer.photos.each do |photo| %>
-              <%= cl_image_tag producer.photo.key, height: 300, width: 400, crop: :fill %>
+              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
             <% end %>
-
           <% end %>
           <div class="">
             <div>
