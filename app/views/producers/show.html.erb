@@ -1,5 +1,3 @@
-
-
 <!--
 <% @producer.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
@@ -15,4 +13,16 @@
   <p><%=@producer.description%></p>
   <br>
   <p>For more informations, send me an email at <%=@producer.contact%></p>
+
+   <div class="buttons">
+      <% if policy(@producer).edit? %>
+        <%= link_to "Update", edit_producer_path(@producer) %>
+      <% end %>
+      <% if policy(@producer).destroy? %>
+        <%= link_to "Delete", producer_path(@producer),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } ,
+                      class:"btn-red"%>
+      <% end %>
+    </div>
 </div>
