@@ -15,4 +15,25 @@
   <p><%=@producer.description%></p>
   <br>
   <p>For more informations, send me an email at <%=@producer.contact%></p>
+
+<ul class="list-group">
+  <% @producer.reviews.each do |review| %>
+    <li class="list-group-item">
+      <%= review.content %>
+      <% if policy(review).destroy? %>
+        <%= link_to "Remove",
+                    review_path(review),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+      <%end%>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_producer_path(@producer) %>
+<%= link_to 'Back', producers_path %>
+<% if policy(Review).create? %>
+  <%= link_to 'Leave a review', new_producer_review_path(@producer) %>
+<%end%>
+
 </div>
