@@ -1,9 +1,7 @@
-<!--
-<% @producer.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
--->
 <div class="container">
+
+  <!-- Producer info -->
+
   <% @producer.photos.each do |photo| %>
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
@@ -12,19 +10,73 @@
   <br>
   <p><%=@producer.description%></p>
   <br>
-  <p>For more informations, send me an email at <%=@producer.contact%></p>
 
-   <div class="buttons">
-      <% if policy(@producer).edit? %>
-        <%= link_to "Update", edit_producer_path(@producer) %>
-      <% end %>
-      <% if policy(@producer).destroy? %>
-        <%= link_to "Delete", producer_path(@producer),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } ,
-                      class:"btn-red"%>
-      <% end %>
+  <p>For more informations, contact me at <%=@producer.contact%></p>
+
+   <!-- Add/destroy producer  -->
+
+  <div class="buttons">
+    <% if policy(@producer).edit? %>
+      <%= link_to "Update", edit_producer_path(@producer) %>
+    <% end %>
+
+    <% if policy(@producer).destroy? %>
+      <%= link_to "Delete", producer_path(@producer),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } ,
+                    class:"btn-red"%>
+    <% end %>
+   <%= link_to 'Back', producers_path %>
+
+  </div>
+
+  <h2>Products</h2>
+  <!-- New product  -->
+
+  <% if policy(Product).create? %>
+    <%= link_to "New Product", new_producer_product_path(@producer, @product) %>
+  <% end %>
+
+  <!-- Product list -->
+
+  <% @producer.products.each do |product| %>
+    <div class="card-product">
+      <div class="card-product-infos">
+        <p><%= product.product_type %></p>
+        <p><%= product.description %></p>
+        <p><%= product.price %></p>
+        <%= link_to 'Edit',  edit_producer_product_path(@producer, product) %>
+        <%= link_to "Delete",
+            producer_product_path(@producer, product),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+       </div>
     </div>
+  <% end %>
+
+  <h2>Reviews</h2>
+
+  <!-- New review  -->
+
+  <% if policy(Review).create? %>
+     <%= link_to 'Leave a review', new_producer_review_path(@producer) %>
+  <%end%>
+
+  <!--  Reviews -->
+
+  <% @producer.reviews.each do |review| %>
+    <div class="card-product">
+      <div class="card-product-infos">
+        <%= review.content %>
+        <% if policy(review).destroy? %>
+          <%= link_to "Remove",
+                    review_path(review),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+        <%end%>
+      </div>
+    </div>
+
 
      <%= link_to 'Add a market', new_producer_point_of_sale_path(@producer, @point_of_sale) %>
 
@@ -37,4 +89,5 @@
         <h2 class=""><%= pointofsale.market.description %></h2>
       </div>
     <% end %>
+  
 </div>

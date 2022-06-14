@@ -7,6 +7,7 @@ class ProducersController < ApplicationController
 
   def show
     authorize @producer
+    @product = Product.new
   end
 
   def new
