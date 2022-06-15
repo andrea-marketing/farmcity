@@ -1,0 +1,19 @@
+.banner {
+  background: linear-gradient(180deg, rgba(255,254,230,1) 0%, rgba(254,254,251,1) 50%, rgba(255,254,230,1) 100%);;
+  padding: 200px 35px;
+  height: 100vh;
+}
+
+.banner h1 {
+  margin-bottom: 30px;
+  color: $dark-red;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 16px;
+  color: black;
+  opacity: .7;
+}
