@@ -7,9 +7,8 @@ class Producer < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
-  validates :name, presence: true
-  validates :address, presence: true
-  validates :producer_type, presence: true
-  validates :description, presence: true
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   validates :contact, presence: true
 end

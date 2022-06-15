@@ -3,6 +3,17 @@ class ProducersController < ApplicationController
 
   def index
     @producers = policy_scope(Producer).order(created_at: :desc)
+    if params[:query].present?
+      @producers = Producer.global_search(params[:query])
+    end
+    @markers = @producers.geocoded.map do |producer|
+      {
+        lat: producer.latitude,
+        lng: producer.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { producer: producer }),
+        image_url: helpers.asset_url("https://res.cloudinary.com/dj0dllkwn/image/upload/v1655307157/radis_d7d8gz.jpg")
+      }
+    end
   end
 
   def show

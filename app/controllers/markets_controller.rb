@@ -1,6 +1,16 @@
 class MarketsController < ApplicationController
   before_action :set_market, only: [:show]
 
+  def index
+    @markets = policy_scope(Market).order(created_at: :desc)
+    @markers = @markets.geocoded.map do |market|
+      {
+        lat: market.latitude,
+        lng: market.longitude
+      }
+    end
+  end
+
   def show
     @market_producer = @market.producers
     authorize @market

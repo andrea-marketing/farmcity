@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [ :destroy ]
   # resources :point_of_sales, only: [ :destroy ]
-  resources :markets, only: [ :show ]
+  resources :markets, only: [ :index, :show ]
 end
