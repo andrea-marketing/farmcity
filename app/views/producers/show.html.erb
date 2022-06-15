@@ -41,7 +41,9 @@
 
   <% @producer.products.each do |product| %>
     <div class="card-product">
+      <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
       <div class="card-product-infos">
+        <h3><%= product.name %></h3>
         <p><%= product.product_type %></p>
         <p><%= product.description %></p>
         <p><%= product.price %></p>
