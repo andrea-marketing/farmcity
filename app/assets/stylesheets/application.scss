@@ -11,3 +11,25 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body{
+  background: linear-gradient(180deg, rgba(255,254,230,1) 0%, rgba(254,254,251,1) 50%, rgba(255,254,230,1) 100%);;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 900;
+  color: #D54C4C;
+  margin: 5px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
+
+a:hover{
+  text-decoration: none;
+  color: black;
+}
