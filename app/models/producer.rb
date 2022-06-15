@@ -12,4 +12,29 @@ class Producer < ApplicationRecord
   validates :producer_type, presence: true
   validates :description, presence: true
   validates :contact, presence: true
+
+
+  has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
+  def favorite?(user)
+    favorites = []
+    self.favorites.each do |favorite|
+      if favorite.user == user
+        favorites << favorite
+      end
+    end
+    favorites.empty?
+  end
+
+  def user_favorite(user)
+    favorites = []
+    self.favorites.each do |favorite|
+      if favorite.user == user
+        favorites << favorite
+      end
+    end
+    return favorites[0]
+  end
+
 end
