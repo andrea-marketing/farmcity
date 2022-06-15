@@ -1,0 +1,6 @@
+<div class="container">
+  <h1>My favorites</h1>
+  <ul><% @favorites.each do |favorite|%>
+    <li><%=favorite.producer.name%></li>
+  <%end%></ul>
+</div>
