@@ -1,4 +1,4 @@
-class PointOfSalePolicy < ApplicationPolicy
+class MarketPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
@@ -6,19 +6,7 @@ class PointOfSalePolicy < ApplicationPolicy
     # end
   end
 
-  def create?
-    return true
-  end
-
-  def update?
-    record.user == user
-  end
-
   def show?
-    return true
-  end
-
-  def destroy?
     return true
   end
 end

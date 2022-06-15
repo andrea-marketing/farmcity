@@ -1,0 +1,14 @@
+<h1><%= @market.name %></h1>
+<p><%= @market.address %></p>
+<p><%= @market.description %></p>
+
+ <% @market_producer.each do |producer| %>
+      <div class="col-6">
+        <h2 class=""><%= producer.name %></h2>
+         <% if producer.photos.attached? %>
+          <%= cl_image_tag producer.photos.first.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+        <h1><%=producer.name.capitalize%>, <%=producer.producer_type.capitalize%></h1>
+        <p><%=producer.address%></p>
+      </div>
+  <% end %>
