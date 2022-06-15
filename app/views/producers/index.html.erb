@@ -32,12 +32,12 @@
         <% @producers.each do |producer| %>
           <%= link_to producer_path(producer) , :action => 'go' do %>
           <div class="card-producer">
-
-            <div class="image">
-              <% if producer.photos.attached? %>
-                  <%= cl_image_tag producer.photos.first.key, height: 300, width: 400, crop: :fill %>
-              <% end %>
-            </div>
+              <i class="fa-regular fa-heart"></i>
+              <div class="image">
+                <% if producer.photos.attached? %>
+                    <%= cl_image_tag producer.photos.first.key, height: 300, width: 400, crop: :fill %>
+                <% end %>
+              </div>
 
             <div class="card-producer-info">
               <p><strong><%= producer.name %></strong></p>
