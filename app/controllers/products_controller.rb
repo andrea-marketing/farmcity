@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    categories = params[:product][:categories].reject(&:empty?)
+    @product.category_list = categories
     @producer = Producer.find(params[:producer_id])
     @product.producer = @producer
     @product.user = current_user
@@ -43,6 +45,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :product_type, :description, :price, :producer_id, :user, :photo)
+    params.require(:product).permit(:name, :description, :price, :producer_id, :user, :photo)
   end
 end

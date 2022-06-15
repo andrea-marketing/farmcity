@@ -7,15 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
-Category.destroy_all
 Producer.destroy_all
 User.destroy_all
-
-CATEGORIES = [["🥬", "Fruits"], ["🥬", "Veggetables"], ["🥬", "Meat"], ["🥬", "Milk"], ["🥬", "Cheese"], ["🥬", "Flowers"], ["🥬", "Chicken"], ["🥬", "Cow"], ["🥬", "Goat"], ["🥬", "Sheep"], ["🥬", "Fish"], ["🥬", "Honey"], ["🥬", "Eggs"], ["🥬", "Wine"], ["🥬", "Bread"]]
-
-CATEGORIES.each do |category_array|
-  Category.create!(name: category_array[1], emoji:category_array[0])
-end
 
 file_user1 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655133837/samples/farmcity/x5jrwv4m34jgss4tsuc4.png')
 user1 = User.create!(email: "judith@gmail.com", password: "farmcity", password_confirmation: "farmcity")
