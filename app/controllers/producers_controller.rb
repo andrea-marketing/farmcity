@@ -3,6 +3,7 @@ class ProducersController < ApplicationController
 
   def index
     @producers = policy_scope(Producer).order(created_at: :desc)
+    @categories = Product::TAGS
   end
 
   def show

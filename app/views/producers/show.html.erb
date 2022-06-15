@@ -17,16 +17,16 @@
 
   <div class="buttons">
     <% if policy(@producer).edit? %>
-      <%= link_to "Update", edit_producer_path(@producer) %>
+      <%= link_to "Update", edit_producer_path(@producer), class: "btn btn-red" %>
     <% end %>
 
     <% if policy(@producer).destroy? %>
       <%= link_to "Delete", producer_path(@producer),
                     method: :delete,
                     data: { confirm: "Are you sure?" } ,
-                    class:"btn-red"%>
+                    class:"btn btn-red"%>
     <% end %>
-   <%= link_to 'Back', producers_path %>
+   <%= link_to 'Back', producers_path, class: "btn btn-red"%>
 
   </div>
 
@@ -34,7 +34,7 @@
   <!-- New product  -->
 
   <% if policy(Product).create? %>
-    <%= link_to "New Product", new_producer_product_path(@producer, @product) %>
+    <%= link_to "New Product", new_producer_product_path(@producer, @product), class: "btn btn-red" %>
   <% end %>
 
   <!-- Product list -->
@@ -63,7 +63,7 @@
   <!-- New review  -->
 
   <% if policy(Review).create? %>
-     <%= link_to 'Leave a review', new_producer_review_path(@producer) %>
+     <%= link_to 'Leave a review', new_producer_review_path(@producer), class: "btn btn-red" %>
   <%end%>
 
 
@@ -78,7 +78,8 @@
             <%= link_to "Remove",
                       review_path(review),
                       method: :delete,
-                      data: { confirm: "Are you sure?" } %>
+                      data: { confirm: "Are you sure?" },
+                      class: "btn btn-red" %>
           <%end%>
       </div>
     </div>
@@ -86,7 +87,7 @@
 
     <h2>Markets</h2>
 
-     <%= link_to 'Add a market', new_producer_point_of_sale_path(@producer, @point_of_sale) %>
+     <%= link_to 'Add a market', new_producer_point_of_sale_path(@producer, @point_of_sale), class: "btn btn-red" %>
 
     <% @producer.point_of_sales.each do |point_of_sale| %>
       <% market = point_of_sale.market %>
@@ -104,7 +105,8 @@
         <%= link_to "Delete",
            producer_point_of_sale_path(@producer, point_of_sale),
           method: :delete,
-          data: { confirm: "Are you sure?" } %>
+          data: { confirm: "Are you sure?" },
+          class: "btn btn-red" %>
       <%end%>
     <% end %>
 
