@@ -58,10 +58,26 @@
     </div>
   <% end %>
 
+   <% if @producer.favorites.exists? %>
+
+    <% if @producer.favorite?(current_user)%>
+      <p><%= link_to 'Add this producer to my favorites', producer_favorites_path(@producer), method: :post %></p>
+    <% else %>
+      <p><%= link_to 'Remove this producer from my favorites', favorite_path(@producer.user_favorite(current_user)), method: :delete, data: { confirm: "Are you sure?" } %></p>
+    <%end%>
+
+    <% else %>
+      <% if policy(Favorite).create? %>
+        <p><%= link_to 'Add this producer to my favorites', producer_favorites_path(@producer), method: :post %></p>
+      <%end%>
+
+  <% end %>
+
+
+
   <h2>Reviews</h2>
 
   <!-- New review  -->
-
   <% if policy(Review).create? %>
      <%= link_to 'Leave a review', new_producer_review_path(@producer), class: "btn btn-red" %>
   <%end%>
@@ -80,7 +96,7 @@
                       method: :delete,
                       data: { confirm: "Are you sure?" },
                       class: "btn btn-red" %>
-          <%end%>
+
       </div>
     </div>
   <% end %>
@@ -109,5 +125,6 @@
           class: "btn btn-red" %>
       <%end%>
     <% end %>
+
 
 </div>
