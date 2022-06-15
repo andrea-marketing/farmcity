@@ -23,6 +23,13 @@ class PointOfSalesController < ApplicationController
     authorize @point_of_sale
   end
 
+  def destroy
+    set_point_of_sale
+    @point_of_sale.destroy
+    redirect_to root_path
+    authorize @point_of_sale
+  end
+
   private
 
   def point_of_sale_params

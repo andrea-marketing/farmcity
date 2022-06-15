@@ -41,8 +41,12 @@
 
   <% @producer.products.each do |product| %>
     <div class="card-product">
+      <% if product.photo.attached? %>
+        <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
       <div class="card-product-infos">
-        <p><%= product.product_type %></p>
+        <h3><%= product.name %></h3>
+        <p><%= product.category_list %></p>
         <p><%= product.description %></p>
         <p><%= product.price %></p>
         <%= link_to 'Edit',  edit_producer_product_path(@producer, product) %>
@@ -86,26 +90,40 @@
       <div class="card-product-infos">
         <%= review.content %>
         <%= review.rating %>/5
+
         <% if policy(review).destroy? %>
           <%= link_to "Remove",
                     review_path(review),
                     method: :delete,
                     data: { confirm: "Are you sure?" } %>
         <%end%>
-  <% end %>
+          
+      </div>
     </div>
+  <% end %>
 
+    <h2>Markets</h2>
 
      <%= link_to 'Add a market', new_producer_point_of_sale_path(@producer, @point_of_sale) %>
 
-    <% @producer.point_of_sales.each do |pointofsale| %>
-      <div class="col-6">
-        <h2 class=""><%= pointofsale.market.name.upcase %></h2>
-          <p class="mt-3"><%= pointofsale.market.address %></p>
-      </div>
-      <div>
-        <h2 class=""><%= pointofsale.market.description %></h2>
-      </div>
+    <% @producer.point_of_sales.each do |point_of_sale| %>
+      <% market = point_of_sale.market %>
+      <%= link_to market_path(market) do %>
+        <div class="">
+          <h2 class=""><%= market.name.upcase %></h2>
+            <p class="mt-3"><%= market.address %></p>
+        </div>
+        <div>
+          <h2 class=""><%= market.description %></h2>
+        </div>
+      <% end %>
+
+      <% if policy(point_of_sale).destroy? %>
+        <%= link_to "Delete",
+           producer_point_of_sale_path(@producer, point_of_sale),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+      <%end%>
     <% end %>
 
 

@@ -2,7 +2,21 @@ class Product < ApplicationRecord
   belongs_to :producer
   belongs_to :user
 
-  validates :product_type, presence: true
+  has_one_attached :photo
+
+  validates :name, presence: true
   validates :description, presence: true
   validates :price, presence: true
+
+  # TAGS = [["🍏", "Fruits"], ["🥬", "Veggetables"], ["🥩", "Meat"], ["🥛", "Milk"], ["🧀", "Cheese"], ["🌷", "Flowers"],
+          # ["🥬", "Chicken"], ["🥬", "Cow"], ["🥬", "Goat"], ["🥬", "Sheep"], ["🥬", "Fish"], ["🥬", "Honey"], ["🥬", "Eggs"],
+          # ["🥬", "Wine"], ["🥬", "Bread"]]
+
+  TAGS = ["🍏 Fruits", "🥬 Veggetables", "🥩 Meat", "🥛 Milk", "🧀 Cheese", "🌷 Flowers",
+          "🐔 Chicken", "🐮 Cow", "🐐 Goat", "🐑 Sheep", "🐟 Fish", "🐝 Honey", "🥚 Eggs",
+          "🍇 Wine", "🥖 Bread"]
+
+
+  acts_as_taggable_on :categories
+
 end

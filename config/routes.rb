@@ -6,11 +6,14 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :producers do
-    resources :point_of_sales, only: %i[new create show]
+    resources :point_of_sales, only: [ :new, :create, :show, :destroy ]
     resources :products, only: %i[new create edit update destroy]
     resources :reviews, only:  %i[new create]
     resources :favorites, only: %i[create]
   end
+
   resources :reviews, only: [:destroy]
   resources :favorites, only: %i[index destroy]
+  # resources :point_of_sales, only: [ :destroy ]
+  resources :markets, only: [ :show ]
 end
