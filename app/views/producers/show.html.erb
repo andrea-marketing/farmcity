@@ -1,9 +1,7 @@
-<!--
-<% @producer.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
--->
 <div class="container">
+
+  <!-- Producer info -->
+
   <% @producer.photos.each do |photo| %>
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
@@ -12,39 +10,102 @@
   <br>
   <p><%=@producer.description%></p>
   <br>
-  <p>For more informations, send me an email at <%=@producer.contact%></p>
 
-  
-   <div class="buttons">
-      <% if policy(@producer).edit? %>
-        <%= link_to "Update", edit_producer_path(@producer) %>
-      <% end %>
-      <% if policy(@producer).destroy? %>
-        <%= link_to "Delete", producer_path(@producer),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } ,
-                      class:"btn-red"%>
-      <% end %>
-     <%= link_to 'Back', producers_path %>
-     <% if policy(Review).create? %>
-       <%= link_to 'Leave a review', new_producer_review_path(@producer) %>
-     <%end%>
-    </div>
-  
+  <p>For more informations, contact me at <%=@producer.contact%></p>
 
-<ul class="list-group">
-  <% @producer.reviews.each do |review| %>
-    <li class="list-group-item">
-      <%= review.content %>
-      <% if policy(review).destroy? %>
-        <%= link_to "Remove",
-                    review_path(review),
+   <!-- Add/destroy producer  -->
+
+  <div class="buttons">
+    <% if policy(@producer).edit? %>
+      <%= link_to "Update", edit_producer_path(@producer) %>
+    <% end %>
+
+    <% if policy(@producer).destroy? %>
+      <%= link_to "Delete", producer_path(@producer),
                     method: :delete,
-                    data: { confirm: "Are you sure?" } %>
-      <%end%>
-    </li>
-  <% end %>
-</ul>
+                    data: { confirm: "Are you sure?" } ,
+                    class:"btn-red"%>
+    <% end %>
+   <%= link_to 'Back', producers_path %>
 
+  </div>
+
+  <h2>Products</h2>
+  <!-- New product  -->
+
+  <% if policy(Product).create? %>
+    <%= link_to "New Product", new_producer_product_path(@producer, @product) %>
+  <% end %>
+
+  <!-- Product list -->
+
+  <% @producer.products.each do |product| %>
+    <div class="card-product">
+      <% if product.photo.attached? %>
+        <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+      <div class="card-product-infos">
+        <h3><%= product.name %></h3>
+        <p><%= product.category_list %></p>
+        <p><%= product.description %></p>
+        <p><%= product.price %></p>
+        <%= link_to 'Edit',  edit_producer_product_path(@producer, product) %>
+        <%= link_to "Delete",
+            producer_product_path(@producer, product),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+       </div>
+    </div>
+  <% end %>
+
+  <h2>Reviews</h2>
+
+  <!-- New review  -->
+
+  <% if policy(Review).create? %>
+     <%= link_to 'Leave a review', new_producer_review_path(@producer) %>
+  <%end%>
+
+
+  <!--  Reviews -->
+
+  <% @producer.reviews.each do |review| %>
+    <div class="card-product">
+      <div class="card-product-infos">
+        <%= review.content %>
+        <%= review.rating %>/5
+          <% if policy(review).destroy? %>
+            <%= link_to "Remove",
+                      review_path(review),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+          <%end%>
+      </div>
+    </div>
+  <% end %>
+
+    <h2>Markets</h2>
+
+     <%= link_to 'Add a market', new_producer_point_of_sale_path(@producer, @point_of_sale) %>
+
+    <% @producer.point_of_sales.each do |point_of_sale| %>
+      <% market = point_of_sale.market %>
+      <%= link_to market_path(market) do %>
+        <div class="">
+          <h2 class=""><%= market.name.upcase %></h2>
+            <p class="mt-3"><%= market.address %></p>
+        </div>
+        <div>
+          <h2 class=""><%= market.description %></h2>
+        </div>
+      <% end %>
+
+      <% if policy(point_of_sale).destroy? %>
+        <%= link_to "Delete",
+           producer_point_of_sale_path(@producer, point_of_sale),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+      <%end%>
+    <% end %>
 
 </div>

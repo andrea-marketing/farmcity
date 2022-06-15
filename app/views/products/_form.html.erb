@@ -1,0 +1,10 @@
+<div class="form">
+   <%= simple_form_for [@producer, @product] do |f| %>
+    <%= f.input :name, placeholder: 'Lavender honey' %>
+    <%= f.input :categories, collection: Product::TAGS , placeholder: 'Honey', as: :check_boxes %>
+    <%= f.input :description, placeholder: 'Define your product' %>
+    <%= f.input :price, placeholder: '20' %>
+     <%= f.input :photo, as: :file %>
+    <%= f.submit %>
+  <% end %>
+</div
