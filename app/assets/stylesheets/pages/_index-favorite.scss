@@ -1,6 +1,6 @@
-.container i{
-  color: red;
-}
+// .container i{
+//   color: red;
+// }
 
 .container {
   font-size: 24px;
@@ -41,4 +41,13 @@
   color: white !important;
   font-size: 20px;
   margin-right: 4px;
+}
+
+.container_map {
+  border-radius: 25px;
+}
+
+.mapboxgl-popup-content {
+  border: 1px solid $dark-red;
+
 }

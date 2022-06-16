@@ -24,8 +24,8 @@
         <% end %>
       </div>
 
-    <h2>Producers</h2>
-      <div data-controller="mapbox"
+    <h2 class="mt-4">Producers</h2>
+      <div class="container_map" data-controller="mapbox"
             data-mapbox-markers-value="<%= @markers.to_json %>"
             data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
             <div class="sticky">
