@@ -1,0 +1,18 @@
+#searchbar {
+  border-radius: 200px;
+  margin: 20px 0;
+}
+
+#searchbar-index {
+  border-radius: 200px;
+  margin: 20px 0;
+  background-color: $dark-red;
+  color: white;
+  padding: 12px 40px;
+}
+
+#searchbar-index:hover {
+  background-color: white;
+  color: $dark-red;
+  border: 1px solid $dark-red;
+}

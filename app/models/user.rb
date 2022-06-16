@@ -7,9 +7,8 @@ class User < ApplicationRecord
   has_many :producers
   has_many :products
   has_many :reviews
+  has_many :favorites
 
   has_one_attached :photo
-
-
 
 end

@@ -1,0 +1,19 @@
+.filter{
+  border-radius: 30px;
+  padding: 4px 10px;
+  margin: 5px;
+  background-color: #ECEFA4;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+a .filter{
+  text-decoration: none;
+  font-size: 12px;
+}

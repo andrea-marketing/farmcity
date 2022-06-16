@@ -3,6 +3,7 @@ class ProducersController < ApplicationController
 
   def index
     @producers = policy_scope(Producer).order(created_at: :desc)
+
     # if params[:query].present?
     #   @producers = Producer.global_search(params[:query])
     # end
@@ -14,6 +15,9 @@ class ProducersController < ApplicationController
         image_url: helpers.asset_url("ble")
       }
     end
+
+    @categories = Product::TAGS
+
   end
 
   def show
