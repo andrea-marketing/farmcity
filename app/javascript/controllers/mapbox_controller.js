@@ -4,28 +4,38 @@ import mapboxgl from "mapbox-gl"
 
 
 export default class extends Controller {
+  static targets = ["map"]
+
   static values = {
     apiKey: String,
     markers: Array
   }
 
+  display()  {
+    console.log("coucou")
+    if(this.mapTarget.style.position === 'absolute') {
+      this.mapTarget.style.position = 'relative'
+      this.mapTarget.style.top = 0
+    } else {
+      this.mapTarget.style.position = 'absolute'
+      this.mapTarget.style.top = '-100vh'
+    }
+  }
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-
     this.map = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
-    })
+      container: this.mapTarget,
+      style:"mapbox://styles/mapbox/streets-v10"
+    });
+
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
 
-    this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl }))
-    this.map = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox.com/styles/v1/adele2022/cl4fyfjvm000q14qhpt96tflc.html?title=false&access_token=pk.eyJ1IjoiYWRlbGUyMDIyIiwiYSI6ImNsM213ZXp1MzA4eWgza285bG03Z3dhcDIifQ.-NlrSUj7E2La_oXaohkzcQ&zoomwheel=false#6.81/47.915/-122.685mapbox://styles/pdunleav/cjofefl7u3j3e2sp0ylex3cybmapbox.com/styles/v1/adele2022/cl4fyfjvm000q14qhpt96tflc.html?title=false&access_token=pk.eyJ1IjoiYWRlbGUyMDIyIiwiYSI6ImNsM213ZXp1MzA4eWgza285bG03Z3dhcDIifQ.-NlrSUj7E2La_oXaohkzcQ&zoomwheel=false#6.81/47.915/-122.685" // <-- use your own!
-    });
+    // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+    //   mapboxgl: mapboxgl }))
+
   }
 
   #addMarkersToMap() {
