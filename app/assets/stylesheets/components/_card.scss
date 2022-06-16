@@ -24,7 +24,7 @@
 .card-producer i {
   position: absolute;
   right: 17px;
-  top: 10px;
+  bottom: 50px;
   color: white;
   font-size: 20px;
 }
@@ -66,6 +66,7 @@
   justify-content: space-between;
   padding: 10px;
   border-radius: 4px;
+  margin: 10px 0;
 }
 
 
@@ -103,11 +104,11 @@
 
 .card-review {
   overflow: hidden;
-  height: 120px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 10px;
   border-radius: 4px;
+  margin: 10px 0;
 }
 
 .card-review p {
@@ -115,8 +116,14 @@
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
-  margin-top: 8px;
+  margin-top: 12px;
 }
+
+.card-review i {
+  color: $dark-green;
+  font-size: 18px;
+}
+
 
 .card-review-title{
   display: flex;

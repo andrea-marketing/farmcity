@@ -21,6 +21,7 @@
   text-decoration: none;
 }
 
-.btn-link{
+.btn-link:hover{
+  color: $light-red;
   opacity: 0.8;
 }
