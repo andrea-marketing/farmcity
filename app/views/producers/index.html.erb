@@ -17,11 +17,13 @@
 
       <h2>Categories</h2>
 
-      <div class="filters">
-        <% @categories.each do |category| %>
-          <input type="checkbox" name="" id="<%=category.id %>" class="filter" >
-          <label for="<%=category.id %>" ><%= category %></label>
-        <% end %>
+      <div class="filters" data-controller= "filter-button">
+        <div data-filter-button-target= "categories">
+          <% @categories.each do |category| %>
+            <input type="checkbox" name="" id="<%=category.id %>" class="filter" data-action="click->filter-button#filter">
+            <label for="<%=category.id %>" ><%= category %></label>
+          <% end %>
+        </div>
       </div>
 
       <h2>Producers</h2>
@@ -40,6 +42,7 @@
         <% @producers.each do |producer| %>
           <%= link_to producer_path(producer) , :action => 'go' do %>
             <div class="card-producer">
+
               <!-- Producer favorite -->
               <div class="favorite">
                 <% if producer.favorite?(current_user)%>
