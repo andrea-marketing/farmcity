@@ -24,15 +24,29 @@
       </div>
 
       <h2>Producers</h2>
-
+    <div data-controller="mapbox"
+          data-mapbox-markers-value="<%= @markers.to_json %>"
+          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <button class= "bouton-map" data-action="click->mapbox#display">Hello</button>
+      <div style="width: 100%; height: 100vh; position: absolute; top: -100vh"
+          data-mapbox-target= "map"
+          class="">
+      </div>
+    </div>
       <!-- list of producers -->
 
       <div class="cards">
-
         <% @producers.each do |producer| %>
           <%= link_to producer_path(producer) , :action => 'go' do %>
-          <div class="card-producer">
-              <i class="fa-regular fa-heart"></i>
+            <div class="card-producer">
+              <!-- Producer favorite -->
+              <div class="favorite">
+                <% if producer.favorite?(current_user)%>
+                  <p><i class='fa-regular fa-heart'></i></p>
+                <% else %>
+                  <p><i class='fa-solid fa-heart'></i></p>
+                <%end%>
+              </div>
               <div class="image">
                 <% if producer.photos.attached? %>
                     <%= cl_image_tag producer.photos.first.key, height: 300, width: 400, crop: :fill %>
@@ -51,12 +65,14 @@
 
       <!-- Add new producer profile -->
 
-      <div>
+      <div class="">
         <% if policy(Producer).create? %>
           <%= link_to "New producer", new_producer_path, class: "btn btn-red"%>
         <% end %>
       </div>
-
     </div>
+     <div class="col-12">
+
+  </div>
   </div>
 </div>

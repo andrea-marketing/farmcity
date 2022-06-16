@@ -24,7 +24,7 @@
 .card-producer i {
   position: absolute;
   right: 17px;
-  top: 10px;
+  bottom: 50px;
   color: white;
   font-size: 20px;
 }
@@ -63,12 +63,18 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
 }
+
 
 .card-product img {
   height: 100%;
   width: 120px;
   object-fit: cover;
+  border-radius: 2px;
 }
 
 .card-product h2 {
@@ -87,4 +93,46 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+  display: inline;
+}
+
+.card-product .buttons {
+  display: flex;
+}
+
+// Reviews Cards
+
+.card-review {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.card-review p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 12px;
+}
+
+.card-review i {
+  color: $dark-green;
+  font-size: 18px;
+}
+
+
+.card-review-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-review-user{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }

@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   resources :reviews, only: [:destroy]
   resources :favorites, only: %i[index destroy]
   # resources :point_of_sales, only: [ :destroy ]
-  resources :markets, only: [ :show ]
+  resources :markets, only: [ :index, :show ]
 end

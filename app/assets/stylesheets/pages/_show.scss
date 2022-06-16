@@ -1,0 +1,13 @@
+// Show producers
+
+.intro{
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.favorite i {
+  font-size: 22px;
+  color: $light-red;
+  margin-right: 5px;
+}
