@@ -24,11 +24,18 @@
       </div>
 
       <h2>Producers</h2>
-
+    <div data-controller="mapbox"
+          data-mapbox-markers-value="<%= @markers.to_json %>"
+          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <button class= "bouton-map" data-action="click->mapbox#display">Hello</button>
+      <div style="width: 100%; height: 100vh; position: absolute; top: -100vh"
+          data-mapbox-target= "map"
+          class="">
+      </div>
+    </div>
       <!-- list of producers -->
 
       <div class="cards">
-
         <% @producers.each do |producer| %>
           <%= link_to producer_path(producer) , :action => 'go' do %>
           <div class="card-producer">
@@ -58,11 +65,7 @@
       </div>
     </div>
      <div class="col-12">
-    <div style="width: 100%; height: 100vh;"
-        data-controller="mapbox"
-        data-mapbox-markers-value="<%= @markers.to_json %>"
-        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+
   </div>
   </div>
 </div>
