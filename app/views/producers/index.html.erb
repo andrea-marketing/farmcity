@@ -23,16 +23,17 @@
         <% end %>
       </div>
 
-      <h2>Producers</h2>
-    <div data-controller="mapbox"
-          data-mapbox-markers-value="<%= @markers.to_json %>"
-          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    <button class= "bouton-map" data-action="click->mapbox#display">Hello</button>
-      <div style="width: 100%; height: 100vh; position: absolute; top: -100vh"
-          data-mapbox-target= "map"
-          class="">
+    <h2>Producers</h2>
+      <div data-controller="mapbox"
+            data-mapbox-markers-value="<%= @markers.to_json %>"
+            data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            <div class="sticky">
+              <button id="bouton-map" data-action="click->mapbox#display"><i class="fa-solid fa-map-location-dot"></i> Map</button>
+            </div>
+          <div style="width: 100%; height: 100vh; position: absolute; top: -100vh"
+            data-mapbox-target= "map">
+        </div>
       </div>
-    </div>
       <!-- list of producers -->
 
       <div class="cards">

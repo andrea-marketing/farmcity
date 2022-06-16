@@ -1,0 +1,53 @@
+.container i{
+  color: red;
+}
+
+.container {
+  font-size: 24px;
+  text-align: center;
+  p {
+    text-align: left;
+  }
+}
+
+.sticky {
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4%;
+}
+
+#bouton-map {
+  font-size: 16px;
+  font-weight: 500;
+  background-color: $dark-red;
+  color: white;
+  border: 1px solid $dark-red;
+  padding: 8px 20px;
+  border-radius: 50px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+#bouton-map:hover {
+  opacity: 1;
+}
+
+.fa-solid {
+  color: white;
+  font-size: 20px;
+  margin-right: 4px;
+}
+
+.fa-map-marked-alt:before {
+  color: white;
+}
+
+.fa-map-location-dot:before {
+
+  color: white;
+}
