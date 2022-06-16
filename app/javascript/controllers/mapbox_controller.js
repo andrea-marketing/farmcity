@@ -17,12 +17,12 @@ export default class extends Controller {
       this.mapTarget.style.position = 'relative'
       this.mapTarget.style.top = 0
       const word = document.querySelector("#bouton-map")
-      word.innerHTML = `<i class="fa-solid fa-list"></i> List`
+      word.innerHTML = `<i class="fa-solid fa-list white-icon"></i> List`
     } else {
       this.mapTarget.style.position = 'absolute'
       this.mapTarget.style.top = '-100vh'
       const word = document.querySelector("#bouton-map")
-      word.innerHTML = `<i class="fa-solid fa-map-location-dot"></i> Map`
+      word.innerHTML = `<i class="fa-solid fa-map-location-dot white-icon"></i> Map`
     }
   }
 
