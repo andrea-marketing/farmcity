@@ -72,8 +72,11 @@
   <h2>Products</h2>
   <!-- New product  -->
 
-  <% if policy(Product).create? %>
-    <%= link_to ("<i class='fa-solid fa-plus'></i> Add Product").html_safe, new_producer_product_path(@producer, @product), class: "btn-link" %>
+
+  <% if current_user == @producer.user %>
+    <% if policy(@producer).create_product? %>
+      <%= link_to ("<i class='fa-solid fa-plus'></i> Add Product").html_safe, new_producer_product_path(@producer, @product), class: "btn-link" %>
+    <% end %>
   <% end %>
 
   <!-- Product list -->
@@ -90,12 +93,16 @@
         <p><%= product.price %></p>
       </div>
       <div class="buttons">
-        <%= link_to ("<i class='fa-regular fa-pen-to-square'></i>").html_safe,  edit_producer_product_path(@producer, product), class: "btn-link" %>
-        <%= link_to ("<i class='fa-regular fa-trash-can'></i>").html_safe,
+        <% if policy(product).edit? %>
+          <%= link_to ("<i class='fa-regular fa-pen-to-square'></i>").html_safe,  edit_producer_product_path(@producer, product), class: "btn-link" %>
+        <% end %>
+        <% if policy(product).destroy? %>
+          <%= link_to ("<i class='fa-regular fa-trash-can'></i>").html_safe,
             producer_product_path(@producer, product),
             method: :delete,
             class: "btn-link",
             data: { confirm: "Are you sure?" } %>
+        <% end %>
       </div>
     </div>
   <% end %>
@@ -146,8 +153,11 @@
   <% end %>
 
     <h2>Markets</h2>
-
-     <%= link_to ("<i class='fa-solid fa-plus'></i> Add Market").html_safe, new_producer_point_of_sale_path(@producer, @point_of_sale), class: "btn-link" %>
+    <% if current_user == @producer.user %>
+      <% if policy(@producer).create? %>
+        <%= link_to ("<i class='fa-solid fa-plus'></i> Add Market").html_safe, new_producer_point_of_sale_path(@producer, @point_of_sale), class: "btn-link" %>
+      <% end %>
+    <% end %>
 
     <% @producer.point_of_sales.each do |point_of_sale| %>
       <% market = point_of_sale.market %>

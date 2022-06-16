@@ -1,25 +1,25 @@
 .navbar-lewagon {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
   background: white;
-  height: 78px;
-  // top: -47px;
-  padding-top: 20px;
+  height: 70px;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0
 }
-
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
-
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
-
 .navbar-lewagon .navbar-brand {
   font-family: poppins;
   font-weight: bold;
   font-size: 24px;
 }
-
 .navbar-light .navbar-toggler {
   color: rgba(0, 0, 0, 0.55);
   border: none;
