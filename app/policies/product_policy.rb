@@ -7,8 +7,12 @@ class ProductPolicy < ApplicationPolicy
     end
   end
 
+  def new?
+    create?
+  end
+
   def create?
-    return true
+    true
   end
 
   def update?
@@ -16,7 +20,6 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def destroy?
-    return true
+    record.user == user
   end
-
 end

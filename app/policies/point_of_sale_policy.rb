@@ -7,7 +7,7 @@ class PointOfSalePolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    record.user == user
   end
 
   def update?
@@ -19,6 +19,6 @@ class PointOfSalePolicy < ApplicationPolicy
   end
 
   def destroy?
-    return true
+    record.user == user
   end
 end

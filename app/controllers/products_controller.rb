@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
     @product.category_list = categories
     @product.update(product_params)
     redirect_to producer_path(@producer)
-    authorize @producer
+    authorize @product
   end
 
   def destroy
