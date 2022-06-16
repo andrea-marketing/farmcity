@@ -19,6 +19,13 @@ file_user2 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v165513
 user2 = User.create!(email: "max@gmail.com", password: "farmcity2", password_confirmation: "farmcity2", first_name: "Max", last_name: "Bernard")
 user2.photo.attach(io: file_user2, filename: 'nes.png', content_type: 'image/jpg')
 
+file_apiculteur = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+file_poulet = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+file_vache = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132687/samples/farmcity/farmer_hny1h7.jpg')
+file_mouton = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+file_mouton2 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+file_mais = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+file_courge = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655133132/samples/farmcity/images_oqorkx.jpg')
 file_apiculteur = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655370622/samples/farmcity/hansjorg-keller-OJHxRwXWXBs-unsplash_ubjm5g.jpg')
 file_apiculteur2 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655370611/samples/farmcity/hiveboxx-65icrs88YYs-unsplash_q0t80o.jpg')
 
@@ -108,7 +115,7 @@ apiculteur = Producer.new(name: "L'abeille de l’Estérel", address: "470 Av. d
 apiculteur.photos.attach(photos_apiculteur)
 apiculteur.save
 
-eleveur_vache = Producer.new(name: "La ferme de Romain", address: "Chem. de la Capelane, 13170 Les Pennes-Mirabeau", producer_type: "Elevage de vaches",
+eleveur_vache = Producer.new(name: "La ferme de Romain", address: "Chemin de la Capelane, 13170 Les Pennes-Mirabeau", producer_type: "Elevage de vaches",
                              description: "Agriculteur dans les Alpes-de-Haute-Provence, j'ai une production de Vaches Aubrac avec ventes de veaux rosés élevés sous la mère", contact: "la-ferme-de-romain@gmail.com", user: user1)
 eleveur_vache.photos.attach(photos_vache1)
 eleveur_vache.save
@@ -132,7 +139,7 @@ eleveur_poulet = Producer.new(name: "La Poule de Crau", address: "Chemin du mas 
 eleveur_poulet.photos.attach(photos_poulet)
 eleveur_poulet.save
 
-agriculteur = Producer.new(name: "Terre de Liens", address: "248 Chem. du Coupereau, 83320 Carqueiranne", producer_type: "Production de fruits et légumes",
+agriculteur = Producer.new(name: "Terre de Liens", address: "248 Chemin du Coupereau, 83320 Carqueiranne", producer_type: "Production de fruits et légumes",
                           description: "Production en plein-champs sur 6 hectares de fruits et de légumes de saison, en culture traditionnelle, dans la plaine des Aubes à Aubagne.
                           Notre production répond aux exigences du cahier des charges de la marque 'Les Jardins du Pays d'Aubagne'.
                           Nous produisons près de 50 espèces de fruits et légumes maraîchers avec des façons et techniques culturales héritées de nos ancêtres
@@ -153,13 +160,13 @@ pecheur2 = Producer.new(name: "Pisciculture MARIN", address: "1021 Rte d'Apt, 84
 pecheur2.photos.attach(photos_poissons2)
 pecheur2.save
 
-lait = Producer.new(name: "Ferme Mistral", address: "Ferme mistral, 04500 Quinson", producer_type: "Production de produits laitiers",
+lait = Producer.new(name: "Ferme Mistral", address: "800 chemin des cabans 13300 Salon-de-Provence", producer_type: "Production de produits laitiers",
                    description: "La Cabrouno, un élevage au naturel de vaches aux portes d’Aix-en-Provence !
                    Les vaches puisent dans les garrigues provençales la nourriture qui donne à leur lait et leurs fromages un goût aussi merveilleux…", contact: "ferme-mistral@gmail.com", user: user1)
 lait.photos.attach(photos_lait)
 lait.save
 
-fromage = Producer.new(name: "La Fromagerie Magnaldi", address: "248 Chem. du Coupereau, 83320 Carqueiranne", producer_type: "Production de produits laitiers",
+fromage = Producer.new(name: "La Fromagerie Magnaldi", address: "83740 La Cadière-d'Azur", producer_type: "Production de produits laitiers",
                        description: "La Fromagerie Magnaldi, installée à La Cadière-d’Azur dans le Var, vous présente ses spécialités de fromage. Nous possédons un troupeau de 150 chèvres qui portent toutes un prénom. Pour un fromage parfait, nous les sortons tous les jours dans la garrigue.
                        Nous travaillons en famille, chacun a son rôle. Notre fils Jérôme, est le spécialiste du fromage, il fabrique des tommes, de la crème fraiche, du beurre en certaines périodes.
                        Roger Magnaldi s’occupe des soins des animaux et de tous les agencements et réparations du matériel.
