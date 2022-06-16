@@ -13,7 +13,7 @@
 .sticky {
   z-index: 99;
   position: fixed;
-  bottom: 0;
+  bottom: 10vh;
   left: 0;
   width: 100vw;
   display: flex;
@@ -37,17 +37,8 @@
   opacity: 1;
 }
 
-.fa-solid {
-  color: white;
+.white-icon {
+  color: white !important;
   font-size: 20px;
   margin-right: 4px;
-}
-
-.fa-map-marked-alt:before {
-  color: white;
-}
-
-.fa-map-location-dot:before {
-
-  color: white;
 }
