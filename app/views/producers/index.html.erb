@@ -17,7 +17,7 @@
 
       <h2>Categories</h2>
 
-      <div class="filters">
+      <div class="filters" data-controller="filter">
         <% @categories.each do |category| %>
           <input type="checkbox" name="" id="<%=category.id %>" class="filter" >
           <label for="<%=category.id %>" ><%= category %></label>
