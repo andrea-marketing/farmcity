@@ -1,13 +1,55 @@
 <div class="container">
 
-  <!-- Producer info -->
+  <!-- Back link  -->
 
-  <% @producer.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <h1><%=@producer.name.capitalize%>, <%=@producer.producer_type.capitalize%></h1>
-  <p><%=@producer.address%></p>
+   <%= link_to ("<i class='fa-solid fa-angle-left'></i> Back").html_safe, producers_path, class: "btn-link"%>
+
+  <!-- Producer banner -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <% @producer.photos.each do |photo| %>
+        <div class="carousel-item active">
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        </div>
+      <% end %>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Producer info -->
+  <div class="intro">
+    <h1><%=@producer.name.capitalize%>, <%=@producer.producer_type.capitalize%></h1>
+    <p><strong><%=@producer.address%></strong></p>
+
+      <!-- Producer favorite -->
+    <div class="favorite">
+      <% if @producer.favorites.exists? %>
+        <% if @producer.favorite?(current_user)%>
+          <p><%= link_to ("<i class='fa-regular fa-heart'></i>").html_safe, producer_favorites_path(@producer), method: :post %></p>
+        <% else %>
+          <p><%= link_to ("<i class='fa-solid fa-heart'></i>").html_safe, favorite_path(@producer.user_favorite(current_user)), method: :delete, data: { confirm: "Are you sure?" } %></p>
+        <%end%>
+      <% else %>
+        <% if policy(Favorite).create? %>
+          <p><%= link_to ("<i class='fa-regular fa-heart'></i>").html_safe, producer_favorites_path(@producer), method: :post %></p>
+      <%end%>
+    </div>
+  </div>
+
   <br>
+  <h2>Presentation</h2>
   <p><%=@producer.description%></p>
   <br>
 
@@ -21,12 +63,11 @@
     <% end %>
 
     <% if policy(@producer).destroy? %>
-      <%= link_to "Delete", producer_path(@producer),
+      <%= link_to ("<i class='fa-regular fa-trash-can'></i> Delete producer").html_safe, producer_path(@producer),
                     method: :delete,
                     data: { confirm: "Are you sure?" } ,
                     class:"btn btn-red"%>
     <% end %>
-   <%= link_to 'Back', producers_path, class: "btn btn-red"%>
 
   </div>
 
@@ -34,7 +75,7 @@
   <!-- New product  -->
 
   <% if policy(Product).create? %>
-    <%= link_to "New Product", new_producer_product_path(@producer, @product), class: "btn btn-red" %>
+    <%= link_to ("<i class='fa-solid fa-plus'></i> Add Product").html_safe, new_producer_product_path(@producer, @product), class: "btn-link" %>
   <% end %>
 
   <!-- Product list -->
@@ -49,27 +90,17 @@
         <p><%= product.category_list %></p>
         <p><%= product.description %></p>
         <p><%= product.price %></p>
-        <%= link_to 'Edit',  edit_producer_product_path(@producer, product) %>
-        <%= link_to "Delete",
+      </div>
+      <div class="buttons">
+        <%= link_to ("<i class='fa-regular fa-pen-to-square'></i>").html_safe,  edit_producer_product_path(@producer, product), class: "btn-link" %>
+        <%= link_to ("<i class='fa-regular fa-trash-can'></i>").html_safe,
             producer_product_path(@producer, product),
             method: :delete,
+            class: "btn-link",
             data: { confirm: "Are you sure?" } %>
-       </div>
+      </div>
     </div>
   <% end %>
-
-   <% if @producer.favorites.exists? %>
-
-    <% if @producer.favorite?(current_user)%>
-      <p><%= link_to 'Add this producer to my favorites', producer_favorites_path(@producer), method: :post %></p>
-    <% else %>
-      <p><%= link_to 'Remove this producer from my favorites', favorite_path(@producer.user_favorite(current_user)), method: :delete, data: { confirm: "Are you sure?" } %></p>
-    <%end%>
-
-    <% else %>
-      <% if policy(Favorite).create? %>
-        <p><%= link_to 'Add this producer to my favorites', producer_favorites_path(@producer), method: :post %></p>
-      <%end%>
 
   <% end %>
 
@@ -79,31 +110,37 @@
 
   <!-- New review  -->
   <% if policy(Review).create? %>
-     <%= link_to 'Leave a review', new_producer_review_path(@producer), class: "btn btn-red" %>
+     <%= link_to ("<i class='fa-solid fa-comment-dots'></i> Leave a review").html_safe, new_producer_review_path(@producer), class: "btn-link" %>
   <%end%>
 
 
   <!--  Reviews -->
 
   <% @producer.reviews.each do |review| %>
-    <div class="card-product">
-      <div class="card-product-infos">
-        <%= review.content %>
-        <%= review.rating %>/5
-          <% if policy(review).destroy? %>
-            <%= link_to "Remove",
-                      review_path(review),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" },
-                      class: "btn btn-red" %>
-          <% end %>
+    <div class="card-review">
+      <div class="card-review-title">
+        <p><%= review.rating %>/5 <i class='fa-solid fa-star'></i></p>
+        <% if policy(review).destroy? %>
+              <%= link_to ("<i class='fa-regular fa-trash-can'></i>").html_safe,
+                        review_path(review),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" },
+                        class: "btn-link" %>
+        <% end %>
+      </div>
+      <p><%= review.content %></p>
+      <div class="card-review-user">
+        <p><strong><%= review.user.first_name %></strong></p>
+        <p><%= review.created_at %></p>
+        <% console %>
+        <%# <%= cl_image_tag review.user.photo, class: "avatar dropdown-toggle" %>
       </div>
     </div>
   <% end %>
 
     <h2>Markets</h2>
 
-     <%= link_to 'Add a market', new_producer_point_of_sale_path(@producer, @point_of_sale), class: "btn btn-red" %>
+     <%= link_to ("<i class='fa-solid fa-plus'></i> Add Product").html_safe, new_producer_point_of_sale_path(@producer, @point_of_sale), class: "btn-link" %>
 
     <% @producer.point_of_sales.each do |point_of_sale| %>
       <% market = point_of_sale.market %>
@@ -118,7 +155,7 @@
       <% end %>
 
       <% if policy(point_of_sale).destroy? %>
-        <%= link_to "Delete",
+        <%= link_to ("<i class='fa-regular fa-trash-can'></i> Delete Market").html_safe,
            producer_point_of_sale_path(@producer, point_of_sale),
           method: :delete,
           data: { confirm: "Are you sure?" },
