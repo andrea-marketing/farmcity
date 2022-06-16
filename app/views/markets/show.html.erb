@@ -1,14 +1,39 @@
-<h1><%= @market.name %></h1>
-<p><%= @market.address %></p>
-<p><%= @market.description %></p>
+<div class="image">
+      <%= image_tag("market_show",
+      width: 400, height: 300, crop: :fill) %>
+    </div>
 
- <% @market_producer.each do |producer| %>
-      <div class="col-6">
-        <h2 class=""><%= producer.name %></h2>
-         <% if producer.photos.attached? %>
-          <%= cl_image_tag producer.photos.first.key, height: 300, width: 400, crop: :fill %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+
+    <div class="market">
+      <h1><%= @market.name.capitalize %></h1>
+      <h2><%= @market.address %></h2>
+      <p><%= @market.description %></p>
+    </div>
+
+      <h2>Producers</h2>
+      <div class="cards">
+        <% @market_producer.each do |producer| %>
+          <%= link_to producer_path(producer), :action => 'go' do %>
+            <div class="card-producer">
+              <i class="fa-regular fa-heart"></i>
+              <div class="image">
+                <% if producer.photos.attached? %>
+                  <%= cl_image_tag producer.photos.first.key, height: 300, width: 400, crop: :fill %>
+                <% end %>
+              </div>
+
+              <div class="card-producer-info">
+                <p><strong><%= producer.name %></strong></p>
+                <p><%= producer.producer_type  %></p>
+                <p><%= producer.address %></p>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-        <h1><%=producer.name.capitalize%>, <%=producer.producer_type.capitalize%></h1>
-        <p><%=producer.address%></p>
       </div>
-  <% end %>
+    </div>
+  </div>
+</div>
