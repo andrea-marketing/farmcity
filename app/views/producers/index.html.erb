@@ -19,7 +19,8 @@
 
       <div class="filters">
         <% @categories.each do |category| %>
-          <a href="" class="filter"> <%= category %> </a>
+          <input type="checkbox" name="" id="<%=category.id %>" class="filter" >
+          <label for="<%=category.id %>" ><%= category %></label>
         <% end %>
       </div>
 
@@ -57,6 +58,7 @@
               <p><strong><%= producer.name %></strong></p>
               <p><%= producer.producer_type  %></p>
               <p><%= producer.address %></p>
+              <p><%= producer.category_list %></p>
             </div>
           </div>
           <% end %>

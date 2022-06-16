@@ -16,6 +16,13 @@ class Producer < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  TAGS = ["🍏 Fruits", "🥬 Veggetables", "🥩 Meat", "🥛 Milk", "🧀 Cheese", "🌷 Flowers",
+    "🐔 Chicken", "🐮 Cow", "🐐 Goat", "🐑 Sheep", "🐟 Fish", "🐝 Honey", "🥚 Eggs",
+    "🍇 Wine", "🥖 Bread"]
+
+  acts_as_taggable_on :categories
+
+
   def favorite?(user)
     favorites = []
     self.favorites.each do |favorite|
