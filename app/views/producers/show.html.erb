@@ -1,38 +1,34 @@
 <div class="container">
-
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
   <!-- Back link  -->
 
    <%= link_to ("<i class='fa-solid fa-angle-left'></i> Back").html_safe, producers_path, class: "btn-link"%>
 
   <!-- Producer banner -->
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <% @producer.photos.each do |photo| %>
-        <div class="carousel-item active">
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        </div>
-      <% end %>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <% @producer.photos.each_with_index do |photo, index| %>
+      <div class="carousel-item <%= index==0 ? 'active' : ''%>">
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      </div>
+    <% end %>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
   <!-- Producer info -->
   <div class="intro">
+    <div>
     <h1><%=@producer.name.capitalize%>, <%=@producer.producer_type.capitalize%></h1>
     <p><strong><%=@producer.address%></strong></p>
-
+    </div>
       <!-- Producer favorite -->
     <div class="favorite">
       <% if @producer.favorites.exists? %>
@@ -43,7 +39,8 @@
         <%end%>
       <% else %>
         <% if policy(Favorite).create? %>
-          <p><%= link_to ("<i class='fa-regular fa-heart'></i>").html_safe, producer_favorites_path(@producer), method: :post %></p>
+        <p><%= link_to ("<i class='fa-regular fa-heart'></i>").html_safe, producer_favorites_path(@producer), method: :post %></p>
+        <%end%>
       <%end%>
     </div>
   </div>
@@ -102,8 +99,6 @@
     </div>
   <% end %>
 
-  <% end %>
-
 
 
   <h2>Reviews</h2>
@@ -119,7 +114,17 @@
   <% @producer.reviews.each do |review| %>
     <div class="card-review">
       <div class="card-review-title">
-        <p><%= review.rating %>/5 <i class='fa-solid fa-star'></i></p>
+      <% if review.rating == 5 %>
+        <p><i class='fa-solid fa-star'></i></p>
+      <% elsif review.rating == 4 %>
+        <p><i class='fa-solid fa-star'></i></p>
+      <% elsif review.rating == 3 %>
+        <p><i class='fa-solid fa-star'></i></p>
+      <% elsif review.rating == 2 %>
+        <p><i class='fa-solid fa-star'></i></p>
+      <% elsif review.rating == 1 %>
+        <p><i class='fa-solid fa-star'></i></p>
+      <% end %>
         <% if policy(review).destroy? %>
               <%= link_to ("<i class='fa-regular fa-trash-can'></i>").html_safe,
                         review_path(review),
@@ -131,8 +136,7 @@
       <p><%= review.content %></p>
       <div class="card-review-user">
         <p><strong><%= review.user.first_name %></strong></p>
-        <p><%= review.created_at %></p>
-        <% console %>
+        <p><%= review.created_at.strftime("%d %b, %Y")  %></p>
         <%# <%= cl_image_tag review.user.photo, class: "avatar dropdown-toggle" %>
       </div>
     </div>
@@ -169,4 +173,7 @@
         data-mapbox-markers-value="<%= @markers.to_json %>"
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
+    </div>
+  </div>
+
 </div>
