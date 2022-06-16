@@ -1,0 +1,6 @@
+<div class="container">
+  <h1>My favorites</h1>
+  <% @favorites.each do |favorite|%>
+    <p><i class="fa-solid fa-heart"></i> <%= favorite.producer.name %>, <%= favorite.producer.producer_type %></p>
+  <%end%>
+</div>

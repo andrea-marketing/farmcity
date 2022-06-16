@@ -1,19 +1,39 @@
 // Producer Cards
-
+.cards{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
 .card-producer {
+  border-radius: 6px;
   overflow: hidden;
-  height: 120px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  align-items: center;
   margin: 10px 0;
+  padding: 5px;
+  transition: 0.4s;
+  position: relative;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.card-producer:hover{
+  transform: scale(1.01);
+}
+.card-producer i {
+  position: absolute;
+  right: 17px;
+  top: 10px;
+  color: white;
+  font-size: 20px;
 }
 
 .card-producer img {
-  height: 100%;
-  width: 120px;
+  height: 140px;
+  width: 290px;
   object-fit: cover;
+  border-radius: 3px;
 }
 
 .card-producer h2 {

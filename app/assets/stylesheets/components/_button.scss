@@ -1,0 +1,16 @@
+.btn-red{
+  border-radius: 30px;
+  padding: 8px 40px;
+  margin: 0 10px;
+  background-color: $light-red;
+  color: white;
+}
+.btn-red:hover{
+  background-color: white;
+  color: $light-red;
+  border: 1px solid $light-red;
+}
+
+.hidden{
+  display: none;
+}
