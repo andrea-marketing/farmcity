@@ -4,7 +4,7 @@
     <%= f.input :categories, collection: Product::TAGS , placeholder: 'Honey', as: :check_boxes %>
     <%= f.input :description, placeholder: 'Define your product' %>
     <%= f.input :price, placeholder: '20' %>
-     <%= f.input :photo, as: :file %>
-    <%= f.submit %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit class: 'btn btn-red' %>
   <% end %>
 </div

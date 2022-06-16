@@ -1,19 +1,22 @@
 .filter{
-  border-radius: 30px;
-  padding: 4px 10px;
-  margin: 5px;
+  position: absolute;
+  transform: scale(0);
+}
+
+.filter + label{
+  padding: 2px 10px;
   background-color: #ECEFA4;
-  text-decoration: none;
-  font-size: 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  border: 2px solid #95c34a;
+  color: #95c34a;
+  margin: 2px;
 }
-
-.filters {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-a .filter{
-  text-decoration: none;
-  font-size: 12px;
+.filter:checked + label {
+  padding: 2px 10px;
+  background-color: #95c34a;
+  border-radius: 20px;
+  cursor: pointer;
+  color: white;
 }

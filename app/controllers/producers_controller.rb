@@ -15,8 +15,7 @@ class ProducersController < ApplicationController
         image_url: helpers.asset_url("ble")
       }
     end
-
-    @categories = Product::TAGS
+    @categories = Producer.category_counts
 
   end
 
@@ -33,6 +32,8 @@ class ProducersController < ApplicationController
   def create
     @producer = Producer.new(producer_params)
     @producer.user = current_user
+    categories = params[:producer][:categories].reject(&:empty?)
+    @producer.category_list = categories
     if @producer.save
       redirect_to producer_path(@producer)
     else
@@ -46,6 +47,8 @@ class ProducersController < ApplicationController
   end
 
   def update
+    categories = params[:producer][:categories].reject(&:empty?)
+    @producer.category_list = categories
     @producer.update(producer_params)
     redirect_to producer_path
     authorize @producer
