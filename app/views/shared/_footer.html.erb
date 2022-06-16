@@ -1,37 +1,33 @@
 <div class="footer">
 
-<%# <%=link_to "Menu", menus_path, :class => "menunav"%>
-
   <%= link_to "/", :action => 'go' do %>
-    <div id="tabs <% if current_page?("/") && controller.controller_name == "pages" %> active <% end %>">
+    <div class="tabs <%= current_page?("/") ? 'active' : '' %>">
       <i class="fa-solid fa-magnifying-glass"></i>
     </div>
   <% end %>
 
   <%= link_to "/", :action => 'go' do %>
-    <div id="tabs <% if current_page?("/") && controller.controller_name == "pages" %> active <% end %>">
+    <div class="tabs <%= current_page?("/") ? 'active' : '' %>">
       <i class="fa-solid fa-list"></i>
     </div>
   <% end %>
 
   <%= link_to "/producers", :action => 'go' do %>
-    <div id="tabs <% if current_page?("/producers") && controller.controller_name == "pages" %> active <% end %>">
+    <div class="tabs <%= current_page?("/producers") ? 'active' : '' %>">
       <i class="fa-solid fa-house"></i>
     </div>
   <% end %>
 
   <%= link_to "/favorites", :action => 'go' do %>
-    <div id="tabs <% if current_page?("/favorites") && controller.controller_name == "pages" %> active <% end %>">
+    <div class="tabs <%= current_page?("/favorites") ? 'active' : '' %>">
       <i class="fa-solid fa-heart"></i>
     </div>
   <% end %>
 
   <%= link_to "/users/edit", :action => 'go' do %>
-    <div id="tabs <% if current_page?("/users/edit") && controller.controller_name == "pages" %> active <% end %>">
+    <div class="tabs <%= current_page?("/users/edit") ? 'active' : '' %>">
       <i class="fa-solid fa-user"></i>
     </div>
   <% end %>
-
-<%# <%= link_to 'Home', , :class => is_active?("home") %>
 
 </div>
