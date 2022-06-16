@@ -51,12 +51,18 @@
 
       <!-- Add new producer profile -->
 
-      <div>
+      <div class="">
         <% if policy(Producer).create? %>
           <%= link_to "New producer", new_producer_path, class: "btn btn-red"%>
         <% end %>
       </div>
-
     </div>
+     <div class="col-12">
+    <div style="width: 100%; height: 100vh;"
+        data-controller="mapbox"
+        data-mapbox-markers-value="<%= @markers.to_json %>"
+        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
   </div>
 </div>

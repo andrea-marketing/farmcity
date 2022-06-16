@@ -3,7 +3,21 @@ class ProducersController < ApplicationController
 
   def index
     @producers = policy_scope(Producer).order(created_at: :desc)
+
+    # if params[:query].present?
+    #   @producers = Producer.global_search(params[:query])
+    # end
+    @markers = @producers.geocoded.map do |producer|
+      {
+        lat: producer.latitude,
+        lng: producer.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { producer: producer }),
+        image_url: helpers.asset_url("ble")
+      }
+    end
+
     @categories = Product::TAGS
+
   end
 
   def show
