@@ -113,11 +113,13 @@ apiculteur = Producer.new(name: "L'abeille de l’Estérel", address: "470 Av. d
                           Aujourd’hui nous nous concentrons sur notre cœur de métier qui est la vente de miel et produits dérivés. Nous avons l’envie et la volonté de partager notre savoir-faire tout en protégeant l’environnement.",
                           contact: "labeille-de-lesterel@gmail.com", user: user1)
 apiculteur.photos.attach(photos_apiculteur)
+apiculteur.category_list = ["🐝 Honey"]
 apiculteur.save
 
 eleveur_vache = Producer.new(name: "La ferme de Romain", address: "Chemin de la Capelane, 13170 Les Pennes-Mirabeau", producer_type: "Elevage de vaches",
                              description: "Agriculteur dans les Alpes-de-Haute-Provence, j'ai une production de Vaches Aubrac avec ventes de veaux rosés élevés sous la mère", contact: "la-ferme-de-romain@gmail.com", user: user1)
 eleveur_vache.photos.attach(photos_vache1)
+eleveur_vache.category_list = ["🐮 Cow"]
 eleveur_vache.save
 
 eleveur_vache2 = Producer.new(name: "Les delices du Scamandre", address: "11951 route des iscles, Saint-Gilles 30800", producer_type: "Elevage de vaches",
@@ -125,18 +127,21 @@ eleveur_vache2 = Producer.new(name: "Les delices du Scamandre", address: "11951 
                              Nous commercialisons toute l'année sur l'exploitation et en expédition dans la France entière et plus, toute notre excellente viande de taureau (qui en aop taureau de Camargue et recommandé par les nutritionnistes, car pauvre en matière grasses saturé), terrines (plus de 25 différentes), plats préparé (comme la gardiane plat emblématique de Camargue, tripes, bolognaise de taureau avec beaucoup de viande...) charcuteries de taureau, jambon de taureau ...
                              Notre troupeau et en total liberté alimenté exclusivement de l'herbe de l'exploitation, des foins, luzernes et céréales que nous produisons.", contact: "les-delices-du-scamandre@gmail.com", user: user1)
 eleveur_vache2.photos.attach(photos_vache2)
+eleveur_vache2.category_list = ["🐮 Cow"]
 eleveur_vache2.save
 
 eleveur_moutons = Producer.new(name: "Les bons Agneaux", address: "13530 Trets", producer_type: "Elevage de moutons",
                               description: "Situé dans les collines Tretsoise à une vingtaine de kilomètre d’Aix en Provence, notre élevage de mouton est né en 2009. Nous élevons des brebis de race Mérinos d’Arles. C’est un animal qui est bien adapté aux élevages extensifs tel que le notre.
                               Les moutons sont élevés dans la colline du Domaine de Grand Boise en système sylvo-pastoral. Ils mangent du thym, du romarin, de la fillaire, de l’aphyllante, de la garance mais aussi des glands à l’automne. C’est un élevage extensif, conduit en plein air dans la garrigue provençale.", contact: "les-bons-agneaux@gmail.com", user: user2)
 eleveur_moutons.photos.attach(photos_moutons)
+eleveur_moutons.category_list = ["🐑 Sheep"]
 eleveur_moutons.save
 
 eleveur_poulet = Producer.new(name: "La Poule de Crau", address: "Chemin du mas d'Espagne, 13430 Eyguières", producer_type: "Elevage de volailles",
                             description: "Située au pied des monts de Vaucluse, en plein cœur du Parc Naturel Régional du Luberon, notre exploitation agricole Poules & Co. est implantée sur une terre arborée de chênes verts dans un environnement calme. Retrouvez-nous Laura, Samantha et Manon. Nous avons choisi pour les poulets et les poules pondeuses, de produire selon le cahier des charges de l’agriculture biologique, le tout pour des produits de qualité.",
                             contact: "la-poule-de-crau@gmail.com", user: user2)
 eleveur_poulet.photos.attach(photos_poulet)
+eleveur_poulet.category_list = [ "🐔 Chicken"]
 eleveur_poulet.save
 
 agriculteur = Producer.new(name: "Terre de Liens", address: "248 Chemin du Coupereau, 83320 Carqueiranne", producer_type: "Production de fruits et légumes",
@@ -145,6 +150,7 @@ agriculteur = Producer.new(name: "Terre de Liens", address: "248 Chemin du Coupe
                           Nous produisons près de 50 espèces de fruits et légumes maraîchers avec des façons et techniques culturales héritées de nos ancêtres
                           que nous avons modernisées et adaptées à la demande actuelle.", contact: "terre-de-liens@gmail.com", user: user1)
 agriculteur.photos.attach(photos_agriculteur)
+agriculteur.category_list = ["🥬 Veggetables"]
 agriculteur.save
 
 pecheur = Producer.new(name: "Pierre et le Loup", address: "205 All. de la Petite Mer, 83500 La Seyne-sur-Mer", producer_type: "Elevage de poissons et fruits de mer",
@@ -152,18 +158,21 @@ pecheur = Producer.new(name: "Pierre et le Loup", address: "205 All. de la Petit
                       La densité d'élevage est calculée entre le volume des cages et la charge en poissons (biomasse). Elle est au maximum de 25 kg/m³ afin que les poissons puissent nager en toute quiétude en se forgeant ainsi une morphologie parfaite.",
                       contact: "pierre-et-le-loup@gmail.com", user: user1)
 pecheur.photos.attach(photos_poissons)
+pecheur.category_list = ["🐟 Fish"]
 pecheur.save
 
 pecheur2 = Producer.new(name: "Pisciculture MARIN", address: "1021 Rte d'Apt, 84800 L'Isle-sur-la-Sorgue", producer_type: "Elevage de poissons et fruits de mer",
                        description: "Les poissons sont nourris avec un aliment garanti sans OGM, sans antibiotique, avec des farines de poissons issus de la pêche durable. L’aliment est choisi soigneusement en fonction de sa composition et de sa provenance.
                        Selon le stade de développement, la quantité d’aliments donnée est adaptée. Nous veillons à respecter un temps de grossissement qui se veut le plus naturel possible, afin de produire un poisson non gras, avec une chair ferme de haute qualité.", contact: "pisciculture-marin@gmail.com", user: user1)
 pecheur2.photos.attach(photos_poissons2)
+pecheur2.category_list = ["🐟 Fish"]
 pecheur2.save
 
 lait = Producer.new(name: "Ferme Mistral", address: "800 chemin des cabans 13300 Salon-de-Provence", producer_type: "Production de produits laitiers",
                    description: "La Cabrouno, un élevage au naturel de vaches aux portes d’Aix-en-Provence !
                    Les vaches puisent dans les garrigues provençales la nourriture qui donne à leur lait et leurs fromages un goût aussi merveilleux…", contact: "ferme-mistral@gmail.com", user: user1)
 lait.photos.attach(photos_lait)
+lait.category_list = ["🥛 Milk"]
 lait.save
 
 fromage = Producer.new(name: "La Fromagerie Magnaldi", address: "83740 La Cadière-d'Azur", producer_type: "Production de produits laitiers",
@@ -173,6 +182,7 @@ fromage = Producer.new(name: "La Fromagerie Magnaldi", address: "83740 La Cadiè
                        Christine Magnaldi sort le troupeau, aide à la fabrication des fromages et assure quelques marchés.
                        Notre belle fille Sandra vend également les fromages.", contact: "fromagerie-magnaldi@gmail.com", user: user1)
 fromage.photos.attach(photos_fromage)
+apiculteur.category_list = ["🧀 Cheese"]
 fromage.save
 
 # markets
