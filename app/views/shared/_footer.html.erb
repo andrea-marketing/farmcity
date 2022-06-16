@@ -1,11 +1,37 @@
-<div class="page">
-  <div class="footer">
-    <div class="footer-links">
-      <%# <a href="https://github.com/andrea-marketing/rollin" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.instagram.com/andrea.santosf/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/andrea.santosfreire" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://twitter.com/Steady__ROLLIN" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.linkedin.com/in/andrea-santos-freire/" target="_blank"><i class="fab fa-linkedin"></i></a> %>
+<div class="footer">
+
+<%# <%=link_to "Menu", menus_path, :class => "menunav"%>
+
+  <%= link_to "/", :action => 'go' do %>
+    <div id="tabs <% if current_page?("/") && controller.controller_name == "pages" %> active <% end %>">
+      <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-  </div>
+  <% end %>
+
+  <%= link_to "/", :action => 'go' do %>
+    <div id="tabs <% if current_page?("/") && controller.controller_name == "pages" %> active <% end %>">
+      <i class="fa-solid fa-list"></i>
+    </div>
+  <% end %>
+
+  <%= link_to "/producers", :action => 'go' do %>
+    <div id="tabs <% if current_page?("/producers") && controller.controller_name == "pages" %> active <% end %>">
+      <i class="fa-solid fa-house"></i>
+    </div>
+  <% end %>
+
+  <%= link_to "/favorites", :action => 'go' do %>
+    <div id="tabs <% if current_page?("/favorites") && controller.controller_name == "pages" %> active <% end %>">
+      <i class="fa-solid fa-heart"></i>
+    </div>
+  <% end %>
+
+  <%= link_to "/users/edit", :action => 'go' do %>
+    <div id="tabs <% if current_page?("/users/edit") && controller.controller_name == "pages" %> active <% end %>">
+      <i class="fa-solid fa-user"></i>
+    </div>
+  <% end %>
+
+<%# <%= link_to 'Home', , :class => is_active?("home") %>
+
 </div>

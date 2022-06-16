@@ -19,6 +19,13 @@ file_user2 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v165513
 user2 = User.create!(email: "max@gmail.com", password: "farmcity2", password_confirmation: "farmcity2", first_name: "Max", last_name: "Bernard")
 user2.photo.attach(io: file_user2, filename: 'nes.png', content_type: 'image/jpg')
 
+file_apiculteur = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+file_poulet = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+file_vache = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132687/samples/farmcity/farmer_hny1h7.jpg')
+file_mouton = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+file_mouton2 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+file_mais = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+file_courge = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655133132/samples/farmcity/images_oqorkx.jpg')
 file_apiculteur = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655370622/samples/farmcity/hansjorg-keller-OJHxRwXWXBs-unsplash_ubjm5g.jpg')
 file_apiculteur2 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655370611/samples/farmcity/hiveboxx-65icrs88YYs-unsplash_q0t80o.jpg')
 
