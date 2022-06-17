@@ -107,10 +107,10 @@ photos_fromage = [
   { io: file_fromage2, filename: 'nes.png', content_type: 'image/jpg' }
 ]
 
-apiculteur = Producer.new(name: "L'abeille de l’Estérel", address: "470 Av. du Col-de l'Ange, 13420 Gémenos", producer_type: "Production artisanale de miels",
-                          description: "L’Abeille de l’Estérel c’est avant tout une entreprise familiale et une histoire de partage : nos parents nous ont transmis leur passion pour l’apiculture il y a de nombreuses années.
+apiculteur = Producer.new(name: "L'abeille de l'Estérel", address: "470 Av. du Col-de l'Ange, 13420 Gémenos", producer_type: "Production artisanale de miels",
+                          description: "L'Abeille de l'Estérel c'est avant tout une entreprise familiale et une histoire de partage : nos parents nous ont transmis leur passion pour l'apiculture il y a de nombreuses années.
                           En 2010, nous avons acheté notre première ruche et 8 ans après, nous avons décidé de devenir apiculteurs professionnels. Notre exploitation regroupe 800 ruches à ce jour.
-                          Aujourd’hui nous nous concentrons sur notre cœur de métier qui est la vente de miel et produits dérivés. Nous avons l’envie et la volonté de partager notre savoir-faire tout en protégeant l’environnement.",
+                          Aujourd'hui nous nous concentrons sur notre cœur de métier qui est la vente de miel et produits dérivés. Nous avons l'envie et la volonté de partager notre savoir-faire tout en protégeant l'environnement.",
                           contact: "labeille-de-lesterel@gmail.com", user: user1)
 apiculteur.photos.attach(photos_apiculteur)
 apiculteur.category_list = ["🐝 Honey"]
@@ -131,14 +131,14 @@ eleveur_vache2.category_list = ["🐮 Cow"]
 eleveur_vache2.save
 
 eleveur_moutons = Producer.new(name: "Les bons Agneaux", address: "13530 Trets", producer_type: "Elevage de moutons",
-                              description: "Situé dans les collines Tretsoise à une vingtaine de kilomètre d’Aix en Provence, notre élevage de mouton est né en 2009. Nous élevons des brebis de race Mérinos d’Arles. C’est un animal qui est bien adapté aux élevages extensifs tel que le notre.
-                              Les moutons sont élevés dans la colline du Domaine de Grand Boise en système sylvo-pastoral. Ils mangent du thym, du romarin, de la fillaire, de l’aphyllante, de la garance mais aussi des glands à l’automne. C’est un élevage extensif, conduit en plein air dans la garrigue provençale.", contact: "les-bons-agneaux@gmail.com", user: user2)
+                              description: "Situé dans les collines Tretsoise à une vingtaine de kilomètre d'Aix en Provence, notre élevage de mouton est né en 2009. Nous élevons des brebis de race Mérinos d'Arles. C'est un animal qui est bien adapté aux élevages extensifs tel que le notre.
+                              Les moutons sont élevés dans la colline du Domaine de Grand Boise en système sylvo-pastoral. Ils mangent du thym, du romarin, de la fillaire, de l'aphyllante, de la garance mais aussi des glands à l'automne. C'est un élevage extensif, conduit en plein air dans la garrigue provençale.", contact: "les-bons-agneaux@gmail.com", user: user2)
 eleveur_moutons.photos.attach(photos_moutons)
 eleveur_moutons.category_list = ["🐑 Sheep"]
 eleveur_moutons.save
 
 eleveur_poulet = Producer.new(name: "La Poule de Crau", address: "Chemin du mas d'Espagne, 13430 Eyguières", producer_type: "Elevage de volailles",
-                            description: "Située au pied des monts de Vaucluse, en plein cœur du Parc Naturel Régional du Luberon, notre exploitation agricole Poules & Co. est implantée sur une terre arborée de chênes verts dans un environnement calme. Retrouvez-nous Laura, Samantha et Manon. Nous avons choisi pour les poulets et les poules pondeuses, de produire selon le cahier des charges de l’agriculture biologique, le tout pour des produits de qualité.",
+                            description: "Située au pied des monts de Vaucluse, en plein cœur du Parc Naturel Régional du Luberon, notre exploitation agricole Poules & Co. est implantée sur une terre arborée de chênes verts dans un environnement calme. Retrouvez-nous Laura, Samantha et Manon. Nous avons choisi pour les poulets et les poules pondeuses, de produire selon le cahier des charges de l'agriculture biologique, le tout pour des produits de qualité.",
                             contact: "la-poule-de-crau@gmail.com", user: user2)
 eleveur_poulet.photos.attach(photos_poulet)
 eleveur_poulet.category_list = [ "🐔 Chicken"]
@@ -162,23 +162,23 @@ pecheur.category_list = ["🐟 Fish"]
 pecheur.save
 
 pecheur2 = Producer.new(name: "Pisciculture MARIN", address: "1021 Rte d'Apt, 84800 L'Isle-sur-la-Sorgue", producer_type: "Elevage de poissons et fruits de mer",
-                       description: "Les poissons sont nourris avec un aliment garanti sans OGM, sans antibiotique, avec des farines de poissons issus de la pêche durable. L’aliment est choisi soigneusement en fonction de sa composition et de sa provenance.
-                       Selon le stade de développement, la quantité d’aliments donnée est adaptée. Nous veillons à respecter un temps de grossissement qui se veut le plus naturel possible, afin de produire un poisson non gras, avec une chair ferme de haute qualité.", contact: "pisciculture-marin@gmail.com", user: user1)
+                       description: "Les poissons sont nourris avec un aliment garanti sans OGM, sans antibiotique, avec des farines de poissons issus de la pêche durable. L'aliment est choisi soigneusement en fonction de sa composition et de sa provenance.
+                       Selon le stade de développement, la quantité d'aliments donnée est adaptée. Nous veillons à respecter un temps de grossissement qui se veut le plus naturel possible, afin de produire un poisson non gras, avec une chair ferme de haute qualité.", contact: "pisciculture-marin@gmail.com", user: user1)
 pecheur2.photos.attach(photos_poissons2)
 pecheur2.category_list = ["🐟 Fish"]
 pecheur2.save
 
 lait = Producer.new(name: "Ferme Mistral", address: "800 chemin des cabans 13300 Salon-de-Provence", producer_type: "Production de produits laitiers",
-                   description: "La Cabrouno, un élevage au naturel de vaches aux portes d’Aix-en-Provence !
+                   description: "La Cabrouno, un élevage au naturel de vaches aux portes d'Aix-en-Provence !
                    Les vaches puisent dans les garrigues provençales la nourriture qui donne à leur lait et leurs fromages un goût aussi merveilleux…", contact: "ferme-mistral@gmail.com", user: user1)
 lait.photos.attach(photos_lait)
 lait.category_list = ["🥛 Milk"]
 lait.save
 
 fromage = Producer.new(name: "La Fromagerie Magnaldi", address: "83740 La Cadière-d'Azur", producer_type: "Production de produits laitiers",
-                       description: "La Fromagerie Magnaldi, installée à La Cadière-d’Azur dans le Var, vous présente ses spécialités de fromage. Nous possédons un troupeau de 150 chèvres qui portent toutes un prénom. Pour un fromage parfait, nous les sortons tous les jours dans la garrigue.
+                       description: "La Fromagerie Magnaldi, installée à La Cadière-d'Azur dans le Var, vous présente ses spécialités de fromage. Nous possédons un troupeau de 150 chèvres qui portent toutes un prénom. Pour un fromage parfait, nous les sortons tous les jours dans la garrigue.
                        Nous travaillons en famille, chacun a son rôle. Notre fils Jérôme, est le spécialiste du fromage, il fabrique des tommes, de la crème fraiche, du beurre en certaines périodes.
-                       Roger Magnaldi s’occupe des soins des animaux et de tous les agencements et réparations du matériel.
+                       Roger Magnaldi s'occupe des soins des animaux et de tous les agencements et réparations du matériel.
                        Christine Magnaldi sort le troupeau, aide à la fabrication des fromages et assure quelques marchés.
                        Notre belle fille Sandra vend également les fromages.", contact: "fromagerie-magnaldi@gmail.com", user: user1)
 fromage.photos.attach(photos_fromage)
@@ -189,7 +189,7 @@ fromage.save
 castellane_market = Market.new(name: "Marché du Prado", address: "99 Av. du Prado, 13008 Marseille", description: "Vaste marché en plein air proposant large choix d'articles, des produits frais aux vêtements d'occasion.")
 castellane_market.save
 
-plaine_market = Market.new(name: "Marché de la Plaine", address: "Pl. Jean Jaurès, 13001 Marseille", description: "Après presque 4 ans d’attente, le marché de la Plaine est de retour sur la place Jean-Jaurès. Les jours de marché seront les mardis, jeudis et samedis, comme avant les travaux.")
+plaine_market = Market.new(name: "Marché de la Plaine", address: "Pl. Jean Jaurès, 13001 Marseille", description: "Après presque 4 ans d'attente, le marché de la Plaine est de retour sur la place Jean-Jaurès. Les jours de marché seront les mardis, jeudis et samedis, comme avant les travaux.")
 plaine_market.save
 
 soleil_market = Market.new(name: "Marché Du Soleil", address: "5 Rue Fauchier, 13002 Marseille", description: "Il serait dommage de venir à Marseille sans un petit tour par le marché du soleil ! Dans cette ville géographiquement et historiquement proche de l'Afrique du Nord, c'est un véritable souk oriental que vous découvrirez avenue Camille Pelletan, près de la porte d'Aix. Epices, fruits et légumes, vêtements, objets de décoration… le dépaysement est total !")
