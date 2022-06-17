@@ -163,7 +163,7 @@
     <% @producer.point_of_sales.each do |point_of_sale| %>
       <% market = point_of_sale.market %>
         <div class="card-market">
-          <%= image_tag("market_show", class: "img-fluid max-width: 100%; and height: auto;")%>
+          <%= image_tag("market_show.jpg", class: "img-fluid max-width: 100%; and height: auto;")%>
           <div class="card-market-infos">
       <%= link_to market_path(market) do %>
             <h2 class=""><%= market.name.upcase %></h2>
