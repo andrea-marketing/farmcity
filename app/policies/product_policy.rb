@@ -19,6 +19,10 @@ class ProductPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def show?
+    return true
+  end
+
   def destroy?
     record.user == user
   end

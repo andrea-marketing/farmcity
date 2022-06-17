@@ -1,2 +1,4 @@
-<h2><%= producer.name %></h2>
-<p><%= producer.address %></p>
+<%= link_to producer_path(producer) do %>
+  <h2><%= producer.name %></h2>
+  <p><%= producer.address %></p>
+<% end %>

@@ -3,19 +3,27 @@ class MarketsController < ApplicationController
 
   def index
     @markets = policy_scope(Market).order(created_at: :desc)
-    @markers = @markets.geocoded.map do |market|
-      {
-        lat: market.latitude,
-        lng: market.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { market: market }),
-        image_url: helpers.asset_url("ble")
-      }
-    end
   end
 
   def show
     @market_producer = @market.producers
     authorize @market
+
+    @markers = @market.producers.geocoded.map do |producer|
+      {
+        lat: producer.latitude,
+        lng: producer.longitude,
+        info_window: render_to_string(partial: "producers/info_window", locals: { producer: producer }),
+        image_url: helpers.asset_url("ble")
+      }
+    end
+
+    @markers << {
+        lat: @market.latitude,
+        lng: @market.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { market: @market }),
+        image_url: helpers.asset_url("market")
+      }
   end
 
   private

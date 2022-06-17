@@ -26,7 +26,7 @@ class PointOfSalesController < ApplicationController
   def destroy
     set_point_of_sale
     @point_of_sale.destroy
-    redirect_to root_path
+    redirect_to producer_path(@producer)
     authorize @point_of_sale
   end
 
