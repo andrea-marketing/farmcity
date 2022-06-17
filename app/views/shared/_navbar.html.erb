@@ -2,8 +2,20 @@
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
       <%= image_tag "biglogo.png", class: "mx-2" %>
-      <%= "farmcity" %>
     <% end %>
+
+    <div class="navbar" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
 </div>
