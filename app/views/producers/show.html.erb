@@ -151,6 +151,8 @@
     </div>
   <% end %>
 
+    <!--  Markets -->
+
     <h2>Markets</h2>
     <% if current_user == @producer.user %>
       <% if policy(@producer).create_market? %>
@@ -160,15 +162,22 @@
 
     <% @producer.point_of_sales.each do |point_of_sale| %>
       <% market = point_of_sale.market %>
+        <div class="card-market">
+          <%= image_tag("market_show.jpg", class: "img-fluid max-width: 100%; and height: auto;")%>
+          <div class="card-market-infos">
       <%= link_to market_path(market) do %>
-        <div class="">
-          <h2 class=""><%= market.name.upcase %></h2>
-            <p class="mt-3"><%= market.address %></p>
+            <h2 class=""><%= market.name.upcase %></h2>
+              <p class="mt-3"><%= market.address %></p>
+              <p class=""><%= market.description %></p>
+          </div>
+          <%= link_to ("<i class='fa-regular fa-trash-can'></i> Delete Market").html_safe,
+            producer_point_of_sale_path(@producer, point_of_sale),
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class: "btn-link" %>
         </div>
-        <div>
-          <h2 class=""><%= market.description %></h2>
-        </div>
-      <% end %>
+      <%end%>
+    <% end %>
 
       <% if policy(point_of_sale).destroy? %>
         <%= link_to ("<i class='fa-regular fa-trash-can'></i> Delete Market").html_safe,
@@ -178,6 +187,9 @@
           class: "btn btn-red" %>
         <%end%>
       <% end %>
+      <%# <% if policy(point_of_sale).destroy? %>
+
+      <%# end %>
   </div>
 
 </div>

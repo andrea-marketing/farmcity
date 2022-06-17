@@ -14,7 +14,7 @@ class ProducersController < ApplicationController
         lat: producer.latitude,
         lng: producer.longitude,
         info_window: render_to_string(partial: "info_window", locals: { producer: producer }),
-        image_url: helpers.asset_url("ble")
+        image_url: helpers.asset_url("ble.png")
       }
     end
     @categories = Producer.category_counts
