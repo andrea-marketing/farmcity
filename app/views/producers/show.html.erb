@@ -40,7 +40,7 @@
         <%end%>
       <% else %>
         <% if policy(Favorite).create? %>
-        <p><%= link_to ("<i class='fa-regular fa-heart'></i>").html_safe, producer_favorites_path(@producer), method: :post %></p>
+          <p><%= link_to ("<i class='fa-regular fa-heart'></i>").html_safe, producer_favorites_path(@producer), method: :post %></p>
         <%end%>
       <%end%>
     </div>
