@@ -57,14 +57,14 @@
 
   <div class="buttons">
     <% if policy(@producer).edit? %>
-      <%= link_to "Update", edit_producer_path(@producer), class: "btn btn-red" %>
+      <%= link_to "Edit producer", edit_producer_path(@producer), class: "btn-link" %>
     <% end %>
 
     <% if policy(@producer).destroy? %>
       <%= link_to ("<i class='fa-regular fa-trash-can'></i> Delete producer").html_safe, producer_path(@producer),
                     method: :delete,
                     data: { confirm: "Are you sure?" } ,
-                    class:"btn btn-red"%>
+                    class:"btn-link"%>
     <% end %>
 
   </div>
