@@ -1,5 +1,7 @@
 class ProducersController < ApplicationController
   before_action :set_producer, only: %i[show edit update destroy]
+  skip_before_action :verify_authenticity_token, only: :filter
+
 
   def index
     @producers = policy_scope(Producer).order(created_at: :desc)
@@ -16,7 +18,24 @@ class ProducersController < ApplicationController
       }
     end
     @categories = Producer.category_counts
+  end
 
+  def filter
+    categories_id = params[:categories_id]
+    categories = ActsAsTaggableOn::Tag.find(categories_id)
+
+    categories_name = categories.map do |category|
+      category.name
+    end
+
+    @producers = Producer.tagged_with(categories_name, :any => true)
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'producers', locals: { producers: @producers }, formats: [:html] }
+    end
+
+    skip_authorization
   end
 
   def show

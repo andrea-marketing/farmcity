@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :products, only: %i[new create edit update destroy]
     resources :reviews, only:  %i[new create]
     resources :favorites, only: %i[create]
+    collection do
+      post :filter
+    end
+
   end
 
   resources :reviews, only: [:destroy]

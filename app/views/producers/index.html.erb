@@ -18,9 +18,9 @@
       <h2>Categories</h2>
 
       <div class="filters" data-controller= "filter-button">
-        <div data-filter-button-target= "categories">
+        <div >
           <% @categories.each do |category| %>
-            <input type="checkbox" name="" id="<%=category.id %>" class="filter" data-action="click->filter-button#filter">
+            <input type="checkbox" name="" id="<%=category.id %>" class="filter" data-filter-button-target= "category" data-action="click->filter-button#filter">
             <label for="<%=category.id %>" ><%= category %></label>
           <% end %>
         </div>
@@ -40,33 +40,7 @@
       <!-- list of producers -->
 
       <div class="cards">
-        <% @producers.each do |producer| %>
-          <%= link_to producer_path(producer) , :action => 'go' do %>
-            <div class="card-producer">
-
-              <!-- Producer favorite -->
-              <div class="favorite">
-                <% if producer.favorite?(current_user)%>
-                  <p><i class='fa-regular fa-heart'></i></p>
-                <% else %>
-                  <p><i class='fa-solid fa-heart'></i></p>
-                <%end%>
-              </div>
-              <div class="image">
-                <% if producer.photos.attached? %>
-                    <%= cl_image_tag producer.photos.first.key, height: 300, width: 400, crop: :fill %>
-                <% end %>
-              </div>
-
-            <div class="card-producer-info">
-              <p><strong><%= producer.name %></strong></p>
-              <p><%= producer.producer_type  %></p>
-              <p><%= producer.address %></p>
-              <p><%= producer.category_list %></p>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
+          <%= render "producers", producers: @producers %>
       </div>
 
       <!-- Add new producer profile -->
