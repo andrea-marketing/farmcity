@@ -6,22 +6,18 @@ class Producer < ApplicationRecord
   has_many :markets, through: :point_of_sales
   has_many :products, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
   validates :contact, presence: true
 
-
-  has_many :reviews, dependent: :destroy
-  has_many :favorites, dependent: :destroy
-
   TAGS = ["🍏 Fruits", "🥬 Veggetables", "🥩 Meat", "🥛 Milk", "🧀 Cheese", "🌷 Flowers",
     "🐔 Chicken", "🐮 Cow", "🐐 Goat", "🐑 Sheep", "🐟 Fish", "🐝 Honey", "🥚 Eggs",
     "🍇 Wine", "🥖 Bread"]
 
   acts_as_taggable_on :categories
-
 
   def favorite?(user)
     favorites = []
@@ -42,5 +38,4 @@ class Producer < ApplicationRecord
     end
     return favorites[0]
   end
-
 end

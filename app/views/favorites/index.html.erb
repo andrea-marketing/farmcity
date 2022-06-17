@@ -4,7 +4,7 @@
     <div class="col-12 col-lg-6">
       <h1>My favorites</h1>
       <div class="cards">
-        <% @favorites.each do |favorite| %>
+        <% @user.favorites.each do |favorite| %>
           <%= link_to producer_path(favorite.producer) , :action => 'go' do %>
             <div class="card-producer">
               <!-- Producer favorite -->
