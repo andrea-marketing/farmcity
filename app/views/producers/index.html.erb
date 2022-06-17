@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
       <!-- Add address from previous search bar -->
-      <%= params[:query] %>
+      <%# <%= params[:query] %>
       <br>
 
       <!-- Search bar -->
@@ -10,8 +10,7 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          id: "searchbar-index",
-          placeholder: "Enter a product" %>
+          id: "searchbar-index" %>
         <%= submit_tag "Search", class: "d-none" %>
       <% end %>
 
@@ -45,13 +44,7 @@
 
       <!-- Add new producer profile -->
 
-      <div class="">
-        <% if policy(Producer).create? %>
-          <%= link_to "New producer", new_producer_path, class: "btn btn-red"%>
-        <% end %>
-      </div>
     </div>
-     <div class="col-12">
 
   </div>
   </div>
