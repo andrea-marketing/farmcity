@@ -36,6 +36,7 @@ class ProducersController < ApplicationController
     end
 
     skip_authorization
+
   end
 
   def show

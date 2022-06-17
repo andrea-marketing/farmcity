@@ -6,8 +6,12 @@ class PointOfSalePolicy < ApplicationPolicy
     # end
   end
 
+  def new?
+    create?
+  end
+
   def create?
-    record.user == user
+    true
   end
 
   def update?
@@ -19,6 +23,6 @@ class PointOfSalePolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    true
   end
 end
