@@ -16,7 +16,6 @@ class ProducersController < ApplicationController
       }
     end
     @categories = Producer.category_counts
-
   end
 
   def show

@@ -8,7 +8,7 @@ export default class extends Controller {
 
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
   }
 
   display()  {
@@ -32,7 +32,6 @@ export default class extends Controller {
       container: this.mapTarget,
       style:"mapbox://styles/mapbox/streets-v10"
     });
-
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
