@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
-      <h1>My favorites</h1>
+      <h1 class="pt-3">My favorites</h1>
       <div class="cards">
         <% @user.favorites.each do |favorite| %>
           <%= link_to producer_path(favorite.producer) , :action => 'go' do %>

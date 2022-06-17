@@ -2,32 +2,40 @@
 
   <%= link_to "/", :action => 'go' do %>
     <div class="tabs <%= current_page?("/") ? 'active' : '' %>">
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-magnifying-glass fa-sm"></i>
     </div>
   <% end %>
 
   <%= link_to "/", :action => 'go' do %>
     <div class="tabs <%= current_page?("/") ? 'active' : '' %>">
-      <i class="fa-solid fa-list"></i>
+      <i class="fa-solid fa-list fa-sm"></i>
     </div>
   <% end %>
 
   <%= link_to "/producers", :action => 'go' do %>
     <div class="tabs <%= current_page?("/producers") ? 'active' : '' %>">
-      <i class="fa-solid fa-house"></i>
+      <i class="fa-solid fa-house fa-sm"></i>
     </div>
   <% end %>
 
   <%= link_to "/favorites", :action => 'go' do %>
     <div class="tabs <%= current_page?("/favorites") ? 'active' : '' %>">
-      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-heart fa-sm"></i>
     </div>
   <% end %>
 
-  <%= link_to "/users/edit", :action => 'go' do %>
-    <div class="tabs <%= current_page?("/users/edit") ? 'active' : '' %>">
-      <i class="fa-solid fa-user"></i>
-    </div>
+  <% if user_signed_in? %>
+    <%= link_to "/users/edit", :action => 'go' do %>
+      <div class="tabs <%= current_page?("/users/edit") ? 'active' : '' %>">
+        <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to "/users/edit", :action => 'go' do %>
+      <div class="tabs <%= current_page?("/users/edit") ? 'active' : '' %>">
+        <i class="fa-solid fa-user fa-sm"></i>
+      </div>
+    <% end %>
   <% end %>
 
 </div>
