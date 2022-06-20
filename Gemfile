@@ -22,6 +22,9 @@ gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+#gem pg search
+gem 'pg_search', '~> 2.3.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -46,6 +49,9 @@ gem "font-awesome-rails"
 gem 'simple_form', github: 'heartcombo/simple_form'
 
 gem "geocoder"
+
+gem 'loading_screen', '~> 0.2.3'
+
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

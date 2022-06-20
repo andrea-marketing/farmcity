@@ -36,7 +36,7 @@
         <% if @producer.favorite?(current_user)%>
           <p><%= link_to ("<i class='fa-regular fa-heart'></i>").html_safe, producer_favorites_path(@producer), method: :post %></p>
         <% else %>
-          <p><%= link_to ("<i class='fa-solid fa-heart'></i>").html_safe, favorite_path(@producer.user_favorite(current_user)), method: :delete, data: { confirm: "Are you sure?" } %></p>
+          <p><%= link_to ("<i class='fa-solid fa-heart'></i>").html_safe, favorite_path(@producer.user_favorite(current_user)), method: :delete %></p>
         <%end%>
       <% else %>
         <% if policy(Favorite).create? %>
@@ -79,32 +79,33 @@
   <% end %>
 
   <!-- Product list -->
-
-  <% @producer.products.each do |product| %>
-    <div class="card-product">
-      <% if product.photo.attached? %>
-        <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-      <div class="card-product-infos">
-        <h3><%= product.name %></h3>
+  <div class="cards-products">
+    <% @producer.products.each do |product| %>
+      <div class="card-product">
+        <% if product.photo.attached? %>
+          <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+        <div class="title">
+          <h3><%= product.name %></h3>
+          <% if policy(product).edit? %>
+            <%= link_to ("<i class='fa-regular fa-pen-to-square'></i>").html_safe,  edit_producer_product_path(@producer, product), class: "btn-link" %>
+          <% end %>
+        </div>
         <p><%= product.category_list %></p>
         <p><%= product.description %></p>
-        <p><%= product.price %></p>
+        <div class="card-product-infos">
+          <p><i class="fa-solid fa-money-bill"></i> <%= product.price %></p>
+            <% if policy(product).destroy? %>
+              <%= link_to ("<i class='fa-regular fa-trash-can'></i>").html_safe,
+                producer_product_path(@producer, product),
+                method: :delete,
+                class: "btn-link",
+                data: { confirm: "Are you sure?" } %>
+            <% end %>
+        </div>
       </div>
-      <div class="buttons">
-        <% if policy(product).edit? %>
-          <%= link_to ("<i class='fa-regular fa-pen-to-square'></i>").html_safe,  edit_producer_product_path(@producer, product), class: "btn-link" %>
-        <% end %>
-        <% if policy(product).destroy? %>
-          <%= link_to ("<i class='fa-regular fa-trash-can'></i>").html_safe,
-            producer_product_path(@producer, product),
-            method: :delete,
-            class: "btn-link",
-            data: { confirm: "Are you sure?" } %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
 
 
@@ -155,29 +156,33 @@
 
     <h2>Markets</h2>
     <% if current_user == @producer.user %>
-      <% if policy(@producer).create? %>
+      <% if policy(@producer).create_market? %>
         <%= link_to ("<i class='fa-solid fa-plus'></i> Add Market").html_safe, new_producer_point_of_sale_path(@producer, @point_of_sale), class: "btn-link" %>
       <% end %>
     <% end %>
 
     <% @producer.point_of_sales.each do |point_of_sale| %>
       <% market = point_of_sale.market %>
-        <div class="card-market">
-          <%= image_tag("market_show", class: "img-fluid max-width: 100%; and height: auto;")%>
-          <div class="card-market-infos">
       <%= link_to market_path(market) do %>
+        <div class="card-market">
+          <%= image_tag("market_show.jpg", class: "img-fluid max-width: 100%; and height: auto;")%>
+          <div class="card-market-infos">
             <h2 class=""><%= market.name.upcase %></h2>
               <p class="mt-3"><%= market.address %></p>
               <p class=""><%= market.description %></p>
           </div>
-          <%= link_to ("<i class='fa-regular fa-trash-can'></i> Delete Market").html_safe,
-            producer_point_of_sale_path(@producer, point_of_sale),
-            method: :delete,
-            data: { confirm: "Are you sure?" },
-            class: "btn-link" %>
+          <% if current_user == @producer.user %>
+            <%= link_to ("<i class='fa-regular fa-trash-can'></i> Delete Market").html_safe,
+              producer_point_of_sale_path(@producer, point_of_sale),
+              method: :delete,
+              data: { confirm: "Are you sure?" },
+              class: "btn-link" %>
+          <% end %>
         </div>
       <%end%>
     <% end %>
+
+
 
       <%# <% if policy(point_of_sale).destroy? %>
 

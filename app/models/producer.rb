@@ -1,4 +1,7 @@
 class Producer < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: %i[name address producer_type categories]
+
   belongs_to :user
   has_many_attached :photos
 

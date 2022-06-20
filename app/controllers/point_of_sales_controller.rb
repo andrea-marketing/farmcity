@@ -1,5 +1,5 @@
 class PointOfSalesController < ApplicationController
-  before_action :set_producer, only: [:new, :create, :show]
+  before_action :set_producer, only: [:new, :create, :show, :destroy]
 
   def new
     @point_of_sale = PointOfSale.new

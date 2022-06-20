@@ -2,19 +2,26 @@ class ProducersController < ApplicationController
   before_action :set_producer, only: %i[show edit update destroy]
   skip_before_action :verify_authenticity_token, only: :filter
 
-
   def index
-    @producers = policy_scope(Producer).order(created_at: :desc)
-
     # if params[:query].present?
     #   @producers = Producer.global_search(params[:query])
     # end
-    @markers = @producers.geocoded.map do |producer|
+    if params[:query].present?
+      PgSearch::Multisearch.rebuild(policy_scope(Producer).order(created_at: :desc).geocoded)
+
+      @producers = PgSearch.multisearch(params[:query])
+
+      @producers = @producers.map(&:searchable)
+      # @producers = Producer.where(id: @producers.map(&:id))
+    else
+      @producers = policy_scope(Producer).order(created_at: :desc)
+    end
+    @markers = @producers.map do |producer|
       {
         lat: producer.latitude,
         lng: producer.longitude,
         info_window: render_to_string(partial: "info_window", locals: { producer: producer }),
-        image_url: helpers.asset_url("ble")
+        image_url: helpers.asset_url("ble.png")
       }
     end
     @categories = Producer.category_counts
@@ -30,9 +37,16 @@ class ProducersController < ApplicationController
 
     @producers = Producer.tagged_with(categories_name, :any => true)
 
-    respond_to do |format|
-      format.html # Follow regular flow of Rails
-      format.text { render partial: 'producers', locals: { producers: @producers }, formats: [:html] }
+    if @producers.empty?
+      respond_to do |format|
+        format.html # Follow regular flow of Rails
+        format.text { render partial: 'producers', locals: { producers: Producer.all }, formats: [:html] }
+      end
+    else
+      respond_to do |format|
+        format.html # Follow regular flow of Rails
+        format.text { render partial: 'producers', locals: { producers: @producers }, formats: [:html] }
+      end
     end
 
     skip_authorization

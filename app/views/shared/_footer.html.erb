@@ -25,14 +25,14 @@
   <% end %>
 
   <% if user_signed_in? %>
-    <%= link_to "/users/edit", :action => 'go' do %>
-      <div class="tabs <%= current_page?("/users/edit") ? 'active' : '' %>">
+    <%= link_to "/profile", :action => 'go' do %>
+      <div class="tabs <%= current_page?("/profile") ? 'active' : '' %>">
         <%= cl_image_tag current_user.photo.key, class: "avatar" %>
       </div>
     <% end %>
   <% else %>
-    <%= link_to "/users/edit", :action => 'go' do %>
-      <div class="tabs <%= current_page?("/users/edit") ? 'active' : '' %>">
+    <%= link_to "/profile", :action => 'go' do %>
+      <div class="tabs <%= current_page?("/profile") ? 'active' : '' %>">
         <i class="fa-solid fa-user fa-sm"></i>
       </div>
     <% end %>

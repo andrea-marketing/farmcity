@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 2022_06_20_094623) do
     t.float "longitude"
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+  end
+
   create_table "point_of_sales", force: :cascade do |t|
     t.bigint "producer_id", null: false
     t.bigint "market_id", null: false
