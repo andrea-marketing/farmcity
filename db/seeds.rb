@@ -182,7 +182,7 @@ fromage = Producer.new(name: "La Fromagerie Magnaldi", address: "83740 La Cadiè
                        Christine Magnaldi sort le troupeau, aide à la fabrication des fromages et assure quelques marchés.
                        Notre belle fille Sandra vend également les fromages.", contact: "fromagerie-magnaldi@gmail.com", user: user2)
 fromage.photos.attach(photos_fromage)
-apiculteur.category_list = ["🧀 Cheese"]
+fromage.category_list = ["🧀 Cheese"]
 fromage.save
 
 # markets
