@@ -10,6 +10,14 @@ class ProducerPolicy < ApplicationPolicy
     return true
   end
 
+  def create_product?
+    record.user == user
+  end
+
+  def create_market?
+    record.user == user
+  end
+
   def update?
     record.user == user
   end

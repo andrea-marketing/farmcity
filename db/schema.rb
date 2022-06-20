@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_15_103763) do
+ActiveRecord::Schema.define(version: 2022_06_15_125947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,12 +43,23 @@ ActiveRecord::Schema.define(version: 2022_06_15_103763) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "producer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["producer_id"], name: "index_favorites_on_producer_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "markets", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "point_of_sales", force: :cascade do |t|
@@ -69,6 +80,8 @@ ActiveRecord::Schema.define(version: 2022_06_15_103763) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_producers_on_user_id"
   end
 
@@ -142,6 +155,8 @@ ActiveRecord::Schema.define(version: 2022_06_15_103763) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favorites", "producers"
+  add_foreign_key "favorites", "users"
   add_foreign_key "point_of_sales", "markets"
   add_foreign_key "point_of_sales", "producers"
   add_foreign_key "producers", "users"

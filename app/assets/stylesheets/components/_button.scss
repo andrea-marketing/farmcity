@@ -10,3 +10,18 @@
   color: $light-red;
   border: 1px solid $light-red;
 }
+
+.hidden{
+  display: none;
+}
+
+.btn-link{
+  margin: 0 10px;
+  color: $light-red;
+  text-decoration: none;
+}
+
+.btn-link:hover{
+  color: $light-red;
+  opacity: 0.8;
+}

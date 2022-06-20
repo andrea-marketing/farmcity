@@ -7,7 +7,60 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "mapbox-gl/dist/mapbox-gl";
+//@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+$dark-red: #8D2828;
+$dark-red: #8D2828;
+$light-grey: #343a40;
+$dark-green: #D9DD6B;
+$light-green: #ECEFA4;
+
+body{
+  background: linear-gradient(180deg, rgba(255,254,230,1) 0%, rgba(254,254,251,1) 50%, rgba(255,254,230,1) 100%);
+  font-family: 'Poppins', sans-serif;
+  padding-top: 70px;
+  padding-bottom: 80px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 900;
+  color: $dark-red;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: $light-red;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: $dark-red;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+a{
+  text-decoration: none;
+  color: $light-grey;
+  font-size: 14px;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #8D2828;
+}

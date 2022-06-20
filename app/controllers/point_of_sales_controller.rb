@@ -1,5 +1,5 @@
 class PointOfSalesController < ApplicationController
-  before_action :set_producer, only: [:new, :create, :show]
+  before_action :set_producer, only: [:new, :create, :show, :destroy]
 
   def new
     @point_of_sale = PointOfSale.new
@@ -26,7 +26,7 @@ class PointOfSalesController < ApplicationController
   def destroy
     set_point_of_sale
     @point_of_sale.destroy
-    redirect_to root_path
+    redirect_to producer_path(@producer)
     authorize @point_of_sale
   end
 

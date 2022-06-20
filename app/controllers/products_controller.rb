@@ -29,9 +29,11 @@ class ProductsController < ApplicationController
   def update
     @producer = Producer.find(params[:producer_id])
     @product = Product.find(params[:id])
+    categories = params[:product][:categories].reject(&:empty?)
+    @product.category_list = categories
     @product.update(product_params)
     redirect_to producer_path(@producer)
-    authorize @producer
+    authorize @product
   end
 
   def destroy

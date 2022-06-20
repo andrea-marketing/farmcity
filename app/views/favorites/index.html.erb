@@ -1,0 +1,32 @@
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <h1 class="pt-3">My favorites</h1>
+      <div class="cards">
+        <% @user.favorites.each do |favorite| %>
+          <%= link_to producer_path(favorite.producer) , :action => 'go' do %>
+            <div class="card-producer">
+              <!-- Producer favorite -->
+              <div class="favorite">
+                  <p><i class='fa-solid fa-heart'></i></p>
+              </div>
+              <div class="image">
+                <% if favorite.producer.photos.attached? %>
+                    <%= cl_image_tag favorite.producer.photos.first.key, height: 300, width: 400, crop: :fill %>
+                <% end %>
+              </div>
+
+            <div class="card-producer-info">
+              <p><strong><%= favorite.producer.name %></strong></p>
+              <p><%= favorite.producer.producer_type  %></p>
+              <p><%= favorite.producer.address %></p>
+              <p><%= favorite.producer.category_list %></p>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

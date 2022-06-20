@@ -2,8 +2,9 @@
   <%= f.input :name %>
   <%= f.input :address %>
   <%= f.input :producer_type %>
+  <%= f.input :categories, collection: Product::TAGS , placeholder: 'Honey', as: :check_boxes %>
   <%= f.input :description %>
   <%= f.input :contact %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-red" %>
 <% end %>

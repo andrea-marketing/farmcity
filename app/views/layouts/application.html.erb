@@ -6,28 +6,32 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   </head>
 
   <body>
-    <!-- Navbar all except hom-->
+    <!-- Navbar all except home -->
 
-    <% if (controller_name != "pages")%>
+    <% unless (controller_name == "pages" && action_name == "home")%>
       <%= render 'shared/navbar' %>
     <% end %>
 
       <%= yield %>
     <%= render 'shared/flashes'  %>
 
-    <!-- Footer all except hom-->
+    <!-- Footer all except home -->
 
-    <% if (controller_name != "pages")%>
+    <% unless (controller_name == "pages" && action_name == "home")%>
       <%= render 'shared/footer' %>
     <% end %>
-
   </body>
 
 </html>
