@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2022_06_20_135135) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +82,13 @@ ActiveRecord::Schema.define(version: 2022_06_20_135135) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["market_id"], name: "index_point_of_sales_on_market_id"
     t.index ["producer_id"], name: "index_point_of_sales_on_producer_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.string "content"
   end
 
   create_table "producers", force: :cascade do |t|
