@@ -9,6 +9,8 @@
         <p><%= @user.email %></p>
         <br>
         <%= link_to ("<i class='fa-solid fa-pencil'></i> Edit profile").html_safe, edit_user_registration_path(@user), class: "btn-red" %>
+        <br>
+        <%= link_to ("<i class='fa-solid fa-tractor'></i> Create a new producer profile").html_safe, new_producer_path, class: "btn-link" %>
       </div>
     </div>
   </div>
