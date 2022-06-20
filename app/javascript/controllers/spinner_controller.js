@@ -2,11 +2,13 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
   static targets = [ "image" ]
+  connect () {
+    const spinner = this.imageTarget
+    console.log(spinner)
+  }
 
-  connect() {
-    console.log("spiner")
-    setTimeout(() => {
-      this.element.remove()
-    }, 2500);
+  display() {
+  const spinner = this.imageTarget
+  spinner.classList.remove('d-none');
   }
 }

@@ -3,6 +3,7 @@ class ProducersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :filter
 
   def index
+    sleep 2
     # if params[:query].present?
     #   @producers = Producer.global_search(params[:query])
     # end
