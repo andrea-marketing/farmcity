@@ -155,7 +155,7 @@
 
     <h2>Markets</h2>
     <% if current_user == @producer.user %>
-      <% if policy(@producer).create? %>
+      <% if policy(@producer).create_market? %>
         <%= link_to ("<i class='fa-solid fa-plus'></i> Add Market").html_safe, new_producer_point_of_sale_path(@producer, @point_of_sale), class: "btn-link" %>
       <% end %>
     <% end %>
@@ -170,14 +170,18 @@
               <p class="mt-3"><%= market.address %></p>
               <p class=""><%= market.description %></p>
           </div>
-          <%= link_to ("<i class='fa-regular fa-trash-can'></i> Delete Market").html_safe,
-            producer_point_of_sale_path(@producer, point_of_sale),
-            method: :delete,
-            data: { confirm: "Are you sure?" },
-            class: "btn-link" %>
+          <% if current_user == @producer.user %>
+            <%= link_to ("<i class='fa-regular fa-trash-can'></i> Delete Market").html_safe,
+              producer_point_of_sale_path(@producer, point_of_sale),
+              method: :delete,
+              data: { confirm: "Are you sure?" },
+              class: "btn-link" %>
+          <% end %>
         </div>
       <%end%>
     <% end %>
+
+
 
       <%# <% if policy(point_of_sale).destroy? %>
 
