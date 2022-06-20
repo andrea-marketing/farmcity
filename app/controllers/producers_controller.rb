@@ -2,14 +2,21 @@ class ProducersController < ApplicationController
   before_action :set_producer, only: %i[show edit update destroy]
   skip_before_action :verify_authenticity_token, only: :filter
 
-
   def index
-    @producers = policy_scope(Producer).order(created_at: :desc)
-
     # if params[:query].present?
     #   @producers = Producer.global_search(params[:query])
     # end
-    @markers = @producers.geocoded.map do |producer|
+    if params[:query].present?
+      PgSearch::Multisearch.rebuild(policy_scope(Producer).order(created_at: :desc).geocoded)
+
+      @producers = PgSearch.multisearch(params[:query])
+
+      @producers = @producers.map(&:searchable)
+      # @producers = Producer.where(id: @producers.map(&:id))
+    else
+      @producers = policy_scope(Producer).order(created_at: :desc)
+    end
+    @markers = @producers.map do |producer|
       {
         lat: producer.latitude,
         lng: producer.longitude,

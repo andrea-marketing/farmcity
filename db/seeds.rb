@@ -148,7 +148,7 @@ agriculteur = Producer.new(name: "Terre de Liens", address: "248 Chemin du Coupe
                           description: "Production en plein-champs sur 6 hectares de fruits et de légumes de saison, en culture traditionnelle, dans la plaine des Aubes à Aubagne.
                           Notre production répond aux exigences du cahier des charges de la marque 'Les Jardins du Pays d'Aubagne'.
                           Nous produisons près de 50 espèces de fruits et légumes maraîchers avec des façons et techniques culturales héritées de nos ancêtres
-                          que nous avons modernisées et adaptées à la demande actuelle.", contact: "terre-de-liens@gmail.com", user: user1)
+                          que nous avons modernisées et adaptées à la demande actuelle.", contact: "terre-de-liens@gmail.com", user: user2)
 agriculteur.photos.attach(photos_agriculteur)
 agriculteur.category_list = ["🥬 Veggetables"]
 agriculteur.save
@@ -170,7 +170,7 @@ pecheur2.save
 
 lait = Producer.new(name: "Ferme Mistral", address: "800 chemin des cabans 13300 Salon-de-Provence", producer_type: "Production de produits laitiers",
                    description: "La Cabrouno, un élevage au naturel de vaches aux portes d'Aix-en-Provence !
-                   Les vaches puisent dans les garrigues provençales la nourriture qui donne à leur lait et leurs fromages un goût aussi merveilleux…", contact: "ferme-mistral@gmail.com", user: user1)
+                   Les vaches puisent dans les garrigues provençales la nourriture qui donne à leur lait et leurs fromages un goût aussi merveilleux…", contact: "ferme-mistral@gmail.com", user: user2)
 lait.photos.attach(photos_lait)
 lait.category_list = ["🥛 Milk"]
 lait.save
@@ -180,7 +180,7 @@ fromage = Producer.new(name: "La Fromagerie Magnaldi", address: "83740 La Cadiè
                        Nous travaillons en famille, chacun a son rôle. Notre fils Jérôme, est le spécialiste du fromage, il fabrique des tommes, de la crème fraiche, du beurre en certaines périodes.
                        Roger Magnaldi s'occupe des soins des animaux et de tous les agencements et réparations du matériel.
                        Christine Magnaldi sort le troupeau, aide à la fabrication des fromages et assure quelques marchés.
-                       Notre belle fille Sandra vend également les fromages.", contact: "fromagerie-magnaldi@gmail.com", user: user1)
+                       Notre belle fille Sandra vend également les fromages.", contact: "fromagerie-magnaldi@gmail.com", user: user2)
 fromage.photos.attach(photos_fromage)
 apiculteur.category_list = ["🧀 Cheese"]
 fromage.save
