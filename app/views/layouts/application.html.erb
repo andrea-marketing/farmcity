@@ -18,18 +18,18 @@
   </head>
 
   <body>
-    <!-- Navbar all except hom-->
+    <!-- Navbar all except home -->
 
-    <% if (controller_name != "pages")%>
+    <% unless (controller_name == "pages" && action_name == "home")%>
       <%= render 'shared/navbar' %>
     <% end %>
 
       <%= yield %>
     <%= render 'shared/flashes'  %>
 
-    <!-- Footer all except hom-->
+    <!-- Footer all except home -->
 
-    <% if (controller_name != "pages")%>
+    <% unless (controller_name == "pages" && action_name == "home")%>
       <%= render 'shared/footer' %>
     <% end %>
   </body>
