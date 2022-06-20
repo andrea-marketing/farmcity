@@ -2,13 +2,15 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
 
-      <!-- Search bar -->
+      <!-- New search bar judith -->
       <%= form_tag producers_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          id: "searchbar-index" %>
-        <%= submit_tag "Search", class: "d-none" %>
+          id: "searchbar-index",
+          placeholder: "Find a producer"
+        %>
+        <%= submit_tag "Search", :name => nil, class: "d-none" %>
       <% end %>
 
       <h2>Categories</h2>
@@ -40,6 +42,7 @@
       </div>
 
       <!-- Add new producer profile -->
+
 
     </div>
 
