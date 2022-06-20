@@ -36,7 +36,7 @@
         <% if @producer.favorite?(current_user)%>
           <p><%= link_to ("<i class='fa-regular fa-heart'></i>").html_safe, producer_favorites_path(@producer), method: :post %></p>
         <% else %>
-          <p><%= link_to ("<i class='fa-solid fa-heart'></i>").html_safe, favorite_path(@producer.user_favorite(current_user)), method: :delete, data: { confirm: "Are you sure?" } %></p>
+          <p><%= link_to ("<i class='fa-solid fa-heart'></i>").html_safe, favorite_path(@producer.user_favorite(current_user)), method: :delete %></p>
         <%end%>
       <% else %>
         <% if policy(Favorite).create? %>
