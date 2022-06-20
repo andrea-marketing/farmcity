@@ -127,7 +127,7 @@ eleveur_vache2 = Producer.new(name: "Les delices du Scamandre", address: "11951 
                              Nous commercialisons toute l'année sur l'exploitation et en expédition dans la France entière et plus, toute notre excellente viande de taureau (qui en aop taureau de Camargue et recommandé par les nutritionnistes, car pauvre en matière grasses saturé), terrines (plus de 25 différentes), plats préparé (comme la gardiane plat emblématique de Camargue, tripes, bolognaise de taureau avec beaucoup de viande...) charcuteries de taureau, jambon de taureau ...
                              Notre troupeau et en total liberté alimenté exclusivement de l'herbe de l'exploitation, des foins, luzernes et céréales que nous produisons.", contact: "les-delices-du-scamandre@gmail.com", user: user1)
 eleveur_vache2.photos.attach(photos_vache2)
-eleveur_vache2.category_list = ["🐮 Cow"]
+eleveur_vache2.category_list = ["🐮 Cow", "🥩 Meat"]
 eleveur_vache2.save
 
 eleveur_moutons = Producer.new(name: "Les bons Agneaux", address: "13530 Trets", producer_type: "Elevage de moutons",
@@ -141,7 +141,7 @@ eleveur_poulet = Producer.new(name: "La Poule de Crau", address: "Chemin du mas 
                             description: "Située au pied des monts de Vaucluse, en plein cœur du Parc Naturel Régional du Luberon, notre exploitation agricole Poules & Co. est implantée sur une terre arborée de chênes verts dans un environnement calme. Retrouvez-nous Laura, Samantha et Manon. Nous avons choisi pour les poulets et les poules pondeuses, de produire selon le cahier des charges de l'agriculture biologique, le tout pour des produits de qualité.",
                             contact: "la-poule-de-crau@gmail.com", user: user2)
 eleveur_poulet.photos.attach(photos_poulet)
-eleveur_poulet.category_list = [ "🐔 Chicken"]
+eleveur_poulet.category_list = [ "🐔 Chicken","🥚 Eggs"]
 eleveur_poulet.save
 
 agriculteur = Producer.new(name: "Terre de Liens", address: "248 Chemin du Coupereau, 83320 Carqueiranne", producer_type: "Production de fruits et légumes",
@@ -150,7 +150,7 @@ agriculteur = Producer.new(name: "Terre de Liens", address: "248 Chemin du Coupe
                           Nous produisons près de 50 espèces de fruits et légumes maraîchers avec des façons et techniques culturales héritées de nos ancêtres
                           que nous avons modernisées et adaptées à la demande actuelle.", contact: "terre-de-liens@gmail.com", user: user2)
 agriculteur.photos.attach(photos_agriculteur)
-agriculteur.category_list = ["🥬 Veggetables"]
+agriculteur.category_list = ["🥬 Veggetables", "🍏 Fruits", "🍇 Wine"]
 agriculteur.save
 
 pecheur = Producer.new(name: "Pierre et le Loup", address: "205 All. de la Petite Mer, 83500 La Seyne-sur-Mer", producer_type: "Elevage de poissons et fruits de mer",
@@ -172,7 +172,7 @@ lait = Producer.new(name: "Ferme Mistral", address: "800 chemin des cabans 13300
                    description: "La Cabrouno, un élevage au naturel de vaches aux portes d'Aix-en-Provence !
                    Les vaches puisent dans les garrigues provençales la nourriture qui donne à leur lait et leurs fromages un goût aussi merveilleux…", contact: "ferme-mistral@gmail.com", user: user2)
 lait.photos.attach(photos_lait)
-lait.category_list = ["🥛 Milk"]
+lait.category_list = ["🥛 Milk", "🧀 Cheese"]
 lait.save
 
 fromage = Producer.new(name: "La Fromagerie Magnaldi", address: "83740 La Cadière-d'Azur", producer_type: "Production de produits laitiers",
@@ -182,7 +182,7 @@ fromage = Producer.new(name: "La Fromagerie Magnaldi", address: "83740 La Cadiè
                        Christine Magnaldi sort le troupeau, aide à la fabrication des fromages et assure quelques marchés.
                        Notre belle fille Sandra vend également les fromages.", contact: "fromagerie-magnaldi@gmail.com", user: user2)
 fromage.photos.attach(photos_fromage)
-fromage.category_list = ["🧀 Cheese"]
+fromage.category_list = ["🧀 Cheese", "🐐 Goat"]
 fromage.save
 
 # markets
