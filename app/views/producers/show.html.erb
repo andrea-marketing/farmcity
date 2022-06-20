@@ -79,32 +79,33 @@
   <% end %>
 
   <!-- Product list -->
-
-  <% @producer.products.each do |product| %>
-    <div class="card-product">
-      <% if product.photo.attached? %>
-        <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-      <div class="card-product-infos">
-        <h3><%= product.name %></h3>
+  <div class="cards-products">
+    <% @producer.products.each do |product| %>
+      <div class="card-product">
+        <% if product.photo.attached? %>
+          <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+        <div class="title">
+          <h3><%= product.name %></h3>
+          <% if policy(product).edit? %>
+            <%= link_to ("<i class='fa-regular fa-pen-to-square'></i>").html_safe,  edit_producer_product_path(@producer, product), class: "btn-link" %>
+          <% end %>
+        </div>
         <p><%= product.category_list %></p>
         <p><%= product.description %></p>
-        <p><%= product.price %></p>
+        <div class="card-product-infos">
+          <p><i class="fa-solid fa-money-bill"></i> <%= product.price %></p>
+            <% if policy(product).destroy? %>
+              <%= link_to ("<i class='fa-regular fa-trash-can'></i>").html_safe,
+                producer_product_path(@producer, product),
+                method: :delete,
+                class: "btn-link",
+                data: { confirm: "Are you sure?" } %>
+            <% end %>
+        </div>
       </div>
-      <div class="buttons">
-        <% if policy(product).edit? %>
-          <%= link_to ("<i class='fa-regular fa-pen-to-square'></i>").html_safe,  edit_producer_product_path(@producer, product), class: "btn-link" %>
-        <% end %>
-        <% if policy(product).destroy? %>
-          <%= link_to ("<i class='fa-regular fa-trash-can'></i>").html_safe,
-            producer_product_path(@producer, product),
-            method: :delete,
-            class: "btn-link",
-            data: { confirm: "Are you sure?" } %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
 
 
