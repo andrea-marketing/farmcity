@@ -23,6 +23,6 @@ class PointOfSalePolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    true
   end
 end
