@@ -5,7 +5,7 @@
         <h3>Add your market <%= @producer.name %> list</h3>
         <%= simple_form_for [@producer, @point_of_sale] do |f| %>
           <%= f.association :market, prompt: 'Select a market'%>
-          <%= f.submit class: 'btn btn-info' %>
+          <%= f.submit class: 'btn btn-red' %>
         <% end %>
       </div>
     </div>
