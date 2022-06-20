@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <div class="profile">
+        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <br>
+        <%= cl_image_tag @user.photo.key %>
+        <br>
+        <p><%= @user.email %></p>
+        <br>
+        <%= link_to ("<i class='fa-solid fa-pencil'></i> Edit profile").html_safe, edit_user_registration_path(@user), class: "btn-red" %>
+      </div>
+    </div>
+  </div>
+</div>
