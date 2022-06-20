@@ -30,9 +30,16 @@ class ProducersController < ApplicationController
 
     @producers = Producer.tagged_with(categories_name, :any => true)
 
-    respond_to do |format|
-      format.html # Follow regular flow of Rails
-      format.text { render partial: 'producers', locals: { producers: @producers }, formats: [:html] }
+    if @producers.empty?
+      respond_to do |format|
+        format.html # Follow regular flow of Rails
+        format.text { render partial: 'producers', locals: { producers: Producer.all }, formats: [:html] }
+      end
+    else
+      respond_to do |format|
+        format.html # Follow regular flow of Rails
+        format.text { render partial: 'producers', locals: { producers: @producers }, formats: [:html] }
+      end
     end
 
     skip_authorization
