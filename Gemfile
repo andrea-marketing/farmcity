@@ -50,6 +50,9 @@ gem 'simple_form', github: 'heartcombo/simple_form'
 
 gem "geocoder"
 
+gem 'loading_screen', '~> 0.2.3'
+
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
