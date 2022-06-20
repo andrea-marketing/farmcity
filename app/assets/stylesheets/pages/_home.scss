@@ -1,7 +1,23 @@
-// Specific CSS for your home-page
-.box{
-  background-color: white;
-  padding: 31px;
-  border: 1px solid $dark-red;
-  text-align: center;
+
+.banner{
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0, 0, 0, 0.149)), url(https://images.unsplash.com/photo-1589483233144-795633bf597c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGZhcm1lcnMlMjBtYXJrZXR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
