@@ -150,7 +150,7 @@ agriculteur = Producer.new(name: "Terre de Liens", address: "248 Chemin du Coupe
                           Nous produisons près de 50 espèces de fruits et légumes maraîchers avec des façons et techniques culturales héritées de nos ancêtres
                           que nous avons modernisées et adaptées à la demande actuelle.", contact: "terre-de-liens@gmail.com", user: user2)
 agriculteur.photos.attach(photos_agriculteur)
-agriculteur.category_list = ["🥬 Veggetables", "🍏 Fruits", "🍇 Wine"]
+agriculteur.category_list = ["🥬 Vegetables", "🍏 Fruits", "🍇 Wine"]
 agriculteur.save
 
 pecheur = Producer.new(name: "Pierre et le Loup", address: "205 All. de la Petite Mer, 83500 La Seyne-sur-Mer", producer_type: "Elevage de poissons et fruits de mer",
