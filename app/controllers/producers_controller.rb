@@ -32,6 +32,7 @@ class ProducersController < ApplicationController
         image_url: helpers.asset_url("ble.png")
       }
     end
+
     @categories = Producer.category_counts
   end
 
