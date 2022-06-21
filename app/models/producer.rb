@@ -10,6 +10,7 @@ class Producer < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :users, through: :favorites
   has_many :posts, dependent: :destroy
 
   geocoded_by :address
@@ -41,5 +42,9 @@ class Producer < ApplicationRecord
       end
     end
     return favorites[0]
+  end
+
+  def notifiees
+    self.users
   end
 end
