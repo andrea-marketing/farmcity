@@ -195,12 +195,12 @@ plaine_market.save
 soleil_market = Market.new(name: "Marché Du Soleil", address: "5 Rue Fauchier, 13002 Marseille", description: "Il serait dommage de venir à Marseille sans un petit tour par le marché du soleil ! Dans cette ville géographiquement et historiquement proche de l'Afrique du Nord, c'est un véritable souk oriental que vous découvrirez avenue Camille Pelletan, près de la porte d'Aix. Epices, fruits et légumes, vêtements, objets de décoration… le dépaysement est total !", market_type: "market")
 soleil_market.save
 
-#shops
-naturalia_shop = Market.new(name: "Naturalia", address: "87 Rue d'Italie, 13006 Marseille", description: "Le meilleur magasin bio de Marseille avec des prix équitables et bien moindre que ceux des concurrents 'bio-opportunistes'. Il y a un véritable engagement chez Naturalia, tant du point de vue écologique que pour les producteurs", market_type: "shop", opening_time: "Du lundi au samedi, de 9h00 à 19h00")
-naturalia_shop.save
+# shops
+potager_shop = Market.new(name: "Potager City", address: "87 Rue d'Italie, 13006 Marseille", description: "Le meilleur magasin bio de Marseille avec des prix équitables et bien moindre que ceux des concurrents 'bio-opportunistes'. Il y a un véritable engagement chez Potager City, tant du point de vue écologique que pour les producteurs", market_type: "shop", opening_time: "Du lundi au samedi, de 9h00 à 19h00")
+potager_shop.save
 
-bioprovence_shop = Market.new(name: "Bio Provence", address: "90 Bd de la Corderie, 13007 Marseille", description: "Bio Provence est une épicerie fine bio mettant en valeur les petits producteurs de la région provençale au travers de produits locaux rigoureusement sélectionnés.", market_type: "shop", opening_time: "Du lundi au samedi, de 10h00 à 18h00")
-bioprovence_shop.save
+biofarm_shop = Market.new(name: "Bio Farm", address: "90 Bd de la Corderie, 13007 Marseille", description: "Bio Farm est une épicerie fine bio mettant en valeur les petits producteurs de la région provençale au travers de produits locaux rigoureusement sélectionnés.", market_type: "shop", opening_time: "Du lundi au samedi, de 10h00 à 18h00")
+biofarm_shop.save
 
 biocbon_shop = Market.new(name: "Bio c' Bon", address: "20 La Canebière, 13001 Marseille", description: "Bio c’ Bon d’habiter le quartier avec nos fruits et légumes frais et tous nos produits bio sélectionnés avec soin. Chez Bio c’ Bon, on essaie d’être un peu plus qu’un magasin : un lieu où on se rencontre, on discute et on déguste, on se rend des services, on se donne des tips, on laisse ses plantes vertes quand on part en vacances. Oui oui, tout ça dans un magasin bio. Et bien plus encore. Passez nous voir !", market_type: "shop", opening_time: "Du lundi au samedi, de 9h00 à 20h00")
 biocbon_shop.save
