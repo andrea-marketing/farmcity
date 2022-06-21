@@ -13,6 +13,9 @@ class ProductsController < ApplicationController
     @product.producer = @producer
     @product.user = current_user
     if @product.save
+      @producer.notifiees.each do |notifiee|
+        Notification.create(url: producer_path(@producer), content: "#{@producer.name} added a new product", user: notifiee)
+      end
       redirect_to producer_path(@producer)
     else
       render :new
