@@ -8,11 +8,11 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
 
-  # TAGS = [["🍏", "Fruits"], ["🥬", "Veggetables"], ["🥩", "Meat"], ["🥛", "Milk"], ["🧀", "Cheese"], ["🌷", "Flowers"],
+  # TAGS = [["🍏", "Fruits"], ["🥬", "Vegetables"], ["🥩", "Meat"], ["🥛", "Milk"], ["🧀", "Cheese"], ["🌷", "Flowers"],
           # ["🥬", "Chicken"], ["🥬", "Cow"], ["🥬", "Goat"], ["🥬", "Sheep"], ["🥬", "Fish"], ["🥬", "Honey"], ["🥬", "Eggs"],
           # ["🥬", "Wine"], ["🥬", "Bread"]]
 
-  TAGS = ["🍏 Fruits", "🥬 Veggetables", "🥩 Meat", "🥛 Milk", "🧀 Cheese", "🌷 Flowers",
+  TAGS = ["🍏 Fruits", "🥬 Vegetables", "🥩 Meat", "🥛 Milk", "🧀 Cheese", "🌷 Flowers",
           "🐔 Chicken", "🐮 Cow", "🐐 Goat", "🐑 Sheep", "🐟 Fish", "🐝 Honey", "🥚 Eggs",
           "🍇 Wine", "🥖 Bread"]
 

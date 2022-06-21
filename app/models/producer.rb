@@ -10,13 +10,14 @@ class Producer < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
   validates :contact, presence: true
 
-  TAGS = ["🍏 Fruits", "🥬 Veggetables", "🥩 Meat", "🥛 Milk", "🧀 Cheese", "🌷 Flowers",
+  TAGS = ["🍏 Fruits", "🥬 Vegetables", "🥩 Meat", "🥛 Milk", "🧀 Cheese", "🌷 Flowers",
     "🐔 Chicken", "🐮 Cow", "🐐 Goat", "🐑 Sheep", "🐟 Fish", "🐝 Honey", "🥚 Eggs",
     "🍇 Wine", "🥖 Bread"]
 
