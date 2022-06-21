@@ -2,9 +2,18 @@
   <div class="row justify-content-center">
 
     <div class="col-12 col-lg-6">
-
+    <% if @address.present? %>
+      <a class="btn-link" ><%= params[:address] %></a>
+    <% end %>
       <!-- New search bar judith -->
       <%= form_tag producers_path, method: :get do %>
+        <%= text_field_tag :address,
+              params[:address],
+              class: "form-control d-none",
+              id: "searchbar-index",
+              placeholder: "Enter an address",
+              value: @address
+            %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",

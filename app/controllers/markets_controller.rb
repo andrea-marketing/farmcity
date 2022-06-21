@@ -2,6 +2,24 @@ class MarketsController < ApplicationController
   before_action :set_market, only: [:show]
 
   def index
+    if params[:query].present?
+      PgSearch::Multisearch.rebuild(policy_scope(Market).order(created_at: :desc).geocoded)
+
+      @markets = PgSearch.multisearch(params[:query])
+
+      @markets = @markets.map(&:searchable)
+      # @markets = market.where(id: @markets.map(&:id))
+    else
+      @markets = policy_scope(Market).order(created_at: :desc)
+    end
+    @markers = @markets.map do |market|
+      {
+        lat: market.latitude,
+        lng: market.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { market: market }),
+        image_url: helpers.asset_url("market.png")
+      }
+    end
     @markets = policy_scope(Market).order(created_at: :desc)
   end
 
