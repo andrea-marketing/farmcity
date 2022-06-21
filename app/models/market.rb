@@ -2,6 +2,8 @@ class Market < ApplicationRecord
   has_many :point_of_sale, dependent: :destroy
   has_many :producers, through: :point_of_sale
 
+  has_one_attached :photo
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 

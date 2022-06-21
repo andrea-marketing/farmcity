@@ -33,7 +33,7 @@ class PointOfSalesController < ApplicationController
   private
 
   def point_of_sale_params
-    params.require(:point_of_sale).permit(:producer_id, :market_id)
+    params.require(:point_of_sale).permit(:producer_id, :market_id, :photo)
   end
 
   def set_point_of_sale
