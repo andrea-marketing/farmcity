@@ -2,17 +2,34 @@
   <div class="row justify-content-center">
 
     <div class="col-12 col-lg-6">
+      <p> Hello <i class="highlight"> <%=current_user.first_name %> </i> 👋🏼 !! </p>
 
-      <!-- New search bar judith -->
-      <%= form_tag producers_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          id: "searchbar-index",
-          placeholder: "Find a producer"
-        %>
-        <%= submit_tag "Search", :name => nil, class: "d-none" %>
-      <% end %>
+      <div class="search" data-controller="disable-address">
+        <% if @address.present? %>
+          <a class="btn-link-search" data-action="click->disable-address#disable" data-disable-address-target="button" ><i class="fa-solid fa-map-pin"></i>&nbsp&nbsp<%= params[:address] %></a>
+        <% else %>
+          <a class="btn-link-search" data-action="click->disable-address#disable" data-disable-address-target="button" ><i class="fa-solid fa-map-pin"></i>&nbsp&nbsp Search by address</a>
+        <% end %>
+          <!-- New search bar judith -->
+          <%= form_tag producers_path, method: :get do %>
+            <%= text_field_tag :address,
+                  params[:address],
+                  data: { disable_address_target: "input" },
+                  # wrapper_html: { data: { controller: "disable-address"}},
+                  class: "form-control d-none",
+                  id: "searchbar-index",
+                  placeholder: "Enter an address",
+                  value: @address
+                %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              id: "searchbar-index",
+              placeholder: "Find a producer"
+            %>
+            <%= submit_tag "Search", :name => nil, class: "d-none" %>
+          <% end %>
+      </div>
 
       <h2>Categories</h2>
 
