@@ -2,9 +2,9 @@
   <%= link_to market_path(market) , :action => 'go' do %>
     <div class="card-market">
       <div class="image">
-        <%# <% if market.photos.attached? %>
-            <%# <%= cl_image_tag market.photos.first.key, height: 300, width: 400, crop: :fill %>
-        <%# <% end %>
+        <% if market.photo.attached? %>
+            <%= cl_image_tag market.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
       </div>
     <div class="card-market-info">
       <p><strong><%= market.name %></strong></p>

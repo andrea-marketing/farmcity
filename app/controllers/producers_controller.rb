@@ -6,7 +6,7 @@ class ProducersController < ApplicationController
     # index producers
     @producers = policy_scope(Producer).order(created_at: :desc).geocoded
     @address = params[:address]
-
+    @markers = []
 
     if params[:query].present?
       PgSearch::Multisearch.rebuild(@producers)
@@ -19,11 +19,11 @@ class ProducersController < ApplicationController
     end
 
     if params[:address].present?
-      @producers = @producers.near(params[:address], 200)
+      @producers = @producers.near(params[:address], 90)
     end
 
-    @markers = @producers.map do |producer|
-      {
+    @producers.map do |producer|
+      @markers << {
         lat: producer.latitude,
         lng: producer.longitude,
         info_window: render_to_string(partial: "info_window_producers", locals: { producer: producer }),
@@ -45,8 +45,8 @@ class ProducersController < ApplicationController
       else
         @markets = policy_scope(Market).order(created_at: :desc)
       end
-      @markers = @markets.map do |market|
-        {
+       @markets.map do |market|
+        @markers << {
           lat: market.latitude,
           lng: market.longitude,
           info_window: render_to_string(partial: "info_window_markets", locals: { market: market }),
