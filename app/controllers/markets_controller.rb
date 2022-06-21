@@ -29,7 +29,7 @@ class MarketsController < ApplicationController
   private
 
   def market_params
-    params.require(:market).permit(:address, :name, :description)
+    params.require(:market).permit(:address, :name, :description, :photo)
   end
 
   def set_market

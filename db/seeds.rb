@@ -186,21 +186,17 @@ fromage.category_list = ["🧀 Cheese", "🐐 Goat"]
 fromage.save
 
 # markets
-castellane_market = Market.new(name: "Marché du Prado", address: "99 Av. du Prado, 13008 Marseille", description: "Vaste marché en plein air proposant large choix d'articles, des produits frais aux vêtements d'occasion.", market_type: "market")
-castellane_market.save
-
-plaine_market = Market.new(name: "Marché de la Plaine", address: "Pl. Jean Jaurès, 13001 Marseille", description: "Après presque 4 ans d'attente, le marché de la Plaine est de retour sur la place Jean-Jaurès. Les jours de marché seront les mardis, jeudis et samedis, comme avant les travaux.", market_type: "market")
-plaine_market.save
-
+soleil_file = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655372452/market_show_qghmvb.jpg')
 soleil_market = Market.new(name: "Marché Du Soleil", address: "5 Rue Fauchier, 13002 Marseille", description: "Il serait dommage de venir à Marseille sans un petit tour par le marché du soleil ! Dans cette ville géographiquement et historiquement proche de l'Afrique du Nord, c'est un véritable souk oriental que vous découvrirez avenue Camille Pelletan, près de la porte d'Aix. Epices, fruits et légumes, vêtements, objets de décoration… le dépaysement est total !", market_type: "market")
+soleil_market.photo.attach(io: soleil_file, filename: 'soleil.jpg', content_type: 'image/jpg')
 soleil_market.save
 
-#shops
-naturalia_shop = Market.new(name: "Naturalia", address: "87 Rue d'Italie, 13006 Marseille", description: "Le meilleur magasin bio de Marseille avec des prix équitables et bien moindre que ceux des concurrents 'bio-opportunistes'. Il y a un véritable engagement chez Naturalia, tant du point de vue écologique que pour les producteurs", market_type: "shop", opening_time: "Du lundi au samedi, de 9h00 à 19h00")
-naturalia_shop.save
+plaine_file = URI.open("https://res.cloudinary.com/dj0dllkwn/image/upload/v1655796619/plaine_akqpfb.jpg")
+plaine_market = Market.new(name: "Marché de la Plaine", address: "Pl. Jean Jaurès, 13001 Marseille", description: "Après presque 4 ans d'attente, le marché de la Plaine est de retour sur la place Jean-Jaurès. Les jours de marché seront les mardis, jeudis et samedis, comme avant les travaux.", market_type: "market")
+plaine_market.photo.attach(io: plaine_file, filename: 'plaine.jpg', content_type: 'image/jpg')
+plaine_market.save
 
-bioprovence_shop = Market.new(name: "Bio Provence", address: "90 Bd de la Corderie, 13007 Marseille", description: "Bio Provence est une épicerie fine bio mettant en valeur les petits producteurs de la région provençale au travers de produits locaux rigoureusement sélectionnés.", market_type: "shop", opening_time: "Du lundi au samedi, de 10h00 à 18h00")
-bioprovence_shop.save
-
-biocbon_shop = Market.new(name: "Bio c' Bon", address: "20 La Canebière, 13001 Marseille", description: "Bio c’ Bon d’habiter le quartier avec nos fruits et légumes frais et tous nos produits bio sélectionnés avec soin. Chez Bio c’ Bon, on essaie d’être un peu plus qu’un magasin : un lieu où on se rencontre, on discute et on déguste, on se rend des services, on se donne des tips, on laisse ses plantes vertes quand on part en vacances. Oui oui, tout ça dans un magasin bio. Et bien plus encore. Passez nous voir !", market_type: "shop", opening_time: "Du lundi au samedi, de 9h00 à 20h00")
-biocbon_shop.save
+prado_file = URI.open("https://res.cloudinary.com/dj0dllkwn/image/upload/v1655796611/prado_uqcqdj.jpg")
+prado_market = Market.new(name: "Marché du Prado", address: "99 Av. du Prado, 13008 Marseille", description: "Vaste marché en plein air proposant large choix d'articles, des produits frais aux vêtements d'occasion.", market_type: "market")
+prado_market.photo.attach(io: prado_file, filename: 'prado.jpg', content_type: 'image/jpg')
+prado_market.save
