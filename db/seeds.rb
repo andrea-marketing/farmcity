@@ -202,8 +202,8 @@ prado_market.photo.attach(io: prado_file, filename: 'prado.jpg', content_type: '
 prado_market.save
 
 # shops
-potager_shop = Market.new(name: "Potager City", address: "87 Rue d'Italie, 13006 Marseille", description: "Le meilleur magasin bio de Marseille avec des prix équitables et bien moindre que ceux des concurrents 'bio-opportunistes'. Il y a un véritable engagement chez Potager City, tant du point de vue écologique que pour les producteurs", market_type: "shop", opening_time: "Du lundi au samedi, de 9h00 à 19h00")
-potager_shop.save
+# potager_shop = Market.new(name: "Potager City", address: "87 Rue d'Italie, 13006 Marseille", description: "Le meilleur magasin bio de Marseille avec des prix équitables et bien moindre que ceux des concurrents 'bio-opportunistes'. Il y a un véritable engagement chez Potager City, tant du point de vue écologique que pour les producteurs", market_type: "shop", opening_time: "Du lundi au samedi, de 9h00 à 19h00")
+# potager_shop.save
 
-biofarm_shop = Market.new(name: "Bio Farm", address: "90 Bd de la Corderie, 13007 Marseille", description: "Bio Farm est une épicerie fine bio mettant en valeur les petits producteurs de la région provençale au travers de produits locaux rigoureusement sélectionnés.", market_type: "shop", opening_time: "Du lundi au samedi, de 10h00 à 18h00")
-biofarm_shop.save
+# biofarm_shop = Market.new(name: "Bio Farm", address: "90 Bd de la Corderie, 13007 Marseille", description: "Bio Farm est une épicerie fine bio mettant en valeur les petits producteurs de la région provençale au travers de produits locaux rigoureusement sélectionnés.", market_type: "shop", opening_time: "Du lundi au samedi, de 10h00 à 18h00")
+# biofarm_shop.save
