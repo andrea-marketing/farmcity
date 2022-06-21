@@ -56,13 +56,17 @@ p {
   margin-bottom: 5px;
 }
 
-a{
+a {
   text-decoration: none;
   color: $light-grey;
   font-size: 14px;
 }
 
-a:hover{
+a:hover {
   text-decoration: none;
   color: #8D2828;
+}
+
+.producers {
+  margin-top: 10px;
 }
