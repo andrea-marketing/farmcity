@@ -10,7 +10,7 @@ require "open-uri"
 Market.destroy_all
 Producer.destroy_all
 User.destroy_all
-
+ puts "destroy finished"
 file_user1 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655133837/samples/farmcity/x5jrwv4m34jgss4tsuc4.png')
 user1 = User.create!(email: "judith@gmail.com", password: "farmcity", password_confirmation: "farmcity", first_name: "Judith", last_name: "Karouby")
 user1.photo.attach(io: file_user1, filename: 'nes.png', content_type: 'image/jpg')
@@ -18,14 +18,14 @@ user1.photo.attach(io: file_user1, filename: 'nes.png', content_type: 'image/jpg
 file_user2 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655135922/samples/farmcity/agriculteur-jardinier-icone-eleveur-illustration-avatar-personne-style-souligne-couleur_163463-327_byj0ib.jpg')
 user2 = User.create!(email: "max@gmail.com", password: "farmcity2", password_confirmation: "farmcity2", first_name: "Max", last_name: "Bernard")
 user2.photo.attach(io: file_user2, filename: 'nes.png', content_type: 'image/jpg')
-
-file_apiculteur = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
-file_poulet = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
-file_vache = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132687/samples/farmcity/farmer_hny1h7.jpg')
-file_mouton = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
-file_mouton2 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
-file_mais = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
-file_courge = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655133132/samples/farmcity/images_oqorkx.jpg')
+puts "user finished"
+#file_apiculteur = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+#file_poulet = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+#file_vache = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132687/samples/farmcity/farmer_hny1h7.jpg')
+#file_mouton = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+#file_mouton2 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+#file_mais = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655132656/samples/farmcity/images_tyeqaz.jpg')
+#file_courge = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655133132/samples/farmcity/images_oqorkx.jpg')
 file_apiculteur = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655370622/samples/farmcity/hansjorg-keller-OJHxRwXWXBs-unsplash_ubjm5g.jpg')
 file_apiculteur2 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655370611/samples/farmcity/hiveboxx-65icrs88YYs-unsplash_q0t80o.jpg')
 
@@ -187,23 +187,32 @@ fromage.save
 
 # markets
 soleil_file = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655372452/market_show_qghmvb.jpg')
-soleil_market = Market.new(name: "Marché Du Soleil", address: "5 Rue Fauchier, 13002 Marseille", description: "Il serait dommage de venir à Marseille sans un petit tour par le marché du soleil ! Dans cette ville géographiquement et historiquement proche de l'Afrique du Nord, c'est un véritable souk oriental que vous découvrirez avenue Camille Pelletan, près de la porte d'Aix. Epices, fruits et légumes, vêtements, objets de décoration… le dépaysement est total !", market_type: "market")
+soleil_market = Market.new(name: "Marché Du Soleil", address: "5 Rue Fauchier, 13002 Marseille", description: "Il serait dommage de venir à Marseille sans un petit tour par le marché du soleil ! Dans cette ville géographiquement et historiquement proche de l'Afrique du Nord, c'est un véritable souk oriental que vous découvrirez avenue Camille Pelletan, près de la porte d'Aix. Epices, fruits et légumes, vêtements, objets de décoration… le dépaysement est total !", market_type: "market", opening_time: "Du lundi au samedi de 8h00 à 13h30")
 soleil_market.photo.attach(io: soleil_file, filename: 'soleil.jpg', content_type: 'image/jpg')
 soleil_market.save
 
-plaine_file = URI.open("https://res.cloudinary.com/dj0dllkwn/image/upload/v1655796619/plaine_akqpfb.jpg")
-plaine_market = Market.new(name: "Marché de la Plaine", address: "Pl. Jean Jaurès, 13001 Marseille", description: "Après presque 4 ans d'attente, le marché de la Plaine est de retour sur la place Jean-Jaurès. Les jours de marché seront les mardis, jeudis et samedis, comme avant les travaux.", market_type: "market")
+plaine_file = URI.open("https://res.cloudinary.com/dj0dllkwn/image/upload/v1655801199/samples/farmcity/annie-spratt-kr_88BakygA-unsplash_q5pn9y.jpg")
+plaine_market = Market.new(name: "Marché de la Plaine", address: "Pl. Jean Jaurès, 13001 Marseille", description: "Après presque 4 ans d'attente, le marché de la Plaine est de retour sur la place Jean-Jaurès. Les jours de marché seront les mardis, jeudis et samedis, comme avant les travaux.", market_type: "market", opening_time: "Du lundi au samedi de 8h00 à 13h30")
 plaine_market.photo.attach(io: plaine_file, filename: 'plaine.jpg', content_type: 'image/jpg')
 plaine_market.save
 
-prado_file = URI.open("https://res.cloudinary.com/dj0dllkwn/image/upload/v1655796611/prado_uqcqdj.jpg")
-prado_market = Market.new(name: "Marché du Prado", address: "99 Av. du Prado, 13008 Marseille", description: "Vaste marché en plein air proposant large choix d'articles, des produits frais aux vêtements d'occasion.", market_type: "market")
+prado_file = URI.open("https://res.cloudinary.com/dj0dllkwn/image/upload/v1655801168/samples/farmcity/jonathan-noack-f1jcqskqsBM-unsplash_qxkx7y.jpg")
+prado_market = Market.new(name: "Marché du Prado", address: "99 Av. du Prado, 13008 Marseille", description: "Vaste marché en plein air proposant large choix d'articles, des produits frais aux vêtements d'occasion.", market_type: "market", opening_time: "Du lundi au samedi de 8h00 à 13h30")
 prado_market.photo.attach(io: prado_file, filename: 'prado.jpg', content_type: 'image/jpg')
 prado_market.save
 
 # shops
-# potager_shop = Market.new(name: "Potager City", address: "87 Rue d'Italie, 13006 Marseille", description: "Le meilleur magasin bio de Marseille avec des prix équitables et bien moindre que ceux des concurrents 'bio-opportunistes'. Il y a un véritable engagement chez Potager City, tant du point de vue écologique que pour les producteurs", market_type: "shop", opening_time: "Du lundi au samedi, de 9h00 à 19h00")
-# potager_shop.save
+potager_file = URI.open("https://res.cloudinary.com/dj0dllkwn/image/upload/v1655801004/samples/farmcity/muneeb-syed-fAu1Ai0Xh4s-unsplash_vf2o9i.jpg")
+potager_shop = Market.new(name: "Potager City", address: "87 Rue d'Italie, 13006 Marseille", description: "Le meilleur magasin bio de Marseille avec des prix équitables et bien moindre que ceux des concurrents 'bio-opportunistes'. Il y a un véritable engagement chez Potager City, tant du point de vue écologique que pour les producteurs", market_type: "shop", opening_time: "Du lundi au samedi, de 9h00 à 19h00")
+potager_shop.photo.attach(io: potager_file, filename: 'nes.jpg', content_type: 'image/jpg')
+potager_shop.save
 
-# biofarm_shop = Market.new(name: "Bio Farm", address: "90 Bd de la Corderie, 13007 Marseille", description: "Bio Farm est une épicerie fine bio mettant en valeur les petits producteurs de la région provençale au travers de produits locaux rigoureusement sélectionnés.", market_type: "shop", opening_time: "Du lundi au samedi, de 10h00 à 18h00")
-# biofarm_shop.save
+biofarm_file = URI.open("https://res.cloudinary.com/dj0dllkwn/image/upload/v1655801158/samples/farmcity/lona-0BaEdsR8IRY-unsplash_t1rpbq.jpg")
+biofarm_shop = Market.new(name: "Bio Farm", address: "90 Bd de la Corderie, 13007 Marseille", description: "Bio Farm est une épicerie fine bio mettant en valeur les petits producteurs de la région provençale au travers de produits locaux rigoureusement sélectionnés.", market_type: "shop", opening_time: "Du lundi au samedi, de 10h00 à 18h00")
+biofarm_shop.photo.attach(io: biofarm_file, filename: 'nes.jpg', content_type: 'image/jpg')
+biofarm_shop.save
+
+green_file = URI.open("https://res.cloudinary.com/dj0dllkwn/image/upload/v1655801074/samples/farmcity/jason-blackeye-K1uLEiqTQEA-unsplash_qroyiz.jpg")
+green_shop = Market.new(name: "Green", address: "51 Bd Chave, 13005 Marseille", description: "Green est une épicerie de produits bio provenants de producteurs locaux.", market_type: "shop", opening_time: "Du lundi au samedi, de 10h00 à 18h00")
+green_shop.photo.attach(io: green_file, filename: 'nes.jpg', content_type: 'image/jpg')
+green_shop.save
