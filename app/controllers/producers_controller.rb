@@ -3,28 +3,57 @@ class ProducersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :filter
 
   def index
-    # if params[:query].present?
-    #   @producers = Producer.global_search(params[:query])
-    # end
+    # index producers
+    @producers = policy_scope(Producer).order(created_at: :desc).geocoded
+    @address = params[:address]
+    @markers = []
+
     if params[:query].present?
-      PgSearch::Multisearch.rebuild(policy_scope(Producer).order(created_at: :desc).geocoded)
+      PgSearch::Multisearch.rebuild(@producers)
 
       @producers = PgSearch.multisearch(params[:query])
 
-      @producers = @producers.map(&:searchable)
+      producers_ids = @producers.map(&:searchable).map(&:id)
+      @producers = Producer.where(id: producers_ids)
       # @producers = Producer.where(id: @producers.map(&:id))
-    else
-      @producers = policy_scope(Producer).order(created_at: :desc)
     end
-    @markers = @producers.map do |producer|
-      {
+
+    if params[:address].present?
+      @producers = @producers.near(params[:address], 90)
+    end
+
+    @producers.map do |producer|
+      @markers << {
         lat: producer.latitude,
         lng: producer.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { producer: producer }),
+        info_window: render_to_string(partial: "info_window_producers", locals: { producer: producer }),
         image_url: helpers.asset_url("ble.png")
       }
     end
+
     @categories = Producer.category_counts
+
+    # index markets
+      @markets = policy_scope(Market).order(created_at: :desc)
+      if params[:query].present?
+        PgSearch::Multisearch.rebuild(policy_scope(Market).order(created_at: :desc).geocoded)
+
+        @markets = PgSearch.multisearch(params[:query])
+
+        @markets = @markets.map(&:searchable)
+        # @markets = market.where(id: @markets.map(&:id))
+      else
+        @markets = policy_scope(Market).order(created_at: :desc)
+      end
+       @markets.map do |market|
+        @markers << {
+          lat: market.latitude,
+          lng: market.longitude,
+          info_window: render_to_string(partial: "info_window_markets", locals: { market: market }),
+          image_url: helpers.asset_url("market.png")
+        }
+      end
+      @markets = policy_scope(Market).order(created_at: :desc)
   end
 
   def filter
