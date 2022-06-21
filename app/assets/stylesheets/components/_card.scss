@@ -1,6 +1,6 @@
 // Producer Cards
 .cards{
-  align-items: center;
+  // align-items: center;
   display: flex;
   flex-direction: column;
 }
@@ -15,8 +15,8 @@
   transition: 0.4s;
   position: relative;
   flex-direction: column;
-  width: fit-content;
-  max-width: 300px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .card-producer:hover{
@@ -28,13 +28,14 @@
   bottom: 50px;
   color: white;
   font-size: 20px;
+
 }
 
 .card-producer img {
   height: 140px;
-  width: 290px;
+  width: 100%;
   object-fit: cover;
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 .card-producer h2 {
@@ -180,5 +181,13 @@
 }
 
 .card-market h2 {
+  margin: 10px 0;
+}
+
+.card-blog {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 10px;
+  border-radius: 4px;
   margin: 10px 0;
 }
