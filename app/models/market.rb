@@ -10,4 +10,8 @@ class Market < ApplicationRecord
   validates :name, presence: true
   validates :address, presence: true
   validates :description, presence: true
+  validates :market_type, presence: true
+
+  TAGS = ["shop", "market", "restaurant"]
+  acts_as_taggable_on :types_of_point_of_sale
 end

@@ -17,8 +17,8 @@ class Producer < ApplicationRecord
   validates :contact, presence: true
 
   TAGS = ["🍏 Fruits", "🥬 Veggetables", "🥩 Meat", "🥛 Milk", "🧀 Cheese", "🌷 Flowers",
-    "🐔 Chicken", "🐮 Cow", "🐐 Goat", "🐑 Sheep", "🐟 Fish", "🐝 Honey", "🥚 Eggs",
-    "🍇 Wine", "🥖 Bread"]
+          "🐔 Chicken", "🐮 Cow", "🐐 Goat", "🐑 Sheep", "🐟 Fish", "🐝 Honey", "🥚 Eggs",
+          "🍇 Wine", "🥖 Bread"]
 
   acts_as_taggable_on :categories
 
