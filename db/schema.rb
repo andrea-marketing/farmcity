@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2022_06_21_085748) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
+    t.string "market_type"
+    t.string "opening_time"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
