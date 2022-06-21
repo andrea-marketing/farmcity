@@ -3,9 +3,7 @@ class ProducersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :filter
 
   def index
-    # if params[:query].present?
-    #   @producers = Producer.global_search(params[:query])
-    # end
+    # index producers
     @producers = policy_scope(Producer).order(created_at: :desc).geocoded
     @address = params[:address]
 
@@ -28,12 +26,34 @@ class ProducersController < ApplicationController
       {
         lat: producer.latitude,
         lng: producer.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { producer: producer }),
+        info_window: render_to_string(partial: "info_window_producers", locals: { producer: producer }),
         image_url: helpers.asset_url("ble.png")
       }
     end
 
     @categories = Producer.category_counts
+
+    # index markets
+      @markets = policy_scope(Market).order(created_at: :desc)
+      if params[:query].present?
+        PgSearch::Multisearch.rebuild(policy_scope(Market).order(created_at: :desc).geocoded)
+
+        @markets = PgSearch.multisearch(params[:query])
+
+        @markets = @markets.map(&:searchable)
+        # @markets = market.where(id: @markets.map(&:id))
+      else
+        @markets = policy_scope(Market).order(created_at: :desc)
+      end
+      @markers = @markets.map do |market|
+        {
+          lat: market.latitude,
+          lng: market.longitude,
+          info_window: render_to_string(partial: "info_window_markets", locals: { market: market }),
+          image_url: helpers.asset_url("market.png")
+        }
+      end
+      @markets = policy_scope(Market).order(created_at: :desc)
   end
 
   def filter
