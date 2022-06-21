@@ -6,24 +6,16 @@ class ProducersController < ApplicationController
     # if params[:query].present?
     #   @producers = Producer.global_search(params[:query])
     # end
-    @producers = policy_scope(Producer).order(created_at: :desc).geocoded
-    @address = params[:address]
-
-
     if params[:query].present?
-      PgSearch::Multisearch.rebuild(@producers)
+      PgSearch::Multisearch.rebuild(policy_scope(Producer).order(created_at: :desc).geocoded)
 
       @producers = PgSearch.multisearch(params[:query])
 
-      producers_ids = @producers.map(&:searchable).map(&:id)
-      @producers = Producer.where(id: producers_ids)
+      @producers = @producers.map(&:searchable)
       # @producers = Producer.where(id: @producers.map(&:id))
+    else
+      @producers = policy_scope(Producer).order(created_at: :desc)
     end
-
-    if params[:address].present?
-      @producers = @producers.near(params[:address], 200)
-    end
-
     @markers = @producers.map do |producer|
       {
         lat: producer.latitude,
@@ -32,7 +24,6 @@ class ProducersController < ApplicationController
         image_url: helpers.asset_url("ble.png")
       }
     end
-
     @categories = Producer.category_counts
   end
 
