@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col p-0">
       <div class="image_market ">
-        <%= image_tag("market_show.jpg", class: "img-fluid max-width: 100%; and height: auto;")%>
+        <%= cl_image_tag @market.photo.key, height: 300, width: 400, crop: :fill %>
       </div>
     </div>
   </div>
