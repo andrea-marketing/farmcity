@@ -22,7 +22,7 @@ class ProducersController < ApplicationController
     end
 
     if params[:address].present?
-      @producers = @producers.near(params[:address], 20)
+      @producers = @producers.near(params[:address], 200)
     end
 
     @markers = @producers.map do |producer|
