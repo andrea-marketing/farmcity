@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
-        <h3>Add your market <%= @producer.name %> list</h3>
+        <h3>Add your point of sale <%= @producer.name %> list</h3>
         <%= simple_form_for [@producer, @point_of_sale] do |f| %>
           <%= f.association :market, prompt: 'Select a market'%>
           <%= f.submit class: 'btn btn-red' %>

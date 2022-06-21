@@ -19,17 +19,17 @@ class MarketsController < ApplicationController
     end
 
     @markers << {
-        lat: @market.latitude,
-        lng: @market.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { market: @market }),
-        image_url: helpers.asset_url("market.png")
-      }
+      lat: @market.latitude,
+      lng: @market.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { market: @market }),
+      image_url: helpers.asset_url("market.png")
+    }
   end
 
   private
 
   def market_params
-    params.require(:market).permit(:address, :name, :description)
+    params.require(:market).permit(:address, :name, :description, :market_type, :opening_time, :photo)
   end
 
   def set_market
