@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.producer = current_user.producers.first
+    @post.producer = current_user.producers
     authorize @post
     console
     if @post.save

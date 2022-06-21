@@ -1,2 +1,18 @@
-<% content_for :page_title, "Create a new post" %>
-<%= render 'form' %>
+<%# <% content_for :page_title, "Create a new post" %>
+<%# <%= render 'form' %>
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>Create a new post</h3>
+        <%= simple_form_for [@post] do |f| %>
+          <%= f.association :producer, prompt: 'Select a producer'%>
+          <%= f.input :title %>
+          <%= f.input :content %>
+          <%= f.submit class: 'btn btn-red' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
