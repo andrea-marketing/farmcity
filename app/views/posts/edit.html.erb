@@ -4,6 +4,7 @@
       <h2 class="form-title"> Edit a post </h2>
         <%= simple_form_for (@post) do |f| %>
           <%= f.input :title %>
+          <%= f.input :photo, as: :file %>
           <%= f.input :content %>
           <%= f.submit "Edit post", class: "btn btn-red" %>
         <% end %>

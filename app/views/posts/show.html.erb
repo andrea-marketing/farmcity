@@ -3,6 +3,9 @@
      <%= link_to ("<i class='fa-solid fa-angle-left'></i> Back").html_safe, posts_path, class: "btn-link"%>
     <div>
       <h2 class="producers"><%= @post.title %></h2>
+      <% if @post.photo.attached? %>
+        <%= cl_image_tag @post.photo.key, height: 100, width: 260, crop: :fill %>
+      <% end %>
       <p><%= @post.content %></p>
     </div>
 
