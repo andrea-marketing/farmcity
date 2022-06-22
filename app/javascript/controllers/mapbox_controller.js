@@ -12,7 +12,6 @@ export default class extends Controller {
   }
 
   display()  {
-    console.log("coucou")
     if(this.mapTarget.style.position === 'absolute') {
       this.mapTarget.style.position = 'relative'
       this.mapTarget.style.top = 0
