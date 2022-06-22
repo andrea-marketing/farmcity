@@ -8,7 +8,16 @@
               <h2><%= link_to post.title, post_path(post) %></h2>
               <p><%= post.content %></p>
             </div>
-
+            <div class="card-id">
+              <div class="avatar">
+                <% if post.user.photo.attached? %>
+                  <%= cl_image_tag post.user.photo.key %>
+                <% end %>
+              </div>
+              <div class="create-date">
+                <p><%= post.created_at.strftime("%d %b, %Y") %></p>
+              </div>
+            </div>
           </div>
         <% end %>
     </div>
