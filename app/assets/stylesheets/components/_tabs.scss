@@ -1,0 +1,22 @@
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  padding: 5px;
+  background-color: $dark-green;
+  color: white;
+  font-size: 18px;
+  border-radius: 15px;
+  margin:0 35px;
+}
+
+.nav-link {
+  color: $dark-green;
+  padding: 5px;
+  font-size: 18px;
+  border-radius: 15px;
+  margin:0 35px;
+  border: 2px solid $dark-green;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+}

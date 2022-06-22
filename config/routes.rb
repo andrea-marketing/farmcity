@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   # resources :point_of_sales, only: [ :destroy ]
   resources :markets, only: [ :index, :show ]
   resources :posts, only: %i[index new create show edit update destroy]
+  resources :notifications, only: %i[index]
 end

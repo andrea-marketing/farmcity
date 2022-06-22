@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(version: 2022_06_21_155453) do
     t.string "opening_time"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "content"
+    t.boolean "read"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
@@ -177,6 +187,7 @@ ActiveRecord::Schema.define(version: 2022_06_21_155453) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "producers"
   add_foreign_key "favorites", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "point_of_sales", "markets"
   add_foreign_key "point_of_sales", "producers"
   add_foreign_key "posts", "users"

@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :favorites
   has_many :posts
+  has_many :notifications
 
   has_one_attached :photo
 

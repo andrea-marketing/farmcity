@@ -3,50 +3,106 @@
 
     <div class="col-12 col-lg-6">
 
-      <!-- New search bar judith -->
-      <%= form_tag producers_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          id: "searchbar-index",
-          placeholder: "Find a producer"
-        %>
-        <%= submit_tag "Search", :name => nil, class: "d-none" %>
-      <% end %>
+      <!-- Address & searchbar  -->
+      <div class="search" data-controller="disable-address">
+        <% if @address.present? %>
+          <a class="btn-link-search" data-action="click->disable-address#disable" data-disable-address-target="button" ><i class="fa-solid fa-map-pin"></i>&nbsp&nbsp<%= params[:address] %></a>
+        <% else %>
+          <a class="btn-link-search" data-action="click->disable-address#disable" data-disable-address-target="button" ><i class="fa-solid fa-map-pin"></i>&nbsp&nbsp Search by address</a>
+        <% end %>
 
-      <h2>Categories</h2>
-
-      <div class="filters" data-controller= "filter-button">
-        <div >
-          <% @categories.each do |category| %>
-            <input type="checkbox" name="" id="<%=category.id %>" class="filter" data-filter-button-target= "category" data-action="click->filter-button#filter">
-            <label for="<%=category.id %>" ><%= category %></label>
+          <%= form_tag producers_path, method: :get do %>
+            <%= text_field_tag :address,
+                  params[:address],
+                  data: { disable_address_target: "input" },
+                  # wrapper_html: { data: { controller: "disable-address"}},
+                  class: "form-control d-none",
+                  id: "searchbar-index",
+                  placeholder: "Enter an address",
+                  value: @address
+                %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              id: "searchbar-index",
+              placeholder: "Find a producer"
+            %>
+            <%= submit_tag "Search", :name => nil, class: "d-none" %>
           <% end %>
-        </div>
       </div>
 
-    <h2 class="producers">Producers</h2>
-      <div data-controller="mapbox"
-            data-mapbox-markers-value="<%= @markers.to_json %>"
-            data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-            <div class="sticky">
-              <button id="bouton-map" data-action="click->mapbox#display"><i class="fa-solid fa-map-location-dot white-icon"></i> Map</button>
+      <!-- Tabs Producer/Market -->
+      <div class="tabs">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-producers-tab" data-bs-toggle="pill" data-bs-target="#pills-producers" type="button" role="tab" aria-controls="pills-producers" aria-selected="true">Producers</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-markets-tab" data-bs-toggle="pill" data-bs-target="#pills-markets" type="button" role="tab" aria-controls="pills-markets" aria-selected="false">Markets</button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-producers" role="tabpanel" aria-labelledby="pills-producers-tab">
+
+        <!-- Tab Producer -->
+          <!-- Categories  -->
+          <h2>Categories</h2>
+
+          <div class="filters" data-controller= "filter-button">
+            <div >
+              <% @categories.each do |category| %>
+                <input type="checkbox" name="" id="<%=category.id %>" class="filter" data-filter-button-target= "category" data-action="click->filter-button#filter">
+                <label for="<%=category.id %>" ><%= category %></label>
+              <% end %>
             </div>
-          <div style="width: 100%; height: 100vh; position: absolute; top: -100vh"
-            data-mapbox-target= "map">
+          </div>
+
+          <!-- list of producers -->
+          <h2 class="producers">Producers</h2>
+
+          <!-- map of producers -->
+          <div data-controller="mapbox"
+                data-mapbox-markers-value="<%= @markers.to_json %>"
+                data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+                <div class="sticky">
+                  <button id="bouton-map" data-action="click->mapbox#display"><i class="fa-solid fa-map-location-dot white-icon"></i> Map</button>
+                </div>
+              <div style="width: 100%; height: 100vh; position: absolute; top: -100vh"
+                data-mapbox-target= "map">
+            </div>
+          </div>
+
+          <!-- cards of producers -->
+          <div class="cards">
+              <%= render "producers", producers: @producers %>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-markets" role="tabpanel" aria-labelledby="pills-markets-tab">
+
+          <!-- list of markets -->
+          <h2>Markets</h2>
+
+          <!-- map of markets -->
+          <div data-controller="mapbox"
+                data-mapbox-markers-value="<%= @markers.to_json %>"
+                data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+                <div class="sticky">
+                  <button id="bouton-map" data-action="click->mapbox#display"><i class="fa-solid fa-map-location-dot white-icon"></i> Map</button>
+                </div>
+              <div style="width: 100%; height: 100vh; position: absolute; top: -100vh"
+                data-mapbox-target= "map">
+            </div>
+          </div>
+
+          <!-- list of markets -->
+          <div class="cards">
+            <%= render "markets", markets: @markets %>
+          </div>
         </div>
       </div>
-      <!-- list of producers -->
-
-      <div class="cards">
-          <%= render "producers", producers: @producers %>
-      </div>
-
-      <!-- Add new producer profile -->
-
-
     </div>
-
-  </div>
   </div>
 </div>
