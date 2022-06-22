@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_06_22_083947) do
+=======
+ActiveRecord::Schema.define(version: 2022_06_22_103114) do
+>>>>>>> c8d5fdd31dc8c9dcd2820f19f43d0f8b9405744d
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,7 +70,7 @@ ActiveRecord::Schema.define(version: 2022_06_22_083947) do
 
   create_table "notifications", force: :cascade do |t|
     t.string "content"
-    t.boolean "read"
+    t.boolean "read", default: false
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

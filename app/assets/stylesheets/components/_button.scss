@@ -16,7 +16,7 @@
 }
 
 .btn-link{
-  margin: 0 10px;
+  margin: 10px 10px;
   color: $light-red;
   text-decoration: none;
 }
@@ -37,4 +37,25 @@
 .btn-link-search:hover{
   color: $light-red;
   opacity: 0.8;
+}
+
+#btn-update {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 7px;
+}
+.btn-update {
+  border-radius: 30px;
+  padding: 4px;
+  margin: 0 10px;
+  background-color: #D54C4C;
+  color: white;
+  font-size: 12px;
+}
+
+.btn-update:hover{
+  background-color: white;
+  color: $light-red;
+  border: 1px solid $light-red;
 }

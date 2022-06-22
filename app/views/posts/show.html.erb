@@ -1,24 +1,26 @@
 <div class="container">
   <div class="row justify-content-center">
-     <%= link_to ("<i class='fa-solid fa-angle-left'></i> Back").html_safe, posts_path, class: "btn-link"%>
+    <%= link_to ("<i class='fa-solid fa-angle-left'></i> Back").html_safe, posts_path, class: "btn-link"%>
     <div>
+      <div class="article-image">
+        <% if @post.photo.attached? %>
+          <%= cl_image_tag @post.photo.key, height: 150, width: 365, crop: :fill %>
+        <% end %>
+      </div>
       <h2 class="producers"><%= @post.title %></h2>
-      <% if @post.photo.attached? %>
-        <%= cl_image_tag @post.photo.key, height: 100, width: 260, crop: :fill %>
-      <% end %>
       <p><%= @post.content %></p>
     </div>
 
-    <div class="buttons">
+    <div class="buttons sticky">
       <% if policy(@post).edit? %>
-        <%= link_to "Edit post", edit_post_path(@post), class: "btn-link" %>
+        <%= link_to "Edit post", edit_post_path(@post), class: "btn-red" %>
       <% end %>
 
       <% if policy(@post).destroy? %>
         <%= link_to ("<i class='fa-regular fa-trash-can'></i> Delete post").html_safe, post_path(@post),
                       method: :delete,
                       data: { confirm: "Are you sure?" } ,
-                      class:"btn-link"%>
+                      class:"btn-red"%>
       <% end %>
     </div>
   </div>

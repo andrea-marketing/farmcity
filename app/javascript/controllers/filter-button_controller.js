@@ -8,6 +8,8 @@ export default class extends Controller {
     const categories = this.categoryTargets
     const categories_checked = categories.filter(category => category.checked)
     const categories_id = categories_checked.map(category => category.id)
+    const formObject = {}
+    new FormData(document.querySelector("form#search-form")).forEach((value, fieldName) => formObject[fieldName] = value)
     fetch(
       "/producers/filter",
       {
@@ -16,7 +18,10 @@ export default class extends Controller {
           "Accept": "text/plain",
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ categories_id: categories_id })
+        body: JSON.stringify({
+          categories_id: categories_id,
+          ...formObject
+         })
       }
     )
       .then(response => response.text())

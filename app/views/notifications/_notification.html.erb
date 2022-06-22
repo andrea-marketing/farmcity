@@ -1,0 +1,11 @@
+<%= link_to notification.url do %>
+  <div class="notification">
+    <% if notification.photo %>
+      <%= image_tag notification.photo, class: "avatar-large"%>
+    <% end %>
+    <div class="notification-content" data-notification-subscription-target="notifications">
+      <p><small><%= notification.created_at.strftime("%a %b %e at %l:%M %p")%></small></p>
+      <%= notification.content.html_safe %>
+    </div>
+  </div>
+<% end %>
