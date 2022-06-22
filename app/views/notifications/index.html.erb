@@ -2,20 +2,19 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
       <h1 class="pt-3">Notifications</h1>
+
       <% @notifications.each do |notification| %>
         <%= link_to notification.url do %>
-          <p class="title">
-          <%= notification.content %>
+          <div class="notification">
+            <%= image_tag notification.photo, class: "avatar-large"%>
+            <div class="notification-content">
+              <p><small>14th January</small></p>
+              <%= notification.content.html_safe %>
+            </div>
+          </div>
         <% end %>
       <% end %>
+
     </div>
   </div>
 </div>
-
-    <% count = 0 %>
-    <% @notifications.each do |notification| %>
-      <% if notification.read == false %>
-        <% count += 1 %>
-      <% end %>
-    <% end %>
-    <%= count  %>
