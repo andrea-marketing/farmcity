@@ -1,14 +1,16 @@
 <div class="footer">
 
-  <%= link_to "/", :action => 'go' do %>
+  <%= link_to "/posts", :action => 'go' do %>
     <div class="tabs <%= current_page?("/") ? 'active' : '' %>">
       <i class="fa-solid fa-book"></i>
     </div>
   <% end %>
 
-  <%= link_to "/posts", :action => 'go' do %>
+  <%= link_to "/notifications", :action => 'go', class: "notif" do %>
     <div class="tabs <%= current_page?("/posts") ? 'active' : '' %>">
       <i class="fa-solid fa-envelope"></i>
+        <span class="count">
+        <%= current_user.unread_count %> </span>
     </div>
   <% end %>
 
