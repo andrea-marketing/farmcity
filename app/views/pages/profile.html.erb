@@ -4,7 +4,11 @@
       <div class="profile">
         <h1><%= @user.first_name %> <%= @user.last_name %></h1>
         <br>
-        <%= cl_image_tag @user.photo.key %>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key %>
+        <% else %>
+          <%= image_tag "photo-avatar-profil.png" %>
+        <% end %>
         <br>
         <p><%= @user.email %></p>
         <br>

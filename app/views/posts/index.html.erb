@@ -12,6 +12,8 @@
               <div class="avatar">
                 <% if post.user.photo.attached? %>
                   <%= cl_image_tag post.user.photo.key %>
+                <% else %>
+                  <%= image_tag "photo-avatar-profil.png" %>
                 <% end %>
               </div>
               <div class="create-date">
