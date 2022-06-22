@@ -4,15 +4,7 @@
       <h1 class="pt-3">Notifications</h1>
 
       <% @notifications.each do |notification| %>
-        <%= link_to notification.url do %>
-          <div class="notification">
-            <%= image_tag notification.photo, class: "avatar-large"%>
-            <div class="notification-content">
-              <p><small>14th January</small></p>
-              <%= notification.content.html_safe %>
-            </div>
-          </div>
-        <% end %>
+        <%= render "notifications/notification", notification: notification %>
       <% end %>
 
     </div>

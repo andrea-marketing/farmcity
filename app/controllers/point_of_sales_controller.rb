@@ -10,7 +10,14 @@ class PointOfSalesController < ApplicationController
     @point_of_sale = PointOfSale.new(point_of_sale_params)
     @point_of_sale.producer = @producer
     if @point_of_sale.save
-        redirect_to producer_path(@producer)
+      @producer.notifiees.each do |notifiee|
+        @notification = Notification.new(url: producer_path(@producer), content: ("<p>#{@producer.name} added a <strong> new point of sale </strong>.</p>"), user: notifiee, photo: @point_of_sale.market.photo.url)
+        if @notification.save
+          NotificationChannel.broadcast_to(notifiee,
+          render_to_string(partial: "shared/notification", locals: {notification: @notification}))
+        end
+      end
+      redirect_to producer_path(@producer)
     else
       render :new
     end
