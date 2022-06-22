@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_22_083947) do
+
+ActiveRecord::Schema.define(version: 2022_06_21_155453) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,8 +100,8 @@ ActiveRecord::Schema.define(version: 2022_06_22_083947) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
     t.string "content"
-    t.bigint "producer_id", null: false
-    t.index ["producer_id"], name: "index_posts_on_producer_id"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "producers", force: :cascade do |t|
@@ -191,7 +193,7 @@ ActiveRecord::Schema.define(version: 2022_06_22_083947) do
   add_foreign_key "notifications", "users"
   add_foreign_key "point_of_sales", "markets"
   add_foreign_key "point_of_sales", "producers"
-  add_foreign_key "posts", "producers"
+  add_foreign_key "posts", "users"
   add_foreign_key "producers", "users"
   add_foreign_key "products", "producers"
   add_foreign_key "products", "users"

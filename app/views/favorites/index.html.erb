@@ -8,13 +8,13 @@
           <%= link_to producer_path(favorite.producer) , :action => 'go' do %>
             <div class="card-producer">
               <!-- Producer favorite -->
-              <div class="favorite">
-                  <p><i class='fa-solid fa-heart'></i></p>
-              </div>
               <div class="image">
                 <% if favorite.producer.photos.attached? %>
                     <%= cl_image_tag favorite.producer.photos.first.key, height: 300, width: 400, crop: :fill %>
                 <% end %>
+              </div>
+              <div class="favorite">
+                  <p><i class='fa-solid fa-heart'></i></p>
               </div>
 
             <div class="card-producer-info">

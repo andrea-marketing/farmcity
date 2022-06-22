@@ -2,25 +2,25 @@
 
   <%= link_to "/", :action => 'go' do %>
     <div class="tabs <%= current_page?("/") ? 'active' : '' %>">
-      <i class="fa-solid fa-magnifying-glass fa-sm"></i>
+      <i class="fa-solid fa-book"></i>
     </div>
   <% end %>
 
   <%= link_to "/posts", :action => 'go' do %>
     <div class="tabs <%= current_page?("/posts") ? 'active' : '' %>">
-      <i class="fa-solid fa-list fa-sm"></i>
+      <i class="fa-solid fa-envelope"></i>
     </div>
   <% end %>
 
   <%= link_to "/producers", :action => 'go' do %>
     <div class="tabs <%= current_page?("/producers") ? 'active' : '' %>">
-      <i class="fa-solid fa-house fa-sm"></i>
+      <i class="fa-solid fa-house"></i>
     </div>
   <% end %>
 
   <%= link_to "/favorites", :action => 'go' do %>
     <div class="tabs <%= current_page?("/favorites") ? 'active' : '' %>">
-      <i class="fa-solid fa-heart fa-sm"></i>
+      <i class="fa-solid fa-heart"></i>
     </div>
   <% end %>
 
@@ -33,7 +33,7 @@
   <% else %>
     <%= link_to "/profile", :action => 'go' do %>
       <div class="tabs <%= current_page?("/profile") ? 'active' : '' %>">
-        <i class="fa-solid fa-user fa-sm"></i>
+        <i class="fa-solid fa-user"></i>
       </div>
     <% end %>
   <% end %>

@@ -1,12 +1,22 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="card-blog">
-      <h1 class="title">
-        <%= @post.title %>
-      </h1>
-      <div class="content">
-        <%= @post.content %>
-      </div>
+     <%= link_to ("<i class='fa-solid fa-angle-left'></i> Back").html_safe, posts_path, class: "btn-link"%>
+    <div>
+      <h2 class="producers"><%= @post.title %></h2>
+      <p><%= @post.content %></p>
+    </div>
+
+    <div class="buttons">
+      <% if policy(@post).edit? %>
+        <%= link_to "Edit post", edit_post_path(@post), class: "btn-link" %>
+      <% end %>
+
+      <% if policy(@post).destroy? %>
+        <%= link_to ("<i class='fa-regular fa-trash-can'></i> Delete post").html_safe, post_path(@post),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } ,
+                      class:"btn-link"%>
+      <% end %>
     </div>
   </div>
 </div>

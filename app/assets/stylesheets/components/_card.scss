@@ -62,6 +62,7 @@
   justify-items: center;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap
 }
 .card-product {
   overflow: hidden;
@@ -141,7 +142,6 @@
   font-size: 18px;
 }
 
-
 .card-review-title{
   display: flex;
   align-items: center;
@@ -188,6 +188,37 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 6px;
   margin: 10px 0;
+  height: 107px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card-description {
+  // display: flex;
+  // flex-direction: column;
+  // align-content: space-around;
+  padding-left: 5px;
+}
+
+.card-blog img {
+  // height: 87px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.card-description h2 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.card-description p {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

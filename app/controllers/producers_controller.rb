@@ -3,11 +3,13 @@ class ProducersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :filter
 
   def index
-    # index producers
+    # variables
     @producers = policy_scope(Producer).order(created_at: :desc).geocoded
+    @markets = policy_scope(Market).order(created_at: :desc).geocoded
     @address = params[:address]
     @markers = []
 
+    # index producers
     if params[:query].present?
       PgSearch::Multisearch.rebuild(@producers)
 
@@ -15,7 +17,6 @@ class ProducersController < ApplicationController
 
       producers_ids = @producers.map(&:searchable).map(&:id)
       @producers = Producer.where(id: producers_ids)
-      # @producers = Producer.where(id: @producers.map(&:id))
     end
 
     if params[:address].present?
@@ -36,15 +37,18 @@ class ProducersController < ApplicationController
     # index markets
       @markets = policy_scope(Market).order(created_at: :desc)
       if params[:query].present?
-        PgSearch::Multisearch.rebuild(policy_scope(Market).order(created_at: :desc).geocoded)
+        PgSearch::Multisearch.rebuild(@markets)
 
         @markets = PgSearch.multisearch(params[:query])
 
-        @markets = @markets.map(&:searchable)
-        # @markets = market.where(id: @markets.map(&:id))
-      else
-        @markets = policy_scope(Market).order(created_at: :desc)
+        markets_ids = @markets.map(&:searchable).map(&:id)
+        @markets = Market.where(id: markets_ids)
       end
+
+      if params[:address].present?
+        @markets = @markets.near(params[:address], 30)
+      end
+
        @markets.map do |market|
         @markers << {
           lat: market.latitude,
@@ -53,7 +57,6 @@ class ProducersController < ApplicationController
           image_url: helpers.asset_url("market.png")
         }
       end
-      @markets = policy_scope(Market).order(created_at: :desc)
   end
 
   def filter
