@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     resources :products, only: %i[new create edit update destroy]
     resources :reviews, only:  %i[new create]
     resources :favorites, only: %i[create]
-    resources :posts, only: %i[new create]
     collection do
       post :filter
     end
@@ -22,5 +21,5 @@ Rails.application.routes.draw do
   resources :favorites, only: %i[index destroy]
   # resources :point_of_sales, only: [ :destroy ]
   resources :markets, only: [ :index, :show ]
-  resources :posts, only: %i[index new create show]
+  resources :posts, only: %i[index new create show edit update destroy]
 end

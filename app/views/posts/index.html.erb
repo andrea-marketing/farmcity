@@ -2,11 +2,18 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
       <h1 class="pt-3">Blog Posts</h1>
-      <% @posts.each do |post| %>
-        <p class="title"><%= link_to post.title, post_path(post)  %></p>
-        <%= post.content %>
-      <% end %>
+        <% @posts.each do |post| %>
+          <div class="card-blog">
+            <div class="card-description">
+              <h2><%= link_to post.title, post_path(post) %></h2>
+              <p><%= post.content %></p>
+            </div>
+
+          </div>
+        <% end %>
     </div>
   </div>
-  <%= link_to ("<i class='fa-solid fa-plus'></i> Add a Post").html_safe, new_post_path, class: "btn-red" %>
+  <div class="sticky">
+    <%= link_to ("<i class='fa-solid fa-plus'></i> Add a Post").html_safe, new_post_path, class: "btn-red" %>
+  </div>
 </div>

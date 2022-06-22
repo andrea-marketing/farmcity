@@ -10,9 +10,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.producer = current_user.producers.first
+    # @post.producer = current_user.producers.first
+    @post.user = current_user
     authorize @post
-    console
     if @post.save
       redirect_to posts_path
     else
@@ -25,6 +25,25 @@ class PostsController < ApplicationController
     authorize @post
   end
 
+  def edit
+    @post = Post.find(params[:id])
+    authorize @post
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to post_path
+    authorize @post
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
+    authorize @post
+  end
+
   private
 
   def set_post
@@ -32,6 +51,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :user)
   end
 end
