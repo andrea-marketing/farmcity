@@ -31,7 +31,7 @@ class MarketsController < ApplicationController
       {
         lat: producer.latitude,
         lng: producer.longitude,
-        info_window: render_to_string(partial: "producers/info_window", locals: { producer: producer }),
+        info_window: render_to_string(partial: "producers/info_window_producers", locals: { producer: producer }),
         image_url: helpers.asset_url("ble.png")
       }
     end
@@ -39,7 +39,7 @@ class MarketsController < ApplicationController
     @markers << {
       lat: @market.latitude,
       lng: @market.longitude,
-      info_window: render_to_string(partial: "info_window", locals: { market: @market }),
+      info_window: render_to_string(partial: "producers/info_window_markets", locals: { market: @market }),
       image_url: helpers.asset_url("market.png")
     }
   end
