@@ -83,11 +83,12 @@
   border: none;
   font-size: 16px;
   width: 100%;
+  outline: none;
 }
 .mapboxgl-ctrl-geocoder--button{
-  display: none;
+  display: none  !important;
 }
 
-.mapboxgl-ctrl-geocoder--icon{
-  display: none;
+svg.mapboxgl-ctrl-geocoder--icon {
+  display: none !important;
 }

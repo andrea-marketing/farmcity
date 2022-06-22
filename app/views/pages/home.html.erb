@@ -23,12 +23,15 @@
 
           <!-- New search bar judith -->
           <%= form_tag producers_path, method: :get, data: { spinner_target: "form"} do %>
-            <%= text_field_tag :address,
+          <div class="search-home" data-controller="geocoder" data-geocoder-api-key-value="<%=ENV['MAPBOX_API_KEY']%>">
+            <%= hidden_field_tag :address,
               params[:address],
               class: "form-control",
               id: "searchbar-index",
-              placeholder: "Find a producer"
-            %>
+              placeholder: "Enter an address",
+              data: { geocoder_target: "address" } %>
+          </div>
+
             <%= submit_tag "Search", :name => nil, data: { action: "click->spinner#display_form"},  class: "btn btn-red" %>
           <% end %>
 
