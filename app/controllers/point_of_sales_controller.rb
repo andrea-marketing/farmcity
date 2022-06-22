@@ -10,7 +10,7 @@ class PointOfSalesController < ApplicationController
     @point_of_sale = PointOfSale.new(point_of_sale_params)
     @point_of_sale.producer = @producer
     if @point_of_sale.save
-      redirect_to producer_path(@producer)
+        redirect_to producer_path(@producer)
     else
       render :new
     end

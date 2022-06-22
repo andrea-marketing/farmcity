@@ -13,4 +13,7 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
+  def unread_count
+    self.notifications.where(read: false).count
+  end
 end
