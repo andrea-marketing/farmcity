@@ -41,8 +41,8 @@ class ProducersController < ApplicationController
 
         @markets = PgSearch.multisearch(params[:query])
 
-        @markets = @markets.map(&:searchable)
-        @producers = Market.where(id: markets_ids)
+        markets_ids = @markets.map(&:searchable).map(&:id)
+        @markets = Market.where(id: markets_ids)
       end
 
       if params[:address].present?
