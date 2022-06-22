@@ -74,9 +74,10 @@
   border: none;
   padding: 2px 10px;
   background-color: white;
-  color: gray;
+  color: $dark-red;
   border-radius: 20px;
-  border: 1px solid lightgray;
+  border: 1px solid $light-red;
+  margin: 10px 0;
 }
 
 .mapboxgl-ctrl-geocoder--input {
@@ -92,3 +93,7 @@
 svg.mapboxgl-ctrl-geocoder--icon {
   display: none !important;
 }
+.search-home{
+  position: relative;
+}
+
