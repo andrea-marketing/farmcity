@@ -1,26 +1,27 @@
 <div class="container">
   <div class="row justify-content-center">
 
-    <div class="col-12 col-lg-6 " >
+    <div class="col-12 col-lg-6 " data-controller="search-producers">
 
       <!-- Address & searchbar  -->
-      <div class="search"  data-controller="disable-address">
+      <div class="search"  data-controller="disable-address" >
         <% if @address.present? %>
-          <a class="btn-link-search" data-action="click->disable-address#disable" data-disable-address-target="button" ><i class="fa-solid fa-map-pin"></i>&nbsp&nbsp<%= params[:address] %></a>
+          <a class="btn-link-search" data-action="click->disable-address#disable" data-disable-address-target="button"><i class="fa-solid fa-map-pin"></i>&nbsp&nbsp<%= params[:address] %></a>
         <% else %>
-          <a class="btn-link-search" data-action="click->disable-address#disable" data-disable-address-target="button" ><i class="fa-solid fa-map-pin"></i>&nbsp&nbsp Search by address</a>
+          <a class="btn-link-search" data-action="click->disable-address#disable" data-disable-address-target="button"><i class="fa-solid fa-map-pin"></i>&nbsp&nbsp Search by address</a>
         <% end %>
 
-          <%= form_tag producers_path, method: :get, data: { search_producers_target: 'form' } do %>
-            <%= text_field_tag :address,
-                  params[:address],
-                  data: { disable_address_target: "input" },
-                  # wrapper_html: { data: { controller: "disable-address"}},
-                  class: "form-control d-none",
-                  id: "searchbar-index",
-                  placeholder: "Enter an address",
-                  value: @address
-                %>
+          <%= form_tag producers_path, method: :get, data: { search_producers_target: 'form' }, id: "search-form" do %>
+            <div class="search-home d-none" data-controller="geocoder" data-geocoder-api-key-value="<%=ENV['MAPBOX_API_KEY']%>" data-disable-address-target="input">
+              <%= submit_tag "Update", id: "btn-update", class: "btn btn-update", :name => nil%>
+              <%= hidden_field_tag :address,
+                    params[:address],
+                    class: "form-control",
+                    id: "searchbar-index",
+                    placeholder: "Enter an address",
+                    value: @address,
+                    data: { geocoder_target: "address" } %>
+            </div>
             <%= text_field_tag :query,
               params[:query],
               class: "form-control",
@@ -29,7 +30,6 @@
               data: { search_producers_target: 'input',
                       action: 'keyup->search-producers#update' }
             %>
-            <%= submit_tag "Search", :name => nil, class: "d-none" %>
           <% end %>
       </div>
 
@@ -77,7 +77,7 @@
           </div>
 
           <!-- cards of producers -->
-          <div class="cards" data-search-producers-target="cards">
+          <div class="cards" data-search-producers-target="producers">
               <%= render "producers", producers: @producers %>
           </div>
         </div>
@@ -100,7 +100,7 @@
           </div>
 
           <!-- list of markets -->
-          <div class="cards" >
+          <div class="cards" data-search-producers-target="markets" >
             <%= render "markets", markets: @markets %>
           </div>
         </div>
