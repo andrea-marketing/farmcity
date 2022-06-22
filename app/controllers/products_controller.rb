@@ -14,7 +14,11 @@ class ProductsController < ApplicationController
     @product.user = current_user
     if @product.save
       @producer.notifiees.each do |notifiee|
-        Notification.create(url: producer_path(@producer), content: ("<p>#{@producer.name} added a <strong> new product </strong>.</p>"), user: notifiee, photo: @product.photo.url)
+        @notification = Notification.new(url: producer_path(@producer), content: ("<p>#{@producer.name} added a <strong> new product </strong>.</p>"), user: notifiee, photo: @product.photo.url)
+        if @notification.save
+          NotificationChannel.broadcast_to(notifiee,
+          render_to_string(partial: "shared/notification", locals: {notification: @notification}))
+        end
       end
       redirect_to producer_path(@producer)
     else
