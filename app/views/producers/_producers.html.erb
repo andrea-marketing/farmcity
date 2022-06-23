@@ -1,6 +1,6 @@
 <% producers.each do |producer| %>
   <%= link_to producer_path(producer) , :action => 'go' do %>
-    <div class="card-producer">
+    <div class="card-producer animate slide delay-2">
       <!-- Producer favorite -->
       <div class="image">
         <% if producer.photos.attached? %>
