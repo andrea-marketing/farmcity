@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :price, presence: true
+  validates :photo, presence: true
 
   # TAGS = [["🍏", "Fruits"], ["🥬", "Vegetables"], ["🥩", "Meat"], ["🥛", "Milk"], ["🧀", "Cheese"], ["🌷", "Flowers"],
           # ["🥬", "Chicken"], ["🥬", "Cow"], ["🥬", "Goat"], ["🥬", "Sheep"], ["🥬", "Fish"], ["🥬", "Honey"], ["🥬", "Eggs"],

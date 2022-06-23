@@ -1,14 +1,14 @@
 <div class="footer">
 
   <%= link_to "/posts", :action => 'go' do %>
-    <div class="tabs <%= current_page?("/") ? 'active' : '' %>">
+    <div class="tabs <%= current_page?("/posts") ? 'active' : '' %>">
       <i class="fa-solid fa-book"></i>
     </div>
   <% end %>
 
   <% if user_signed_in? %>
     <%= link_to "/notifications", :action => 'go', class: "notif", data: {controller: "notification-subscription", notification_subscription_user_id_value: current_user.id} do %>
-      <div class="tabs <%= current_page?("/posts") ? 'active' : '' %>">
+      <div class="tabs <%= current_page?("/notifications") ? 'active' : '' %>">
           <i class="fa-solid fa-envelope"></i>
           <span class="count <%= current_user.unread_count > 0 ? '' : 'd-none' %>" data-notification-subscription-target="bubble">
             <%= current_user.unread_count %>
