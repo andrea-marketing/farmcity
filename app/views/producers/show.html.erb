@@ -81,7 +81,7 @@
   <!-- Product list -->
   <div class="cards-products">
     <% @producer.products.each do |product| %>
-      <div class="card-product">
+      <div class="card-product animate slide delay-2">
         <% if product.photo.attached? %>
           <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
         <% end %>
@@ -120,7 +120,7 @@
   <!--  Reviews -->
 
   <% @producer.reviews.each do |review| %>
-    <div class="card-review">
+    <div class="card-review animate slide delay-2">
       <div class="card-review-title">
       <% if review.rating == 5 %>
         <p><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></p>
@@ -164,7 +164,7 @@
     <% @producer.point_of_sales.each do |point_of_sale| %>
       <% market = point_of_sale.market %>
       <%= link_to market_path(market) do %>
-        <div class="card-market">
+        <div class="card-market animate slide delay-2">
           <div class="image">
             <% if market.photo.attached? %>
               <%= cl_image_tag market.photo.key, height: 300, width: 400, crop: :fill %>
@@ -184,8 +184,6 @@
         </div>
       <%end%>
     <% end %>
-
-
 
       <%# <% if policy(point_of_sale).destroy? %>
 
