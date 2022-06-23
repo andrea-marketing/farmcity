@@ -11,7 +11,6 @@ class Producer < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
-  has_many :posts, dependent: :destroy
   has_many :notifications, through: :user
 
 

@@ -7,9 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
+Favorite.destroy_all
 Market.destroy_all
 Producer.destroy_all
 User.destroy_all
+
  puts "destroy finished"
 file_user1 = URI.open('https://res.cloudinary.com/dj0dllkwn/image/upload/v1655133837/samples/farmcity/x5jrwv4m34jgss4tsuc4.png')
 user1 = User.create!(email: "judith@gmail.com", password: "farmcity", password_confirmation: "farmcity", first_name: "Judith", last_name: "Karouby")
@@ -200,6 +202,10 @@ prado_file = URI.open("https://res.cloudinary.com/dj0dllkwn/image/upload/v165580
 prado_market = Market.new(name: "Marché du Prado", address: "99 Av. du Prado, 13008 Marseille", description: "Vaste marché en plein air proposant large choix d'articles, des produits frais aux vêtements d'occasion.", market_type: "🧑‍🌾 Market", opening_time: "Du lundi au samedi de 8h00 à 13h30")
 prado_market.photo.attach(io: prado_file, filename: 'prado.jpg', content_type: 'image/jpg')
 prado_market.save
+
+Producer.where.not(user: user1).last(2).each do |producer|
+  Favorite.create(producer: producer, user: user1)
+end
 
 # shops
 potager_file = URI.open("https://res.cloudinary.com/dj0dllkwn/image/upload/v1655801004/samples/farmcity/muneeb-syed-fAu1Ai0Xh4s-unsplash_vf2o9i.jpg")
