@@ -3,5 +3,5 @@
 meta_product_name: "Farmcity"
 meta_title: "Farmcity - Find local producers near you!"
 meta_description: "Improve your grocery-shopping experience by discovering new local markets and producers in your city."
-meta_image: "logo_farmcity_1200x630.png" # should exist in `app/assets/images/`
+meta_image: "logo_farmcity.png" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards

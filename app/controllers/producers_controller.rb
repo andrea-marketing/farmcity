@@ -22,7 +22,6 @@ class ProducersController < ApplicationController
 
     categories_id = params[:categories_id]
     categories = categories_id.empty? ? ActsAsTaggableOn::Tag.all : ActsAsTaggableOn::Tag.find(categories_id)
-    console
 
     categories_name = categories.map do |category|
       category.name
