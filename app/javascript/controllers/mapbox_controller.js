@@ -4,7 +4,7 @@ import mapboxgl from "mapbox-gl"
 
 
 export default class extends Controller {
-  static targets = ["map"]
+  static targets = ["map", "button"]
 
   static values = {
     apiKey: String,
@@ -15,13 +15,11 @@ export default class extends Controller {
     if(this.mapTarget.style.position === 'absolute') {
       this.mapTarget.style.position = 'relative'
       this.mapTarget.style.top = 0
-      const word = document.querySelector("#bouton-map")
-      word.innerHTML = `<i class="fa-solid fa-list white-icon"></i> List`
+      this.buttonTarget.innerHTML = `<i class="fa-solid fa-list white-icon"></i> List`
     } else {
       this.mapTarget.style.position = 'absolute'
       this.mapTarget.style.top = '-100vh'
-      const word = document.querySelector("#bouton-map")
-      word.innerHTML = `<i class="fa-solid fa-map-location-dot white-icon"></i> Map`
+      this.buttonTarget.innerHTML = `<i class="fa-solid fa-map-location-dot white-icon"></i> Map`
     }
   }
 
