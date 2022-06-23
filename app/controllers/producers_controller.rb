@@ -85,7 +85,7 @@ class ProducersController < ApplicationController
     end
 
     @markets.map do |market|
-      if market.market_type == "market"
+      if market.market_type == "🧑‍🌾 Market"
         photo = "market.png"
       else
         photo = "panier-de-courses.png"
