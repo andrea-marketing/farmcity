@@ -20,3 +20,12 @@
   cursor: pointer;
   color: white;
 }
+
+.filters {
+  display: flex;
+}
+
+div.filters {
+  overflow: auto;
+  white-space: nowrap;
+}

@@ -3,15 +3,6 @@
   justify-content: center;
 }
 
-// .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-//   padding: 5px;
-//   background-color: $dark-green;
-//   color: white;
-//   font-size: 18px;
-//   border-radius: 15px;
-//   margin:0 35px;
-// }
-
 .nav-link {
   color: $dark-green;
   font-size: 18px;
@@ -22,16 +13,16 @@
   color: $dark-green;
   padding: 5px;
   font-size: 18px;
-  border-radius: 15px;
   margin:0 35px;
-  border: 2px solid $dark-green;
+  border-bottom: 2px solid #D9DD6B;
 }
 
 .nav-pills .nav-link.active {
-  color: white;
+  color: #D9DD6B;
   padding: 5px;
   font-size: 18px;
-  border-radius: 15px;
-  margin:0 35px;
-  background-color: $dark-green;
+  /* border-radius: 15px; */
+  margin: 0 35px;
+  border-bottom: 2px solid #D9DD6B;
+  background-color: #d9dd6b00;
 }
