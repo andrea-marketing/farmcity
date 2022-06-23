@@ -85,12 +85,17 @@ class ProducersController < ApplicationController
       @markets = @markets.near(params[:address], 30)
     end
 
-      @markets.map do |market|
+    @markets.map do |market|
+      if market.market_type == "market"
+        photo = "market.png"
+      else
+        photo = "panier-de-courses.png"
+      end
       @markers << {
         lat: market.latitude,
         lng: market.longitude,
         info_window: render_to_string(partial: "info_window_markets", locals: { market: market }, formats: [:html]),
-        image_url: helpers.asset_url("market.png")
+        image_url: helpers.asset_url(photo)
       }
     end
   end
